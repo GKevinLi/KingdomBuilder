@@ -1,6 +1,6 @@
 public class Runner {
     public static void main(String[] args)
     {
-        JFrame yas = new JFrame("Kingdom Builder");
+        JFrame yasss = new JFrame("Kingdom Builder");
     }
 }
