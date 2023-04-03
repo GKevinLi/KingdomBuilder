@@ -1,5 +1,5 @@
 import java.awt.*;
-import java.swing.*;
+import javax.swing.*;
 public class JFrame extends javax.swing.JFrame {
     final int WIDTH = 1600;
     final int LENGTH = 800;
