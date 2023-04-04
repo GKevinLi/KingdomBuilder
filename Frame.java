@@ -9,7 +9,8 @@ public class Frame extends JFrame {
         setSize(WIDTH, LENGTH);
         setDefaultCloseOperation(Frame.EXIT_ON_CLOSE);
         //add(new JPanel());
-        add(new StartScreenPanel());
+        StartScreenPanel s = new StartScreenPanel();
+        add(s);
         setVisible(true);
     }
 }

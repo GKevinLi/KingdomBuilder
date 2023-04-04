@@ -2,8 +2,9 @@ public class SpecialTile extends Tile{
     private int numCharges;
     private ActionToken specialAction;
     public SpecialTile(String s, ActionToken a) {
+        super(s);
         specialAction = a;
-        super.type = s;
+
 
     }
     public ActionToken getAction() {

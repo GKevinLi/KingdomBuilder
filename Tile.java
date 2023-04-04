@@ -5,13 +5,13 @@ public class Tile {
     private boolean alreadyFilled;
     private Tile[] adjacentTiles;
     private Settlement s;
-
-    public Tile() {
-
-    }
     public Tile(String s) {
         type = s;
     }
+    //public Tile() {
+
+    //}
+
     public Tile[] getAdjacentTiles() {
         return adjacentTiles;
     }
