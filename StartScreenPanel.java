@@ -20,7 +20,6 @@ public class StartScreenPanel extends JPanel implements MouseListener{
             System.out.println("exception error");
             return;
         }
-        //addMouseListener();
     }
 
     public void paint(Graphics g)
