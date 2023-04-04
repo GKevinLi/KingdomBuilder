@@ -10,7 +10,7 @@ import java.awt.event.MouseEvent;
 import java.util.*;
 
 public class StartScreenPanel extends JPanel implements MouseListener{
-    private BufferedImages background;
+    private BufferedImage background;
     public StartScreenPanel()
     {
         try
@@ -22,7 +22,7 @@ public class StartScreenPanel extends JPanel implements MouseListener{
             System.out.println("exception error");
             return;
         }
-        addMouseListener();
+        //addMouseListener();
     }
 
     public void paint(Graphics g)
