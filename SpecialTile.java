@@ -3,6 +3,7 @@ public class SpecialTile extends Tile{
     private ActionToken specialAction;
     public SpecialTile(String s, ActionToken a) {
         specialAction = a;
+        super.type = s;
 
     }
     public ActionToken getAction() {
