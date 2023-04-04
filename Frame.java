@@ -8,7 +8,8 @@ public class Frame extends JFrame {
         super(name);
         setSize(WIDTH, LENGTH);
         setDefaultCloseOperation(Frame.EXIT_ON_CLOSE);
-        add(new JPanel());
+        //add(new JPanel());
+        add(new StartScreenPanel());
         setVisible(true);
     }
 }
