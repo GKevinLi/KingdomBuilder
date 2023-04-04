@@ -15,7 +15,7 @@ public class StartScreenPanel extends JPanel implements MouseListener{
     {
         try
         {
-            background = ImageIO.read(StartScreenPanel.class.getResource("/AzulPics/image (1).png"));
+            background = ImageIO.read(StartScreenPanel.class.getResource("/deez imgs/image (1).png"));
         }
         catch (java.lang.Exception e)
         {
