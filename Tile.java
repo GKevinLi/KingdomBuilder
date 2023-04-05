@@ -33,5 +33,12 @@ public class Tile {
     public boolean getFilled() {
         return alreadyFilled;
     }
+    public void resetFilled() {
+        alreadyFilled = false;
+    }
+
+    public Settlement getSettlement() {
+        return s;
+    }
 
 }

@@ -6,17 +6,31 @@ public class Settlement {
     public Settlement() {
 
     }
-    public int countAdjacentHouses(Tile b) {
+    public void setPlayerOwned(Player p) {
+        playerOwned = p;
+    }
+    public void setPlacedOn(Tile t) {
+        isPlacedOn = t;
+    }
+    public Tile getPlacedOn() {
+        return isPlacedOn;
+    }
+    public Player getPlayerOwned() {
+        return playerOwned;
+    }
+    public int countAdjacentHouses(Tile b, Player p) {
         Tile[] adjacents = b.getAdjacentTiles();
         ArrayList<Tile> a = new ArrayList<Tile>();
         int cnt = 0;
         for(Tile t : adjacents) {
             if(t.HouseCheck() && !t.getFilled()) {
-               cnt++;
+                if(t.getSettlement().getPlayerOwned() == p) {
+                    a.add(t);
+                    cnt++;
+                    t.setFilled();
+                }
             }
-            else {
-               a.add(t);
-            }
+
         }
         if(cnt == 0) {
             return 1;
@@ -24,9 +38,9 @@ public class Settlement {
         else {
             int sum = 0;
             for(Tile t : a) {
-                sum += countAdjacentHouses(t);
+                sum += countAdjacentHouses(t, p);
             }
-            return sum;
+            return sum + cnt;
         }
 
     }
