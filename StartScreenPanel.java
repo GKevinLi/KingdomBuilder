@@ -48,9 +48,11 @@ public class StartScreenPanel extends JPanel implements MouseListener{
         //Rectangle2D play = new Rectangle2D.Double(getWidth()/3, getHeight()/4, 325.0, 125.0);
         //play
         g.fillRect(getWidth()/2 - 162, getHeight()/3, 325, 125);
-        System.out.println(getWidth());
-        System.out.println(getHeight());
-        //g.fillRect()
+        g.fillRect(getWidth()/2 - 162, getHeight()/2 + getHeight()/20, 325, 125);
+        g.setColor(Color.white);
+        g.setFont(new Font("Helvetica", Font.BOLD, 100));
+        g.drawString("PLAY", getWidth()/2-162, getHeight()/3+getHeight()/10);
+       //g.drawString("RULES", getWidth()/2 - 162, getHeight()/2 ;
     }
 
     public void mousePressed(MouseEvent e) {}
