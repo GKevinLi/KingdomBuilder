@@ -45,9 +45,11 @@ public class StartScreenPanel extends JPanel implements MouseListener{
         Rectangle2D play = new Rectangle2D.Double(getWidth()/3, getHeight()/4, 325.0, 125.0);
         g.drawImage(title, getWidth()/3 - getHeight()/40, getHeight()/16, null);
         g.setColor(Color.lightGray);
-        Rectangle2D play = new Rectangle2D.Double(getWidth()/3, getHeight()/4, 325.0, 125.0);
-        play
-        //g.fillRect(getWidth()/3, getHeight()/4, 325, 125);
+        //Rectangle2D play = new Rectangle2D.Double(getWidth()/3, getHeight()/4, 325.0, 125.0);
+        //play
+        g.fillRect(getWidth()/2 - 162, getHeight()/3, 325, 125);
+        System.out.println(getWidth());
+        System.out.println(getHeight());
         //g.fillRect()
     }
 
