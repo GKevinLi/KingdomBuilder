@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
+import java.io.*;
 
 public class StartScreenPanel extends JPanel implements MouseListener{
     private BufferedImage background, title;
@@ -37,6 +38,7 @@ public class StartScreenPanel extends JPanel implements MouseListener{
     public void showRules()
     {
         //find good pdf
+
     }
 
     public void showStartingScreen(Graphics g)
@@ -53,6 +55,8 @@ public class StartScreenPanel extends JPanel implements MouseListener{
         g.setFont(new Font("Helvetica", Font.BOLD, 100));
         g.drawString("PLAY", getWidth()/2-162, getHeight()/3+getHeight()/10);
        //g.drawString("RULES", getWidth()/2 - 162, getHeight()/2 ;
+        System.out.println(getWidth());
+        System.out.println(getHeight());
     }
 
     public void mousePressed(MouseEvent e) {}
