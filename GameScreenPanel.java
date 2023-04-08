@@ -12,7 +12,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     public GameScreenPanel()
     {
         //needs to be updated with turn logic is done
-        currentPlayer = 4;
+        currentPlayer = 1;
         try {
             background = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/photo-1434725039720-aaad6dd32dfe.jpg"));
             boat = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/BOAT (2).png"));
@@ -35,32 +35,32 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     {
         g.drawImage(background, 0, 0, getWidth(), getHeight(), null);
         drawGameScreen(g);
+        drawMap(g);
+        drawObjective(g);
         g.drawImage(tower, 0, 0, 400, 400, null);
     }
 
     public void drawGameScreen(Graphics g)
     {
         //when turn logic is done, the currentPlayer will have a highlighted box
-        Color transWhite = new Color(255, 255, 255, 60);
-        Color transBlack = new Color(0, 0, 0, 60);
-        Color transOrange = new Color(255, 128, 0, 60);
-        Color transBlue = new Color(0, 102, 204, 60);
+        Color transGrey = new Color(192, 192, 192, 95);
+        Color transWhite = new Color(255, 255, 255, 95);
+        Color transBlack = new Color(0, 0, 0, 95);
+        Color transOrange = new Color(255, 128, 0, 95);
+        Color transBlue = new Color(0, 102, 204, 95);
         Color orange = new Color(255, 128, 0);
         Color blue = new Color(0, 102, 204);
 
-        g.setColor(transWhite);
+        g.setColor(transGrey);
         g.fillRect(getWidth()/160, getHeight()/40, 350, 278);
-        g.setColor(transBlack);
         g.fillRect(getWidth()/4+getWidth()/100, getHeight()/40, 350, 278);
-        g.setColor(transOrange);
         g.fillRect(getWidth()/2+getWidth()/160+getWidth()/800, getHeight()/40, 350, 278);
-        g.setColor(transBlue);
         g.fillRect(getWidth()-getWidth()/4+getWidth()/200, getHeight()/40, 350, 278);
 
-        g.setColor(transBlack);
+        g.setColor(Color.white);
         g.setFont(new Font("Helvetica", Font.PLAIN, 25));
         g.drawString(" PLAYER 1", getWidth()/160, getHeight()/16);
-        g.setColor(transWhite);
+        g.setColor(Color.black);
         g.drawString(" PLAYER 2", getWidth()/4+getWidth()/100, getHeight()/16);
         g.setColor(orange);
         g.drawString(" PLAYER 3", getWidth()/2+getWidth()/160+getWidth()/800, getHeight()/16);
@@ -69,25 +69,25 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
         if(currentPlayer == 1)
         {
-            g.setColor(new Color(255, 255, 255, 95));
+            g.setColor(transWhite);
             g.fillRect(getWidth()/160, getHeight()/40, 350, 278);
             g.setColor(Color.white);
             g.drawRect(getWidth()/160, getHeight()/40, 350, 278);
-            g.setColor(Color.black);
+            //g.setColor(Color.black);
             g.drawString(" PLAYER 1", getWidth()/160, getHeight()/16);
         }
         else if(currentPlayer == 2)
         {
-            g.setColor(new Color(0, 0, 0, 95));
+            g.setColor(transBlack);
             g.fillRect(getWidth()/4+getWidth()/100, getHeight()/40, 350, 278);
             g.setColor(Color.black);
             g.drawRect(getWidth()/4+getWidth()/100, getHeight()/40, 350, 278);
-            g.setColor(Color.white);
+            //g.setColor(Color.white);
             g.drawString(" PLAYER 2", getWidth()/4+getWidth()/100, getHeight()/16);
         }
         else if(currentPlayer == 3)
         {
-            g.setColor(new Color(255, 128, 0, 95));
+            g.setColor(transOrange);
             g.fillRect(getWidth()/2+getWidth()/160+getWidth()/800, getHeight()/40, 350, 278);
             g.setColor(orange);
             g.drawRect(getWidth()/2+getWidth()/160+getWidth()/800, getHeight()/40, 350, 278);
@@ -95,12 +95,43 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         }
         else if(currentPlayer == 4)
         {
-            g.setColor(new Color(0, 102, 204, 95));
+            g.setColor(transBlue);
             g.fillRect(getWidth()-getWidth()/4+getWidth()/200, getHeight()/40, 350, 278);
             g.setColor(blue);
             g.drawRect(getWidth()-getWidth()/4+getWidth()/200, getHeight()/40, 350, 278);
             g.drawString(" PLAYER 4", getWidth()-getWidth()/4+getWidth()/200, getHeight()/16);
         }
+
+        //back of the card
+        g.setColor(Color.white);
+        g.fillRect(1360, 434, 198, 356);
+    }
+
+    public void drawMap(Graphics g)
+    {
+        g.setColor(Color.gray);
+        g.fillRect(getWidth()/27, getHeight()/40+300, 505, 505);
+    }
+
+    public void drawObjective(Graphics g)
+    {
+        g.setColor(Color.black);
+        g.setFont(new Font("Helvetica", Font.PLAIN, 40));
+        g.drawString("OBJECTIVES", 850, 450);
+
+        g.fillRect(636, 500, 188, 290);
+        g.fillRect(868, 500, 188, 290);
+        g.fillRect(1100, 500, 188, 290);
+    }
+
+    public void drawActionTokens(Graphics g)
+    {
+
+    }
+
+    public void drawTerrainCards(Graphics g)
+    {
+
     }
     @Override
     public void mouseClicked(MouseEvent e) {
