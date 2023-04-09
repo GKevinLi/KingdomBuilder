@@ -117,11 +117,11 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     {
         g.setColor(Color.black);
         g.setFont(new Font("Helvetica", Font.PLAIN, 40));
-        g.drawString("OBJECTIVES", 850, 450);
+        g.drawString("OBJECTIVES", getWidth()/2+getWidth()/32, getHeight()/2+getHeight()/16);
 
-        g.fillRect(636, 500, 188, 290);
-        g.fillRect(868, 500, 188, 290);
-        g.fillRect(1100, 500, 188, 290);
+        g.fillRect(getWidth()/3+getWidth()/16, getHeight()/2 + getHeight()/8, 188, 290);
+        g.fillRect(getWidth()/2 + getWidth()/24, getHeight()/2 + getHeight()/8, 188, 290);
+        g.fillRect(getWidth() - (10*(getHeight()/16)), getHeight()/2 + getHeight()/8, 188, 290);
     }
 
     public void drawActionTokens(Graphics g)

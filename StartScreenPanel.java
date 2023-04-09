@@ -31,8 +31,15 @@ public class StartScreenPanel extends JPanel implements MouseListener{
         if(event == 0)
         {
             showStartingScreen(g);
-
         }
+        else if(event == 1)
+        {
+            showRules();
+        }
+//        else if(event == 2)
+//        {
+//            //play game, need to figure out how to switch between panels
+//        }
     }
 
     public void showRules()
@@ -43,12 +50,9 @@ public class StartScreenPanel extends JPanel implements MouseListener{
 
     public void showStartingScreen(Graphics g)
     {
-        //Graphics2D g2 = Graphics
         Rectangle2D play = new Rectangle2D.Double(getWidth()/3, getHeight()/4, 325.0, 125.0);
         g.drawImage(title, getWidth()/3 - getHeight()/40, getHeight()/16, null);
         g.setColor(Color.lightGray);
-        //Rectangle2D play = new Rectangle2D.Double(getWidth()/3, getHeight()/4, 325.0, 125.0);
-        //play
         g.fillRect(getWidth()/2 - 162, getHeight()/3, 325, 125);
         g.fillRect(getWidth()/2 - 162, getHeight()/2 + getHeight()/20, 325, 125);
         g.setColor(Color.white);
