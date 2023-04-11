@@ -7,6 +7,12 @@ public class SpecialTile extends Tile{
 
 
     }
+    public SpecialTile(String s) {
+        super(s);
+
+
+
+    }
     public ActionToken getAction() {
         return specialAction;
     }
