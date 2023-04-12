@@ -1,9 +1,11 @@
+import java.util.ArrayList;
+
 public class Tile {
     public String type;
     private boolean hasHouse;
     private boolean housePlaceable;
     private boolean alreadyFilled;
-    private Tile[] adjacentTiles;
+    private ArrayList<Tile> adjacentTiles;
     private Settlement s;
     public Tile(String s) {
         type = s;
@@ -12,10 +14,10 @@ public class Tile {
 
     //}
 
-    public Tile[] getAdjacentTiles() {
+    public ArrayList<Tile> getAdjacentTiles() {
         return adjacentTiles;
     }
-    public void setAdjacentTiles(Tile[] t) {
+    public void setAdjacentTiles(ArrayList<Tile> t) {
         adjacentTiles = t;
     }
     public boolean getHousePlaceable() {

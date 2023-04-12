@@ -88,6 +88,32 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             b.addBoard(temp);
             boards.remove(temp);
         }
+        b.makeCombinedBoard();
+        Tile[][] combinedBoard = b.getCombinedBoard();
+        for(int i = 0; i < 20; i++) {
+            for(int j = 0; j < 20; j++) {
+                ArrayList<Tile> t = new ArrayList<>();
+                if(i - 1 >= 0) {
+                    t.add(combinedBoard[i-1][j]);
+                }
+                if(i + 1 < 20) {
+                    t.add(combinedBoard[i+1][j]);
+                }
+                if(j + 1 < 20) {
+                    t.add(combinedBoard[i][j+1]);
+                }
+                if(j - 1 >= 0) {
+                    t.add(combinedBoard[i][j-1]);
+                }
+                if(i - 1 >= 0 && j - 1 >= 0) {
+                    t.add(combinedBoard[i-1][j-1]);
+                }
+                if(i + 1 < 20 && j - 1 >= 0) {
+                    t.add(combinedBoard[i+1][j-1]);
+                }
+                combinedBoard[i][j].setAdjacentTiles(t);
+            }
+        }
 
     }
 
@@ -174,10 +200,11 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
     public void drawMap(Graphics g)
     {
-        g.drawImage(b.getBoards().get(0).getImg(), getWidth()/27, getHeight()/40+300,202, 202, null);
-        g.drawImage(b.getBoards().get(1).getImg(), getWidth()/27, getHeight()/40+502,202, 202, null);
-        g.drawImage(b.getBoards().get(2).getImg(), getWidth()/27 + 202, getHeight()/40+300,202, 202, null);
-        g.drawImage(b.getBoards().get(2).getImg(), getWidth()/27 + 202, getHeight()/40+502,202, 202, null);
+        g.drawImage(b.getBoards().get(0).getImg(), getWidth()/97, getHeight()/40+300,202, 202, null);
+        g.drawImage(b.getBoards().get(1).getImg(), getWidth()/97, getHeight()/40+502,202, 202, null);
+        g.drawImage(b.getBoards().get(2).getImg(), getWidth()/97 + 202, getHeight()/40+300,202, 202, null);
+        g.drawImage(b.getBoards().get(2).getImg(), getWidth()/97 + 202, getHeight()/40+502,202, 202, null);
+
         //g.setColor(Color.gray);
         //g.fillRect(getWidth()/27, getHeight()/40+300, 505, 505);
     }
