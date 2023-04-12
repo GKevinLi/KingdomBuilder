@@ -35,7 +35,7 @@ public class StartScreenPanel extends JPanel implements MouseListener{
         }
         else if(event == 1)
         {
-            g.drawImage(rules, 0, 0, getWidth(), getHeight(), null);
+            showRules();
         }
 //        else if(event == 2)
 //        {
@@ -43,6 +43,9 @@ public class StartScreenPanel extends JPanel implements MouseListener{
 //        }
     }
 
+    public void showRules(){
+
+    }
 
 
     public void showStartingScreen(Graphics g)
