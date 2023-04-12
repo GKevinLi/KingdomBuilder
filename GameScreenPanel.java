@@ -42,7 +42,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         boards = new ArrayList<>();
         b = new FullBoard();
 
-
+        //hi
         currentPlayer = 1;
         //boards.add(new BoardSector())
         try {
