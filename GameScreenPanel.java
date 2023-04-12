@@ -8,7 +8,9 @@ import java.util.ArrayList;
 
 public class GameScreenPanel extends JPanel implements MouseListener {
     //
-    private BufferedImage background, boat, field, horse, house, oasis, stonehenge, tavern, tower;
+    private BufferedImage background, boat, field, horse, house, oasis, stonehenge, tavern, tower, blueHouse, greenHouse, yellowHouse, orangeHouse;
+    private BufferedImage knights, miners, discoverers;
+    private BufferedImage board1;
     private int currentPlayer;
     private ArrayList<BoardSector> boards;
     private Tile[][] b1 = {{new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Flower")},
@@ -22,11 +24,14 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             {new Tile("Water"), new Tile("Desert"), new SpecialTile("Castle"), new Tile("Grass"), new Tile("Water"), new Tile("Mountain"), new Tile("Water"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Canyon")},
             {new Tile("Water"), new Tile("Desert"), new Tile("Desert"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Canyon")},
     };
+
+    private FullBoard f;
     public GameScreenPanel()
     {
-        //needs to be updated with turn logic is done
 
+        //needs to be updated with turn logic is done
         currentPlayer = 1;
+        //boards.add(new BoardSector())
         try {
             background = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/photo-1434725039720-aaad6dd32dfe.jpg"));
             boat = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/BOAT (2).png"));
@@ -37,12 +42,24 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             stonehenge = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/stonehenge-removebg-preview.png"));
             tavern = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/TAVERN (2).png"));
             tower = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/tower-removebg-preview.png"));
+
+                    knights = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KnightsObjective (1).png"));
+            miners = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/MinersObjective (1).png"));
+            discoverers = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/DiscoverersObjective (1).png"));
+
+            blueHouse = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/image (2).png"));
+            greenHouse = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/image (3).png"));
+            yellowHouse = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/image (4).png"));
+            orangeHouse = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/image (5).png"));
+
+            board1 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/Board4 (1).png"));
         }
         catch (Exception E)
         {
             System.out.println("error");
             return;
         }
+        //boards.add(new BoardSector(b1, board1));
     }
 
     public void paint(Graphics g)
@@ -51,15 +68,14 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         drawGameScreen(g);
         drawMap(g);
         drawObjective(g);
-        g.drawImage(tower, 0, 0, 400, 400, null);
     }
 
     public void drawGameScreen(Graphics g)
     {
         //when turn logic is done, the currentPlayer will have a highlighted box
         Color transGrey = new Color(192, 192, 192, 95);
-        Color transWhite = new Color(255, 255, 255, 95);
-        Color transBlack = new Color(0, 0, 0, 95);
+        Color transYellow = new Color(255, 255, 102, 95);
+        Color transGreen = new Color(0, 204, 0, 95);
         Color transOrange = new Color(255, 128, 0, 95);
         Color transBlue = new Color(0, 102, 204, 95);
         Color orange = new Color(255, 128, 0);
@@ -71,39 +87,37 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         g.fillRect(getWidth()/2+getWidth()/160+getWidth()/800, getHeight()/40, 350, 278);
         g.fillRect(getWidth()-getWidth()/4+getWidth()/200, getHeight()/40, 350, 278);
 
-        g.setColor(Color.white);
+        g.setColor(orange);
         g.setFont(new Font("Helvetica", Font.PLAIN, 25));
         g.drawString(" PLAYER 1", getWidth()/160, getHeight()/16);
-        g.setColor(Color.black);
+        g.setColor(Color.yellow);
         g.drawString(" PLAYER 2", getWidth()/4+getWidth()/100, getHeight()/16);
-        g.setColor(orange);
+        g.setColor(Color.green);
         g.drawString(" PLAYER 3", getWidth()/2+getWidth()/160+getWidth()/800, getHeight()/16);
         g.setColor(blue);
         g.drawString(" PLAYER 4", getWidth()-getWidth()/4+getWidth()/200, getHeight()/16);
 
         if(currentPlayer == 1)
         {
-            g.setColor(transWhite);
+            g.setColor(transOrange);
             g.fillRect(getWidth()/160, getHeight()/40, 350, 278);
-            g.setColor(Color.white);
+            g.setColor(orange);
             g.drawRect(getWidth()/160, getHeight()/40, 350, 278);
-            //g.setColor(Color.black);
             g.drawString(" PLAYER 1", getWidth()/160, getHeight()/16);
         }
         else if(currentPlayer == 2)
         {
-            g.setColor(transBlack);
+            g.setColor(transYellow);
             g.fillRect(getWidth()/4+getWidth()/100, getHeight()/40, 350, 278);
-            g.setColor(Color.black);
+            g.setColor(Color.yellow);
             g.drawRect(getWidth()/4+getWidth()/100, getHeight()/40, 350, 278);
-            //g.setColor(Color.white);
             g.drawString(" PLAYER 2", getWidth()/4+getWidth()/100, getHeight()/16);
         }
         else if(currentPlayer == 3)
         {
-            g.setColor(transOrange);
+            g.setColor(transGreen);
             g.fillRect(getWidth()/2+getWidth()/160+getWidth()/800, getHeight()/40, 350, 278);
-            g.setColor(orange);
+            g.setColor(Color.green);
             g.drawRect(getWidth()/2+getWidth()/160+getWidth()/800, getHeight()/40, 350, 278);
             g.drawString(" PLAYER 3", getWidth()/2+getWidth()/160+getWidth()/800, getHeight()/16);
         }
@@ -115,6 +129,11 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             g.drawRect(getWidth()-getWidth()/4+getWidth()/200, getHeight()/40, 350, 278);
             g.drawString(" PLAYER 4", getWidth()-getWidth()/4+getWidth()/200, getHeight()/16);
         }
+
+        //change number when getHouse() is done
+        g.setColor(Color.black);
+        g.drawImage(orangeHouse, 28, 80, 39, 39, null);
+        g.drawString(" = 40", 67, 119);
 
         //back of the card
         g.setColor(Color.white);
@@ -135,7 +154,9 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
         g.fillRect(getWidth()/3+getWidth()/16, getHeight()/2 + getHeight()/8, 188, 290);
         g.fillRect(getWidth()/2 + getWidth()/24, getHeight()/2 + getHeight()/8, 188, 290);
-        g.fillRect(getWidth() - (10*(getHeight()/16)), getHeight()/2 + getHeight()/8, 188, 290);//
+        g.fillRect(getWidth() - (10*(getHeight()/16)), getHeight()/2 + getHeight()/8, 188, 290);
+
+        g.drawImage(knights, getWidth() - (10*(getHeight()/16)), getHeight()/2 + getHeight()/8, 188, 290, null);
     }
 
     public void drawActionTokens(Graphics g)
@@ -171,4 +192,5 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     public void mouseExited(MouseEvent e) {
 
     }
+
 }
