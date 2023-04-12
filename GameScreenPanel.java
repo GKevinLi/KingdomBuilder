@@ -8,9 +8,10 @@ import java.util.ArrayList;
 
 public class GameScreenPanel extends JPanel implements MouseListener {
     //
-    private BufferedImage background, boat, field, horse, house, oasis, stonehenge, tavern, tower;
+    private BufferedImage background, boat, field, horse, house, oasis, stonehenge, tower, tavern, board1, board2, board3, board4, board5, board6, board7, board8;
     private int currentPlayer;
     private ArrayList<BoardSector> boards;
+    private FullBoard b;
     private Tile[][] b1 = {{new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Flower")},
             {new Tile("Grass"), new Tile("Flower"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Flower"), new Tile("Flower")},
             {new Tile("Grass"), new Tile("Flower"), new Tile("Flower"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Grass"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower")},
@@ -22,9 +23,24 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             {new Tile("Water"), new Tile("Desert"), new SpecialTile("Castle"), new Tile("Grass"), new Tile("Water"), new Tile("Mountain"), new Tile("Water"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Canyon")},
             {new Tile("Water"), new Tile("Desert"), new Tile("Desert"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Canyon")},
     };
+    private Tile[][] b2 = {{new Tile("Flower"), new Tile("Desert"), new Tile("Desert"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Desert"), new Tile("Desert"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Canyon")},
+            {new Tile("Flower"), new Tile("Flower"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Canyon")},
+            {new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Mountain")},
+            {new Tile("Water"), new Tile("Water"), new Tile("Flower"), new SpecialTile("Castle"), new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Mountain"), new Tile("Mountain")},
+            {new Tile("Flower"), new Tile("Flower"), new Tile("Water"), new Tile("Water"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Canyon")},
+            {new Tile("Flower"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Water"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Canyon")},
+            {new Tile("Desert"), new Tile("Flower"), new SpecialTile("Oasis", new ActionToken("1")), new Tile("Canyon"), new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new SpecialTile("Oasis", new ActionToken("1")), new Tile("Canyon"), new Tile("Grass")},
+            {new Tile("Desert"), new Tile("Desert"), new Tile("Canyon"), new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass")},
+            {new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass")},
+            {new Tile("Desert"), new Tile("Desert"), new Tile("Water"), new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass")},
+    };
+
     public GameScreenPanel()
     {
         //needs to be updated with turn logic is done
+        boards = new ArrayList<>();
+        b = new FullBoard();
+
 
         currentPlayer = 1;
         try {
@@ -37,12 +53,28 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             stonehenge = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/stonehenge-removebg-preview.png"));
             tavern = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/TAVERN (2).png"));
             tower = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/tower-removebg-preview.png"));
+            board1 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/Board4 (1).png"));
+            board2 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/1.png"));
         }
         catch (Exception E)
         {
             System.out.println("error");
             return;
         }
+        boards.add(new BoardSector(b1, board1));
+        boards.add(new BoardSector(b1, board1));
+        boards.add(new BoardSector(b1, board1));
+        boards.add(new BoardSector(b1, board1));
+        boards.add(new BoardSector(b2, board2));
+        boards.add(new BoardSector(b2, board2));
+        boards.add(new BoardSector(b2, board2));
+        boards.add(new BoardSector(b2, board2));
+        for(int i = 0; i < 4; i++) {
+            BoardSector temp = (boards.get((int)(Math.random() * boards.size())));
+            b.addBoard(temp);
+            boards.remove(temp);
+        }
+
     }
 
     public void paint(Graphics g)
@@ -123,8 +155,12 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
     public void drawMap(Graphics g)
     {
-        g.setColor(Color.gray);
-        g.fillRect(getWidth()/27, getHeight()/40+300, 505, 505);
+        g.drawImage(b.getBoards().get(0).getImg(), getWidth()/27, getHeight()/40+300,202, 202, null);
+        g.drawImage(b.getBoards().get(1).getImg(), getWidth()/27, getHeight()/40+502,202, 202, null);
+        g.drawImage(b.getBoards().get(2).getImg(), getWidth()/27 + 202, getHeight()/40+300,202, 202, null);
+        g.drawImage(b.getBoards().get(2).getImg(), getWidth()/27 + 202, getHeight()/40+502,202, 202, null);
+        //g.setColor(Color.gray);
+        //g.fillRect(getWidth()/27, getHeight()/40+300, 505, 505);
     }
 
     public void drawObjective(Graphics g)

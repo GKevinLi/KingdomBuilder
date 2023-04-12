@@ -8,4 +8,7 @@ public class FullBoard {
     public void addBoard(BoardSector b) {
         boards.add(b);
     }
+    public ArrayList<BoardSector> getBoards() {
+        return boards;
+    }
 }
