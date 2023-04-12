@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class GameScreenPanel extends JPanel implements MouseListener {
     //
     private BufferedImage background, boat, field, horse, house, oasis, stonehenge, tower, tavern, board1, board2, board3, board4, board5, board6, board7, board8, blueHouse, greenHouse, yellowHouse, orangeHouse;
-    private BufferedImage knights, miners, discoverers, grasslandTerrain, flowerTerrain, forestTerrain, canyanTerrain, desertTerrain;
+    private BufferedImage knights, miners, discoverers, grasslandTerrain, flowerTerrain, forestTerrain, canyonTerrain, desertTerrain;
     private int currentPlayer;
     private ArrayList<BoardSector> boards;
     private FullBoard b;
@@ -67,6 +67,12 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             yellowHouse = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/image (4).png"));
             orangeHouse = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/image (5).png"));
 
+            grasslandTerrain = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/Grassland Terrain.png"));
+            flowerTerrain = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/Flower Terrain.png"));
+            canyonTerrain = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/Canyon Terrain.png"));
+            desertTerrain = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/Desert Terrain.png"));
+            forestTerrain = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/Forest Terrain.png"));
+
             board1 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/Board4 (1).png"));
             board2 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/1.png"));
         }
@@ -123,7 +129,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         drawGameScreen(g);
         drawMap(g);
         drawObjective(g);
-        g.drawImage(tower, 0, 0, 400, 400, null);
+        //g.drawImage(grasslandTerrain, 0, 0, 117, 163, null);
     }
 
     public void drawGameScreen(Graphics g)
