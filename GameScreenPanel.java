@@ -8,7 +8,8 @@ import java.util.ArrayList;
 
 public class GameScreenPanel extends JPanel implements MouseListener {
     //
-    private BufferedImage background, boat, field, horse, house, oasis, stonehenge, tower, tavern, board1, board2, board3, board4, board5, board6, board7, board8;
+    private BufferedImage background, boat, field, horse, house, oasis, stonehenge, tower, tavern, board1, board2, board3, board4, board5, board6, board7, board8, blueHouse, greenHouse, yellowHouse, orangeHouse;
+    private BufferedImage knights, miners, discoverers, grasslandTerrain, flowerTerrain, forestTerrain, canyanTerrain, desertTerrain;
     private int currentPlayer;
     private ArrayList<BoardSector> boards;
     private FullBoard b;
@@ -35,6 +36,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             {new Tile("Desert"), new Tile("Desert"), new Tile("Water"), new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass")},
     };
 
+    private FullBoard f;
     public GameScreenPanel()
     {
 
@@ -55,6 +57,16 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             stonehenge = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/stonehenge-removebg-preview.png"));
             tavern = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/TAVERN (2).png"));
             tower = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/tower-removebg-preview.png"));
+
+            knights = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KnightsObjective (1).png"));
+            miners = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/MinersObjective (1).png"));
+            discoverers = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/DiscoverersObjective (1).png"));
+
+            blueHouse = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/image (2).png"));
+            greenHouse = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/image (3).png"));
+            yellowHouse = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/image (4).png"));
+            orangeHouse = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/image (5).png"));
+
             board1 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/Board4 (1).png"));
             board2 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/1.png"));
         }
@@ -153,7 +165,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         //change number when getHouse() is done
         g.setColor(Color.black);
         g.drawImage(orangeHouse, 28, 80, 39, 39, null);
-        g.drawString(" = 40", 67, 119);
+        g.drawString("= 40", 88, 110);
 
         //back of the card
         g.setColor(Color.white);
