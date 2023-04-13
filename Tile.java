@@ -9,6 +9,12 @@ public class Tile {
     private Settlement s;
     public Tile(String s) {
         type = s;
+        if(s.equals("Mountain") || s.equals("Water")) {
+            housePlaceable = false;
+        }
+        else {
+            housePlaceable = true;
+        }
     }
     //public Tile() {
 

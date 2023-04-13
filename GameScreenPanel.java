@@ -104,8 +104,8 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             return;
         }
         boards.add(new BoardSector(b1, board1));
-        boards.add(new BoardSector(b1, board2));
-        boards.add(new BoardSector(b1, board3));
+        boards.add(new BoardSector(b2, board2));
+        boards.add(new BoardSector(b3, board3));
         boards.add(new BoardSector(b3, board4));
         boards.add(new BoardSector(b2, board5));
         boards.add(new BoardSector(b2, board6));
@@ -142,6 +142,16 @@ public class GameScreenPanel extends JPanel implements MouseListener {
                 combinedBoard[i][j].setAdjacentTiles(t);
             }
         }
+        /*
+        for(int i = 0; i < 20; i++) {
+            for(int j = 0; j < 20; j++) {
+                System.out.print(combinedBoard[i][j].getType() + " ");
+
+            }
+            System.out.println();
+        }
+        */
+
 
     }
 
