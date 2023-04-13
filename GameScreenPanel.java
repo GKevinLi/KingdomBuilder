@@ -6,11 +6,12 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-public class GameScreenPanel extends JPanel implements MouseListener {
+public class GameScreenPanel extends JPanel{
     //
     private BufferedImage background, boat, field, horse, house, oasis, stonehenge, tower, tavern, board1, board2, board3, board4, board5, board6, board7, board8, blueHouse, greenHouse, yellowHouse, orangeHouse;
     private BufferedImage cardBack, knights, miners, discoverers, citizens, farmers, fisherman, hermits, worker, grasslandTerrain, flowerTerrain, forestTerrain, canyonTerrain, desertTerrain;
     private int currentPlayer;
+    private String state;
     private ArrayList<BoardSector> boards;
     private FullBoard b;
     private Tile[][] b1 = {{new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Flower")},
@@ -287,29 +288,12 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     {
 
     }
-    @Override
-    public void mouseClicked(MouseEvent e) {
 
+    public void setState(String s) {
+        state = s;
     }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
+    public String getState() {
+        return state;
     }
 
 }
