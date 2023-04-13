@@ -42,6 +42,5 @@ public class Settlement {
             }
             return sum + cnt;
         }
-
     }
 }
