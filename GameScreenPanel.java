@@ -6,12 +6,11 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-public class GameScreenPanel extends JPanel{
+public class GameScreenPanel extends JPanel implements MouseListener {
     //
     private BufferedImage background, boat, field, horse, house, oasis, stonehenge, tower, tavern, board1, board2, board3, board4, board5, board6, board7, board8, blueHouse, greenHouse, yellowHouse, orangeHouse;
     private BufferedImage cardBack, knights, miners, discoverers, citizens, farmers, fisherman, hermits, worker, grasslandTerrain, flowerTerrain, forestTerrain, canyonTerrain, desertTerrain;
     private int currentPlayer;
-    private String state;
     private ArrayList<BoardSector> boards;
     private FullBoard b;
     private Tile[][] b1 = {{new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Flower")},
@@ -92,12 +91,6 @@ public class GameScreenPanel extends JPanel{
 
             board1 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/Board4 (1).png"));
             board2 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/1.png"));
-            board3 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/2.png"));
-            board4 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/3.png"));
-            board5 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/4.png"));
-            board6 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/5.png"));
-            board7 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/6.png"));
-            board8 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/7.png"));
         }
         catch (Exception E)
         {
@@ -105,13 +98,13 @@ public class GameScreenPanel extends JPanel{
             return;
         }
         boards.add(new BoardSector(b1, board1));
+        boards.add(new BoardSector(b1, board1));
+        boards.add(new BoardSector(b1, board1));
+        boards.add(new BoardSector(b1, board1));
         boards.add(new BoardSector(b2, board2));
-        boards.add(new BoardSector(b3, board3));
-        boards.add(new BoardSector(b3, board4));
-        boards.add(new BoardSector(b2, board5));
-        boards.add(new BoardSector(b2, board6));
-        boards.add(new BoardSector(b3, board7));
-        boards.add(new BoardSector(b3, board8));
+        boards.add(new BoardSector(b2, board2));
+        boards.add(new BoardSector(b2, board2));
+        boards.add(new BoardSector(b2, board2));
         for(int i = 0; i < 4; i++) {
             BoardSector temp = (boards.get((int)(Math.random() * boards.size())));
             b.addBoard(temp);
@@ -143,16 +136,6 @@ public class GameScreenPanel extends JPanel{
                 combinedBoard[i][j].setAdjacentTiles(t);
             }
         }
-        /*
-        for(int i = 0; i < 20; i++) {
-            for(int j = 0; j < 20; j++) {
-                System.out.print(combinedBoard[i][j].getType() + " ");
-
-            }
-            System.out.println();
-        }
-        */
-
 
     }
 
@@ -260,7 +243,7 @@ public class GameScreenPanel extends JPanel{
         g.drawImage(b.getBoards().get(0).getImg(), getWidth()/97, getHeight()/40+300,202, 202, null);
         g.drawImage(b.getBoards().get(1).getImg(), getWidth()/97, getHeight()/40+502,202, 202, null);
         g.drawImage(b.getBoards().get(2).getImg(), getWidth()/97 + 202, getHeight()/40+300,202, 202, null);
-        g.drawImage(b.getBoards().get(3).getImg(), getWidth()/97 + 202, getHeight()/40+502,202, 202, null);
+        g.drawImage(b.getBoards().get(2).getImg(), getWidth()/97 + 202, getHeight()/40+502,202, 202, null);
 
         //g.setColor(Color.gray);
         //g.fillRect(getWidth()/27, getHeight()/40+300, 505, 505);
@@ -288,12 +271,29 @@ public class GameScreenPanel extends JPanel{
     {
 
     }
+    @Override
+    public void mouseClicked(MouseEvent e) {
 
-    public void setState(String s) {
-        state = s;
     }
-    public String getState() {
-        return state;
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 
 }
