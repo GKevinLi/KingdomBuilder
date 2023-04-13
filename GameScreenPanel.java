@@ -91,6 +91,12 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
             board1 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/Board4 (1).png"));
             board2 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/1.png"));
+            board3 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/2.png"));
+            board4 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/3.png"));
+            board5 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/4.png"));
+            board6 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/5.png"));
+            board7 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/6.png"));
+            board8 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/7.png"));
         }
         catch (Exception E)
         {
@@ -98,13 +104,13 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             return;
         }
         boards.add(new BoardSector(b1, board1));
-        boards.add(new BoardSector(b1, board1));
-        boards.add(new BoardSector(b1, board1));
-        boards.add(new BoardSector(b1, board1));
-        boards.add(new BoardSector(b2, board2));
-        boards.add(new BoardSector(b2, board2));
-        boards.add(new BoardSector(b2, board2));
-        boards.add(new BoardSector(b2, board2));
+        boards.add(new BoardSector(b1, board2));
+        boards.add(new BoardSector(b1, board3));
+        boards.add(new BoardSector(b3, board4));
+        boards.add(new BoardSector(b2, board5));
+        boards.add(new BoardSector(b2, board6));
+        boards.add(new BoardSector(b3, board7));
+        boards.add(new BoardSector(b3, board8));
         for(int i = 0; i < 4; i++) {
             BoardSector temp = (boards.get((int)(Math.random() * boards.size())));
             b.addBoard(temp);
@@ -243,7 +249,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         g.drawImage(b.getBoards().get(0).getImg(), getWidth()/97, getHeight()/40+300,202, 202, null);
         g.drawImage(b.getBoards().get(1).getImg(), getWidth()/97, getHeight()/40+502,202, 202, null);
         g.drawImage(b.getBoards().get(2).getImg(), getWidth()/97 + 202, getHeight()/40+300,202, 202, null);
-        g.drawImage(b.getBoards().get(2).getImg(), getWidth()/97 + 202, getHeight()/40+502,202, 202, null);
+        g.drawImage(b.getBoards().get(3).getImg(), getWidth()/97 + 202, getHeight()/40+502,202, 202, null);
 
         //g.setColor(Color.gray);
         //g.fillRect(getWidth()/27, getHeight()/40+300, 505, 505);

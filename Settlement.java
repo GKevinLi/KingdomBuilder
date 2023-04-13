@@ -19,7 +19,7 @@ public class Settlement {
         return playerOwned;
     }
     public int countAdjacentHouses(Tile b, Player p) {
-        Tile[] adjacents = b.getAdjacentTiles();
+        ArrayList<Tile> adjacents = b.getAdjacentTiles();
         ArrayList<Tile> a = new ArrayList<Tile>();
         int cnt = 0;
         for(Tile t : adjacents) {
