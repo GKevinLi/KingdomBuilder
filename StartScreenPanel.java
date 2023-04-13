@@ -7,9 +7,10 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.*;
 
-public class StartScreenPanel extends JPanel implements MouseListener{
+public class StartScreenPanel extends JPanel{
     private BufferedImage background, title;
     private GameScreenPanel game = new GameScreenPanel();
+    private String state;
     private int event;
     public StartScreenPanel()
     {
@@ -64,17 +65,10 @@ public class StartScreenPanel extends JPanel implements MouseListener{
         System.out.println(getHeight());
     }
 
-    public void mousePressed(MouseEvent e) {
-        int x = e.getX();
-        int y = e.getY();
-        System.out.println("got here");
-        if(x >= getWidth()/2 - 162 && x <= getWidth()/2 - 162 + 325 && y >= getHeight()/3 && y <= getHeight()/3 +125){
-            event = 2;
-            repaint();
-        }
-    }
-    public void mouseReleased(MouseEvent e) {}
-    public void mouseEntered(MouseEvent e) {}
-    public void mouseExited(MouseEvent e) {}
-    public void mouseClicked(MouseEvent e) {}
+   public void setState(String s) {
+        state = s;
+   }
+   public String getState() {
+        return state;
+   }
 }
