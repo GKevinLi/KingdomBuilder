@@ -9,6 +9,7 @@ import java.io.*;
 
 public class StartScreenPanel extends JPanel implements MouseListener{
     private BufferedImage background, title;
+    private GameScreenPanel game = new GameScreenPanel();
     private int event;
     public StartScreenPanel()
     {
@@ -27,19 +28,20 @@ public class StartScreenPanel extends JPanel implements MouseListener{
 
     public void paint(Graphics g)
     {
-        g.drawImage(background, 0,0,getWidth(),getHeight(),null);
+
         if(event == 0)
         {
+            g.drawImage(background, 0,0,getWidth(),getHeight(),null);
             showStartingScreen(g);
         }
         else if(event == 1)
         {
             showRules();
         }
-//        else if(event == 2)
-//        {
-//            //play game, need to figure out how to switch between panels
-//        }
+        else if(event == 2)
+        {
+            game.startGame();
+        }
     }
 
     public void showRules(){
@@ -62,7 +64,15 @@ public class StartScreenPanel extends JPanel implements MouseListener{
         System.out.println(getHeight());
     }
 
-    public void mousePressed(MouseEvent e) {}
+    public void mousePressed(MouseEvent e) {
+        int x = e.getX();
+        int y = e.getY();
+        System.out.println("got here");
+        if(x >= getWidth()/2 - 162 && x <= getWidth()/2 - 162 + 325 && y >= getHeight()/3 && y <= getHeight()/3 +125){
+            event = 2;
+            repaint();
+        }
+    }
     public void mouseReleased(MouseEvent e) {}
     public void mouseEntered(MouseEvent e) {}
     public void mouseExited(MouseEvent e) {}

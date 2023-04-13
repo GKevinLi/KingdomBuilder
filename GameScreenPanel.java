@@ -10,7 +10,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     //
     private BufferedImage background, boat, field, horse, house, oasis, stonehenge, tower, tavern, board1, board2, board3, board4, board5, board6, board7, board8, blueHouse, greenHouse, yellowHouse, orangeHouse;
     private BufferedImage cardBack, knights, miners, discoverers, citizens, farmers, fisherman, hermits, worker, grasslandTerrain, flowerTerrain, forestTerrain, canyonTerrain, desertTerrain;
-    private int currentPlayer;
+    private int currentPlayer, event;
     private ArrayList<BoardSector> boards;
     private FullBoard b;
     private Tile[][] b1 = {{new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Flower")},
@@ -54,7 +54,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         //needs to be updated with turn logic is done
         boards = new ArrayList<>();
         b = new FullBoard();
-
+        event = 0;
         //hi
         currentPlayer = 4;
         //boards.add(new BoardSector())
@@ -155,13 +155,20 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
     }
 
+    public void startGame(){
+        event = 1;
+        repaint();
+    }
+
     public void paint(Graphics g)
     {
-        g.drawImage(background, 0, 0, getWidth(), getHeight(), null);
-        drawGameScreen(g);
-        drawMap(g);
-        drawObjective(g);
-        //g.drawImage(grasslandTerrain, 0, 0, 117, 163, null);
+        if(event == 1) {
+            g.drawImage(background, 0, 0, getWidth(), getHeight(), null);
+            drawGameScreen(g);
+            drawMap(g);
+            drawObjective(g);
+            //g.drawImage(grasslandTerrain, 0, 0, 117, 163, null);
+        }
     }
 
     public void drawGameScreen(Graphics g)
