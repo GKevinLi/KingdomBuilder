@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 
 public class StartScreenPanel extends JPanel implements MouseListener{
-    private BufferedImage background, title, rules;
+    private BufferedImage background, title;
     private int event;
     public StartScreenPanel()
     {
@@ -17,7 +17,6 @@ public class StartScreenPanel extends JPanel implements MouseListener{
         {
             background = ImageIO.read(StartScreenPanel.class.getResource("/deez imgs/image (1).png"));
             title = ImageIO.read(StartScreenPanel.class.getResource("/deez imgs/Screenshot_2023-03-30_213259-removebg-preview.png"));
-            rules = ImageIO.read(StartScreenPanel.class.getResource("/deez imgs/kingdom builder rules.pdf"));
         }
         catch (Exception e)
         {
