@@ -35,6 +35,17 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             {new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass")},
             {new Tile("Desert"), new Tile("Desert"), new Tile("Water"), new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass")},
     };
+    private Tile[][] b3 = {{new Tile("Canyon"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Desert"), new Tile("Desert"), new Tile("Water"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert")},
+            {new Tile("Mountain"), new Tile("Mountain"), new Tile("Canyon"), new Tile("Desert"), new Tile("Desert"), new Tile("Water"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert")},
+            {new Tile("Mountain"), new Tile("Mountain"), new Tile("Canyon"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Water"), new Tile("Desert"), new Tile("Desert"), new SpecialTile("Paddock", new ActionToken("2")), new Tile("Flower")},
+            {new Tile("Mountain"), new Tile("Canyon"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Water"), new Tile("Mountain"), new Tile("Desert"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower")},
+            {new Tile("Canyon"), new Tile("Canyon"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Canyon"), new Tile("Flower"), new Tile("Flower")},
+            {new Tile("Canyon"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Mountain"), new Tile("Flower"), new Tile("Flower")},
+            {new Tile("Canyon"), new SpecialTile("Paddock", new ActionToken("2")), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower")},
+            {new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new SpecialTile("Castle"), new Tile("Grass"), new Tile("Flower"), new Tile("Grass"), new Tile("Forest")},
+            {new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Forest")},
+            {new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest")},
+    };
 
     private FullBoard f;
     public GameScreenPanel()
