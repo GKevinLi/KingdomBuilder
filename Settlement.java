@@ -10,6 +10,7 @@ public class Settlement {
     public void setPlayerOwned(Player p) {
         playerOwned = p;
     }
+    //hi
     public void setPlacedOn(Tile t) {
         isPlacedOn = t;
     }
