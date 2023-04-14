@@ -26,8 +26,8 @@ public class Frame extends JFrame {
         EpicMouseListener e = new EpicMouseListener(g,s);
         g.addMouseListener(e);
         s.addMouseListener(e);
-        add(g);
         add(s);
+        add(g);
         setIconImage(coolScreen);
         setVisible(true);
     }

@@ -145,6 +145,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         drawGameScreen(g);
         drawMap(g);
         drawObjective(g);
+
         //g.drawImage(grasslandTerrain, 0, 0, 117, 163, null);
     }
 

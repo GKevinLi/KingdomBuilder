@@ -15,6 +15,10 @@ public class Tile {
         else {
             housePlaceable = true;
         }
+        alreadyFilled = false;
+        hasHouse = false;
+
+
     }
     //public Tile() {
 
@@ -34,6 +38,12 @@ public class Tile {
     }
     public void setFilled() {
         alreadyFilled = true;
+    }
+    public void fillHouse() {
+        hasHouse = true;
+    }
+    public void unfillHouse() {
+        hasHouse = false;
     }
     public boolean HouseCheck() {
         return hasHouse;
