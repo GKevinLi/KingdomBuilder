@@ -251,10 +251,10 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 //        g.drawImage(b.getBoards().get(2).getImg(), getWidth()/4 + getWidth()/40 + getWidth()/320, getHeight()/2 - getHeight()/40,(3*getWidth()/16) + getWidth()/80 + getWidth()/320, getHeight()/2 - (3*getHeight()/32), null);
 //        g.drawImage(b.getBoards().get(2).getImg(), getWidth()/4 + getWidth()/40 + getWidth()/320, getHeight() - getHeight()/8 + getHeight()/160,(3*getWidth()/16) + getWidth()/80 + getWidth()/320, getHeight()/2 - (3*getHeight()/32), null);
 //getHeight()/30 - getHeight()/17
-        g.drawImage(b.getBoards().get(0).getImg(), 120, (getHeight()/5) + (getHeight()/6),getWidth()/(getWidth()/325), getHeight()/(getHeight()/325), null);
-        g.drawImage(b.getBoards().get(1).getImg(), getWidth()/18, (10*(getHeight()/30))+(getHeight()/34) + getHeight()/(getHeight()/325),getWidth()/(getWidth()/325), getHeight()/(getHeight()/325), null);
-        g.drawImage(b.getBoards().get(2).getImg(), getWidth()/(getWidth()/470), (getHeight()/5) + (getHeight()/6),getWidth()/(getWidth()/325), getHeight()/(getHeight()/325), null);
-        g.drawImage(b.getBoards().get(2).getImg(), getWidth()/(getWidth()/470), (10*(getHeight()/30))+(getHeight()/34)+getHeight()/(getHeight()/325),getWidth()/(getWidth()/325), getHeight()/(getHeight()/325), null);
+        g.drawImage(b.getBoards().get(0).getImg(), getWidth()/(getWidth()/114), (getHeight()/5) + (getHeight()/6),getWidth()/(getWidth()/325), getHeight()/(getHeight()/325), null);
+        g.drawImage(b.getBoards().get(1).getImg(), getWidth()/(getWidth()/114), (10*(getHeight()/30))+(getHeight()/34) + getHeight()/(getHeight()/325),getWidth()/(getWidth()/325), getHeight()/(getHeight()/325), null);
+        g.drawImage(b.getBoards().get(2).getImg(), getWidth()/(getWidth()/415), (getHeight()/5) + (getHeight()/6),getWidth()/(getWidth()/325), getHeight()/(getHeight()/325), null);
+        g.drawImage(b.getBoards().get(2).getImg(), getWidth()/(getWidth()/415), (10*(getHeight()/30))+(getHeight()/34)+getHeight()/(getHeight()/325),getWidth()/(getWidth()/325), getHeight()/(getHeight()/325), null);
         //g.setColor(Color.gray);
         //g.fillRect(getWidth()/27, getHeight()/40+300, 505, 505);
     }
