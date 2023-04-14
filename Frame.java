@@ -23,11 +23,11 @@ public class Frame extends JFrame {
 
 
         GameScreenPanel g = new GameScreenPanel();
-        EpicMouseListener e = new EpicMouseListener(g,s);
-        g.addMouseListener(e);
-        s.addMouseListener(e);
+ //       EpicMouseListener e = new EpicMouseListener(g,s);
+ //       g.addMouseListener(e);
+//        s.addMouseListener(e);
         add(g);
-        add(s);
+//        add(s);
         setIconImage(coolScreen);
         setVisible(true);
     }
