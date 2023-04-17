@@ -134,7 +134,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         BufferedImage temp2 = joinBufferedImage(b.getBoards().get(1).getImg(), b.getBoards().get(2).getImg());
         joinedImg = joinBufferedImage2(temp, temp2);
         b.makeCombinedBoard();
-
+//hi
         Tile[][] combinedBoard = b.getCombinedBoard();
         double Ydiff = (getHeight() - (getHeight() / 13)-(getHeight()/3 - getHeight()/30)) / 20;
         double Xdiff = (((double)getWidth() / 3) + ((double)getWidth() / 50)) / 20;
