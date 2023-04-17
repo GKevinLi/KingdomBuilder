@@ -25,7 +25,7 @@ public class FullBoard {
         }
         for(int i = 10; i< 20; i++) {
             for(int j = 10; j < 20; j++) {
-                combinedBoard[i][j] = boards.get(2).getBoard()[i-10][j-10];
+                combinedBoard[i][j] = boards.get(3).getBoard()[i-10][j-10];
             }
         }
     }

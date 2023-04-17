@@ -130,8 +130,8 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             b.addBoard(temp);
             boards.remove(temp);
         }
-        BufferedImage temp = joinBufferedImage(b.getBoards().get(0).getImg(), b.getBoards().get(3).getImg());
-        BufferedImage temp2 = joinBufferedImage(b.getBoards().get(1).getImg(), b.getBoards().get(2).getImg());
+        BufferedImage temp = joinBufferedImage(b.getBoards().get(0).getImg(), b.getBoards().get(2).getImg());
+        BufferedImage temp2 = joinBufferedImage(b.getBoards().get(1).getImg(), b.getBoards().get(3).getImg());
         joinedImg = joinBufferedImage2(temp, temp2);
         b.makeCombinedBoard();
 //hi
@@ -162,6 +162,12 @@ public class GameScreenPanel extends JPanel implements MouseListener {
                 combinedBoard[i][j].setAdjacentTiles(t);
                
             }
+        }
+        for(Tile[] t : combinedBoard) {
+            for(Tile i : t) {
+                System.out.print(i.getType() + " ");
+            }
+            System.out.println();
         }
         
 
