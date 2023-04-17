@@ -11,11 +11,11 @@ public class Tile {
     private int yPos;
     public Tile(String s) {
         type = s;
-        if(s.equals("Mountain") || s.equals("Water")) {
-            housePlaceable = false;
+        if(s.equals("Flower") || s.equals("Grass") || s.equals("Forest")|| s.equals("Desert") || s.equals("Canyon")) {
+            housePlaceable = true;
         }
         else {
-            housePlaceable = true;
+            housePlaceable = false;
         }
         alreadyFilled = false;
         hasHouse = false;

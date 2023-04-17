@@ -13,6 +13,11 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     private int currentPlayer;
     BufferedImage joinedImg;
     private ArrayList<BoardSector> boards;
+    private TerrainDeck d;
+    private ObjectiveDeck obj;
+    private ObjectiveCard ob1;
+    private ObjectiveCard ob2;
+    private ObjectiveCard ob3;
     private FullBoard b;
     private Tile[][] b1 = {{new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Flower")},
             {new Tile("Grass"), new Tile("Flower"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Flower"), new Tile("Flower")},
@@ -66,7 +71,12 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         //needs to be updated with turn logic is done
         boards = new ArrayList<>();
         b = new FullBoard();
-
+        d = new TerrainDeck();
+        obj = new ObjectiveDeck();
+        ArrayList<ObjectiveCard> temp3 = obj.get3Random();
+        ob1 = temp3.get(0);
+        ob2 = temp3.get(1);
+        ob3 = temp3.get(2);
         //hi
         currentPlayer = 1;
         //boards.add(new BoardSector())
@@ -312,7 +322,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     	//System.out.println("W" + getWidth());
     	//System.out.println("H" + getHeight());
     	//drawScaledImage(b.getBoards().get(0).getImg(), g);
-    	g.drawImage(joinedImg, getWidth() / 100, (getHeight() / 3) - (getHeight() / 30), 571, 731 + (getHeight() / 3) - (getHeight() / 30), 0, 0, (int)((double)1200 / ((double)getWidth() / 1600)), (int)((double)1500 / ((double)getHeight() / 800)), null);
+    	g.drawImage(joinedImg, getWidth() / 100, (getHeight() / 3) - (getHeight() / 30), 571 , 731 + (getHeight() / 3) - (getHeight() / 30), 0, 0, (int)((double)1200 / ((double)getWidth() / 1600)), (int)((double)1500 / ((double)getHeight() / 800)), null);
     	for(int i = 0; i < 20; i++) {
     		//double i = 27; i < 520; i += 25.8
     		g.drawOval((int)(i * (26.9 * ((double)getWidth() / 1600)))+getWidth() / 100, getHeight()/3 - getHeight()/37 , (int)(26 * ((double)getWidth() / 1600)), (int)(26 * ((double)getHeight() / 800)));
@@ -465,7 +475,9 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     	return b;
     }
     public void DrawSettlementOn(Tile t, Graphics g) {
-    	g.drawImage(blueHouse, t.getX()-10, t.getY()-10, t.getX() + 300, t.getY() + 300, 0, 0, (int)((double)1200 / ((double)getWidth() / 1600)), (int)((double)1500 / ((double)getHeight() / 800)), null);
+        if(t.getHousePlaceable()) {
+            g.drawImage(blueHouse, t.getX() - 10, t.getY() - 10, t.getX() + 300, t.getY() + 300, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+        }
     }
     
 

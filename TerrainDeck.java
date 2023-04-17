@@ -4,7 +4,9 @@ public class TerrainDeck {
     private ArrayList<TerrainCard> deck;
 
     public TerrainDeck() {
+        deck = new ArrayList<>();
         newDeck();
+
     }
     public void newDeck() {
         for(int i = 0; i < 5; i++) {

@@ -20,8 +20,8 @@ public class EpicMouseListener implements MouseListener {
         
         int x = e.getX();
         int y = e.getY();
-        //System.out.println(x);
-        //System.out.println(y);
+        System.out.println(x);
+        System.out.println(y);
         if(state.equals("Game")) {
         	if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.getHeight()/30 && x <= ((b.getWidth() / 3) +(b.getWidth() / 50)) + (int)((16 * ((double)b.getWidth() / 1600))) && y <= (b.getHeight() - (b.getHeight() / 13)-(b.getHeight()/3 - b.getHeight()/30)) + b.getHeight()/3 - b.getHeight()/30) {
         		//System.out.println("hai");
