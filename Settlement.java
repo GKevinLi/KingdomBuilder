@@ -3,12 +3,14 @@ public class Settlement {
     Player playerOwned;
     Tile isPlacedOn;
 
-    public Settlement() {
-
+    public Settlement(Tile t, Player p) {
+        playerOwned = p;
+        isPlacedOn = t;
     }
     public void setPlayerOwned(Player p) {
         playerOwned = p;
     }
+    //hi
     public void setPlacedOn(Tile t) {
         isPlacedOn = t;
     }
@@ -42,6 +44,5 @@ public class Settlement {
             }
             return sum + cnt;
         }
-
     }
 }

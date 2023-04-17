@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class ObjectiveCard {
     private String objective;
     public ObjectiveCard(String s) {
@@ -6,12 +8,23 @@ public class ObjectiveCard {
     public String getObjective() {
         return objective;
     }
-    public int scoreCard(Player p, FullBoard b) {
+    public int scoreCard(Player p, FullBoard b, int x) {
         if(objective.equals("Lords")) {
-
+            BoardSector bs = b.getBoards().get(x);
+            int cnt = 0;
+            for(Tile[] i : bs.getBoard()) {
+                for(Tile j : i) {
+                    if(j.getFilled()) {
+                        if (j.getSettlement().getPlayerOwned() == p) {
+                            cnt++;
+                        }
+                    }
+                }
+            }
+            return cnt;
         }
         if(objective.equals("Miners")) {
-            Settlement[] s = p.getHouses();
+            ArrayList<Settlement> s = p.getHouses();
             int i = 0;
             for(Settlement house : s) {
                 int mtnCount = 0;
@@ -27,7 +40,7 @@ public class ObjectiveCard {
             return i;
         }
         if(objective.equals("Fishermen")) {
-            Settlement[] s = p.getHouses();
+            ArrayList<Settlement> s = p.getHouses();
             int i = 0;
             for(Settlement house : s) {
                 int wtrCount = 0;
@@ -43,7 +56,7 @@ public class ObjectiveCard {
             return i;
         }
         if(objective.equals("Workers")) {
-            Settlement[] s = p.getHouses();
+            ArrayList<Settlement> s = p.getHouses();
             int i = 0;
             for(Settlement house : s) {
                 int Count = 0;
@@ -59,7 +72,7 @@ public class ObjectiveCard {
             return i;
         }
         if(objective.equals("Citizens")) {
-            Settlement[] s = p.getHouses();
+            ArrayList<Settlement> s = p.getHouses();
             int max = 0;
             for(Settlement huse : s) {
                 if(huse.countAdjacentHouses(huse.getPlacedOn(), p) > max) {
@@ -69,7 +82,7 @@ public class ObjectiveCard {
             return max /2;
         }
         if(objective.equals("Hermits")) {
-            Settlement[] s = p.getHouses();
+            ArrayList<Settlement> s = p.getHouses();
             int cnt = 0;
             for(Settlement huse : s) {
                 if(!(huse.getPlacedOn().getFilled())) {
@@ -81,16 +94,62 @@ public class ObjectiveCard {
             return cnt;
         }
         if(objective.equals("Explorers")) {
-
+            int cnt = 0;
+            Tile[][] board = b.getCombinedBoard();
+            for(Tile[] i : board) {
+                for(Tile j : i) {
+                    int temp = 0;
+                    if(j.getFilled()) {
+                        if (j.getSettlement().getPlayerOwned() == p) {
+                            temp++;
+                        }
+                    }
+                    if(temp >= 1) {
+                        cnt++;
+                    }
+                }
+            }
+            return cnt;
         }
         if(objective.equals("Knights")) {
-
+            int max = 0;
+            Tile[][] board = b.getCombinedBoard();
+            for(Tile[] i : board) {
+                for(Tile j : i) {
+                    int temp = 0;
+                    if(j.getFilled()) {
+                        if (j.getSettlement().getPlayerOwned() == p) {
+                            temp++;
+                        }
+                    }
+                    if(temp > max) {
+                        max = temp;
+                    }
+                }
+            }
+            return max * 2;
         }
         if(objective.equals("Merchants")) {
 
         }
         if(objective.equals("Farmers")) {
-
+            int least = Integer.MAX_VALUE;
+            for(BoardSector bs : b.getBoards()) {
+                int cnt = 0;
+                for(Tile[] i : bs.getBoard()) {
+                    for(Tile j : i) {
+                        if(j.getFilled()) {
+                            if (j.getSettlement().getPlayerOwned() == p) {
+                                cnt++;
+                            }
+                        }
+                    }
+                }
+                if(cnt < least) {
+                    least = cnt;
+                }
+            }
+            return least * 3;
         }
         return 0;
     }
