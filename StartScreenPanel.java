@@ -9,7 +9,6 @@ import java.io.*;
 
 public class StartScreenPanel extends JPanel{
     private BufferedImage background, title;
-    private GameScreenPanel game = new GameScreenPanel();
     private String state;
     private int event;
     public StartScreenPanel()
@@ -39,10 +38,10 @@ public class StartScreenPanel extends JPanel{
         {
             showRules();
         }
-        else if(event == 2)
+        /* else if(event == 2)
         {
-            game.startGame();
-        }
+
+        }*/
     }
 
     public void showRules(){
