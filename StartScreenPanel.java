@@ -28,19 +28,20 @@ public class StartScreenPanel extends JPanel{
 
     public void paint(Graphics g)
     {
-        g.drawImage(background, 0,0,getWidth(),getHeight(),null);
+
         if(event == 0)
         {
+            g.drawImage(background, 0,0,getWidth(),getHeight(),null);
             showStartingScreen(g);
         }
         else if(event == 1)
         {
             showRules();
         }
-//        else if(event == 2)
-//        {
-//            //play game, need to figure out how to switch between panels
-//        }
+        /* else if(event == 2)
+        {
+
+        }*/
     }
 
     public void showRules(){

@@ -109,7 +109,8 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             board6 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/5.png"));
             board7 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/6.png"));
             board8 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/7.png"));
-            
+
+
         }
         catch (Exception E)
         {
@@ -133,7 +134,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         BufferedImage temp2 = joinBufferedImage(b.getBoards().get(1).getImg(), b.getBoards().get(2).getImg());
         joinedImg = joinBufferedImage2(temp, temp2);
         b.makeCombinedBoard();
-        
+
         Tile[][] combinedBoard = b.getCombinedBoard();
         double Ydiff = (getHeight() - (getHeight() / 13)-(getHeight()/3 - getHeight()/30)) / 20;
         double Xdiff = (((double)getWidth() / 3) + ((double)getWidth() / 50)) / 20;
@@ -185,7 +186,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         for(int i = 0; i < 20; i++) {
             for(int j = 0; j < 20; j++) {
             	combinedBoard[i][j].setY((int) ((getHeight()/3 - getHeight()/24) + ((i+1) * Ydiff)));
-                
+
                 if(i % 2 != 0) {
                 	combinedBoard[i][j].setX((int) (((16 * ((double)getWidth() / 1600))) + ((j+0.5) * Xdiff) + (Xdiff / 2)));
                 }
@@ -195,9 +196,9 @@ public class GameScreenPanel extends JPanel implements MouseListener {
                 Graphics2D g2 = (Graphics2D) g;
                 g2.setStroke(new BasicStroke(2));
                 g.drawLine(combinedBoard[i][j].getX(), combinedBoard[i][j].getY(), combinedBoard[i][j].getX(), combinedBoard[i][j].getY());
-            	
+
             }
-            
+
         }
     }
     public void drawGameScreen(Graphics g)
