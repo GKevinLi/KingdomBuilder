@@ -47,6 +47,17 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             {new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Forest")},
             {new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest")},
     };
+    private Tile[][] b4 = {{new Tile("Desert"), new Tile("Desert"), new Tile("Canyon"), new Tile("Water"), new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass")},
+            {new Tile("Desert"), new Tile("Canyon"), new Tile("Water"), new Tile("Flower"), new Tile("Flower"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Grass"), new Tile("Grass")},
+            {new Tile("Desert"), new Tile("Desert"), new Tile("Water"), new Tile("Flower"), new Tile("Flower"), new Tile("Forest"), new Tile("Forest"), new SpecialTile("Paddock", new ActionToken("2")), new Tile("Flower"), new Tile("Grass")},
+            {new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Flower"), new Tile("Grass"), new Tile("Forest"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower")},
+            {new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Flower"), new Tile("Flower")},
+            {new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Grass"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Desert"), new Tile("Canyon")},
+            {new Tile("Water"), new Tile("Forest"), new Tile("Canyon"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Desert"), new Tile("Canyon")},
+            {new Tile("Water"), new SpecialTile("Castle"), new Tile("Canyon"), new Tile("Flower"), new Tile("Water"), new SpecialTile("Paddock", new ActionToken("2")), new Tile("Desert"), new Tile("Desert"), new Tile("Canyon"), new Tile("Water")},
+            {new Tile("Water"), new Tile("Water"), new Tile("Canyon"), new Tile("Flower"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Desert"), new Tile("Desert"), new Tile("Water")},
+            {new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water")},
+    };
 
     private FullBoard f;
     public GameScreenPanel()
@@ -92,6 +103,12 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
             board1 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/Board4 (1).png"));
             board2 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/1.png"));
+            board3 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/2.png"));
+            board4 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/3.png"));
+            board5 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/4.png"));
+            board6 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/5.png"));
+            board7 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/6.png"));
+            board8 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/7.png"));
             
         }
         catch (Exception E)
@@ -100,20 +117,20 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             return;
         }
         boards.add(new BoardSector(b1, board1));
-        boards.add(new BoardSector(b1, board1));
-        boards.add(new BoardSector(b1, board1));
-        boards.add(new BoardSector(b1, board1));
         boards.add(new BoardSector(b2, board2));
-        boards.add(new BoardSector(b2, board2));
-        boards.add(new BoardSector(b2, board2));
-        boards.add(new BoardSector(b2, board2));
+        boards.add(new BoardSector(b3, board3));
+        boards.add(new BoardSector(b4, board4));
+        //boards.add(new BoardSector(b2, board2));
+        //boards.add(new BoardSector(b2, board2));
+       // boards.add(new BoardSector(b2, board2));
+        //boards.add(new BoardSector(b2, board2));
         for(int i = 0; i < 4; i++) {
             BoardSector temp = (boards.get((int)(Math.random() * boards.size())));
             b.addBoard(temp);
             boards.remove(temp);
         }
-        BufferedImage temp = joinBufferedImage(b.getBoards().get(0).getImg(), b.getBoards().get(1).getImg());
-        BufferedImage temp2 = joinBufferedImage(b.getBoards().get(2).getImg(), b.getBoards().get(3).getImg());
+        BufferedImage temp = joinBufferedImage(b.getBoards().get(0).getImg(), b.getBoards().get(3).getImg());
+        BufferedImage temp2 = joinBufferedImage(b.getBoards().get(1).getImg(), b.getBoards().get(2).getImg());
         joinedImg = joinBufferedImage2(temp, temp2);
         b.makeCombinedBoard();
         
