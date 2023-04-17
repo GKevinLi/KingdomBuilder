@@ -7,6 +7,8 @@ public class Tile {
     private boolean alreadyFilled;
     private ArrayList<Tile> adjacentTiles;
     private Settlement s;
+    private int xPos;
+    private int yPos;
     public Tile(String s) {
         type = s;
         if(s.equals("Mountain") || s.equals("Water")) {
@@ -57,6 +59,18 @@ public class Tile {
 
     public Settlement getSettlement() {
         return s;
+    }
+    public void setX(int x) {
+    	xPos = x;
+    }
+    public void setY(int x) {
+    	yPos = x;
+    }
+    public int getX() {
+    	return xPos;
+    }
+    public int getY() {
+    	return yPos;
     }
 
 }
