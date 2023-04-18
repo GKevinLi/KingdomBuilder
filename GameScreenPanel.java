@@ -99,6 +99,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             farmers = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/Farmers Objective.png"));
             hermits = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/Hermits Objective.png"));
             worker = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/Worker Objective.png"));
+            fisherman = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/Fisherman Objective.png"));
 
             blueHouse = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/image (2).png"));
             greenHouse = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/image (3).png"));
