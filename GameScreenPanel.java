@@ -292,19 +292,21 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         }
 
         //change number when getHouse() is done
+         g.setFont(new Font("Helvetica", Font.PLAIN, getWidth()/68));
         g.setColor(Color.black);
-        g.drawImage(orangeHouse, getWidth()/80 + getWidth()/200, getHeight()/10, getWidth()/40, getHeight()/20, null);
+        g.drawImage(orangeHouse, getWidth()/80 + getWidth()/200, getHeight()/10, getWidth()/45, getHeight()/25, null);
         g.drawString("= 40", getWidth()/20 + getWidth()/200, (getHeight()/8) + (getHeight()/80));
-        g.drawImage(yellowHouse, getWidth()/4 + getWidth()/80 + getWidth()/400, getHeight()/10, getWidth()/40, getHeight()/20, null);
+        g.drawImage(yellowHouse, getWidth()/4 + getWidth()/80 + getWidth()/400, getHeight()/10, getWidth()/45, getHeight()/25, null);
         g.drawString( "= 40", getWidth()/4 + getWidth()/20 + getWidth()/400, (getHeight()/8) + (getHeight()/80));
-        g.drawImage(greenHouse, getWidth()/2 + getWidth()/80, getHeight()/10, getWidth()/40, getHeight()/20, null);
+        g.drawImage(greenHouse, getWidth()/2 + getWidth()/80, getHeight()/10, getWidth()/45, getHeight()/25, null);
         g.drawString("= 40", getWidth()/2 + getWidth()/20, (getHeight()/8) + (getHeight()/80));
-        g.drawImage(blueHouse, getWidth() - (getWidth()/4) + getWidth()/100, getHeight()/10, getWidth()/40, getHeight()/20, null);
+        g.drawImage(blueHouse, getWidth() - (getWidth()/4) + getWidth()/100, getHeight()/10, getWidth()/45, getHeight()/25, null);
         g.drawString("= 40", getWidth() - (getWidth()/4) + getWidth()/100 + getWidth()/32 + getWidth()/100, (getHeight()/8) + (getHeight()/80));
+
 
         //back of the card
         g.setColor(Color.white);
-        g.drawImage(cardBack, 1662, getHeight()/2 + getHeight()/8, 188, 290, null);
+        g.drawImage(cardBack, (10*getWidth()/12), getHeight()/2 + getHeight()/8, getWidth()/10, (2*getHeight()/7), null);
     }
 
     public void drawMap(Graphics g)
@@ -394,14 +396,13 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     public void drawObjective(Graphics g)
     {
         g.setColor(Color.black);
-        g.setFont(new Font("Helvetica", Font.PLAIN, 40));
-        g.drawString("OBJECTIVES", getWidth()/2+getWidth()/32, getHeight()/2+getHeight()/16);
+        g.setFont(new Font("Helvetica", Font.PLAIN, getWidth()/45));
+        g.drawString("OBJECTIVES", (getWidth()/2) - (getWidth()/32) + (getWidth()/8), getHeight()/2+getHeight()/16);
 
-        g.fillRect(getWidth()/3+getWidth()/16, getHeight()/2 + getHeight()/8, 188, 290);
-        g.fillRect(getWidth()/2 + getWidth()/24, getHeight()/2 + getHeight()/8, 188, 290);
-        g.fillRect(getWidth() - (10*(getHeight()/16)), getHeight()/2 + getHeight()/8, 188, 290);
 
-        g.drawImage(knights, getWidth() - (10*(getHeight()/16)), getHeight()/2 + getHeight()/8, 188, 290, null);
+        g.fillRect((getWidth()/2) - (getWidth()/32), getHeight()/2 + getHeight()/8, getWidth()/10, (2*getHeight()/7));
+        g.fillRect((getWidth()/2) - (getWidth()/32) + (getWidth()/8), getHeight()/2 + getHeight()/8, getWidth()/10, (2*getHeight()/7));
+        g.fillRect((getWidth()/2) - (getWidth()/32) + (2*(getWidth()/8)), getHeight()/2 + getHeight()/8, getWidth()/10, (2*getHeight()/7));
     }
 
     public void drawActionTokens(Graphics g)
