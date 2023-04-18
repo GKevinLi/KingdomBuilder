@@ -63,6 +63,50 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             {new Tile("Water"), new Tile("Water"), new Tile("Canyon"), new Tile("Flower"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Desert"), new Tile("Desert"), new Tile("Water")},
             {new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water")},
     };
+    private Tile[][] b5 = {{new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Grass"), new Tile("Mountain"), new Tile("Canyon"), new Tile("Canyon")},
+            {new Tile("Forest"), new Tile("Mountain"), new Tile("Forest"), new Tile("Forest"), new Tile("Flower"), new Tile("Grass"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Canyon")},
+            {new Tile("Flower"), new Tile("Flower"), new Tile("Forest"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Grass"), new Tile("Grass"), new Tile("Water"), new Tile("Mountain")},
+            {new Tile("Desert"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Water"), new SpecialTile("Paddock", new ActionToken("2")), new Tile("Grass"), new Tile("Water"), new Tile("Mountain"), new Tile("Mountain")},
+            {new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Flower"), new Tile("Water"), new Tile("Grass"), new Tile("Water"), new Tile("Canyon"), new Tile("Canyon")},
+            {new Tile("Desert"), new Tile("Canyon"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Water"), new Tile("Water"), new Tile("Canyon"), new Tile("Grass"), new Tile("Canyon")},
+            {new Tile("Desert"), new Tile("Desert"), new Tile("Canyon"), new Tile("Desert"), new Tile("Desert"), new Tile("Water"), new Tile("Flower"), new SpecialTile("Castle"), new Tile("Grass"), new Tile("Canyon")},
+            {new Tile("Canyon"), new Tile("Canyon"),new SpecialTile("Paddock", new ActionToken("2")), new Tile("Desert"), new Tile("Water"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Grass"), new Tile("Grass")},
+            {new Tile("Desert"), new Tile("Canyon"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new Tile("Flower"), new Tile("Grass"), new Tile("Grass")},
+            {new Tile("Desert"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass")},
+    };
+    private Tile[][] b6 = {{new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest")},
+            {new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new SpecialTile("Castle"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest")},
+            {new Tile("Grass"), new Tile("Flower"), new Tile("Flower"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Grass"), new Tile("Forest")},
+            {new Tile("Flower"), new Tile("Flower"), new Tile("Canyon"), new Tile("Grass"), new Tile("Forest"), new Tile("Water"), new Tile("Flower"), new SpecialTile("Paddock", new ActionToken("2")), new Tile("Forest"), new Tile("Forest")},
+            {new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Water"), new Tile("Flower"), new Tile("Flower"), new Tile("Water"), new Tile("Water")},
+            {new Tile("Mountain"), new Tile("Mountain"), new Tile("Canyon"), new Tile("Grass"), new Tile("Grass"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Desert"), new Tile("Desert")},
+            {new Tile("Canyon"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Mountain"), new Tile("Grass"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Desert"), new Tile("Desert")},
+            {new Tile("Canyon"), new Tile("Canyon"),new SpecialTile("Castle"), new Tile("Desert"), new Tile("Mountain"), new Tile("Desert"), new Tile("Flower"), new Tile("Flower"), new Tile("Canyon"), new Tile("Canyon")},
+            {new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Mountain"), new Tile("Canyon"), new Tile("Canyon")},
+            {new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Canyon")},
+    };
+    private Tile[][] b7 = {{new Tile("Desert"), new Tile("Desert"), new Tile("Canyon"), new Tile("Water"), new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Grass"), new Tile("Grass")},
+            {new Tile("Desert"), new SpecialTile("Castle"), new Tile("Canyon"), new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new SpecialTile("Paddock", new ActionToken("2")), new Tile("Grass"), new Tile("Grass")},
+            {new Tile("Canyon"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Forest"), new Tile("Canyon"), new Tile("Flower"), new Tile("Flower")},
+            {new Tile("Canyon"), new Tile("Canyon"), new Tile("Flower"), new Tile("Flower"), new Tile("Water"), new Tile("Desert"), new Tile("Desert"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Flower")},
+            {new Tile("Canyon"), new Tile("Grass"), new Tile("Grass"), new Tile("Water"), new Tile("Flower"), new Tile("Flower"), new Tile("Desert"), new Tile("Desert"), new Tile("Canyon"), new Tile("Canyon")},
+            {new Tile("Grass"), new Tile("Grass"), new SpecialTile("Paddock", new ActionToken("2")), new Tile("Flower"), new Tile("Water"), new Tile("Flower"), new Tile("Water"), new Tile("Desert"), new Tile("Desert"), new Tile("Canyon")},
+            {new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Flower"), new Tile("Flower"), new Tile("Water"), new Tile("Water"), new Tile("Desert"), new Tile("Desert")},
+            {new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Mountain"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Desert"), new Tile("Water")},
+            {new Tile("Grass"), new Tile("Mountain"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water")},
+            {new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water")},
+    };
+    private Tile[][] b8 = {{new Tile("Canyon"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert")},
+            {new Tile("Canyon"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Canyon"), new Tile("Desert")},
+            {new Tile("Mountain"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Desert"), new Tile("Mountain"), new Tile("Mountain"),new SpecialTile("Paddock", new ActionToken("2")), new Tile("Desert"), new Tile("Desert"), new Tile("Canyon")},
+            {new Tile("Canyon"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Flower"), new Tile("Flower"), new Tile("Canyon"), new Tile("Canyon")},
+            {new Tile("Canyon"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Water"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Canyon")},
+            {new Tile("Grass"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Mountain"), new Tile("Flower"), new Tile("Flower"), new Tile("Water"), new Tile("Forest"), new Tile("Canyon")},
+            {new Tile("Grass"), new Tile("Grass"), new SpecialTile("Paddock", new ActionToken("2")), new Tile("Forest"), new Tile("Flower"), new Tile("Flower"), new Tile("Water"), new Tile("Flower"), new Tile("Flower"), new Tile("Forest")},
+            {new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Flower"), new Tile("Flower"), new Tile("Grass"), new SpecialTile("Castle"), new Tile("Forest"), new Tile("Forest")},
+            {new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest")},
+            {new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest")},
+    };
 
     private FullBoard f;
     public GameScreenPanel()
@@ -132,10 +176,10 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         boards.add(new BoardSector(b2, board2));
         boards.add(new BoardSector(b3, board3));
         boards.add(new BoardSector(b4, board4));
-        //boards.add(new BoardSector(b2, board2));
-        //boards.add(new BoardSector(b2, board2));
-       // boards.add(new BoardSector(b2, board2));
-        //boards.add(new BoardSector(b2, board2));
+        boards.add(new BoardSector(b5, board5));
+        boards.add(new BoardSector(b6, board6));
+        boards.add(new BoardSector(b7, board7));
+        boards.add(new BoardSector(b8, board8));
         for(int i = 0; i < 4; i++) {
             BoardSector temp = (boards.get((int)(Math.random() * boards.size())));
             b.addBoard(temp);
