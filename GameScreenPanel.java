@@ -487,7 +487,8 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
     public void drawActionTokens(Graphics g)
     {
-
+        g.drawImage(horse, 20, 20, 325, 200, null); //paddock
+        g.drawImage(field, 50, 50, 75, 70, null); //farm
     }
 
     public void drawTerrainCards(Graphics g)
