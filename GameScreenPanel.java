@@ -440,14 +440,49 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     }
     public void drawObjective(Graphics g)
     {
+        BufferedImage obj1 = cardBack;
+        BufferedImage obj2 = cardBack;
+        BufferedImage obj3 = cardBack;
         g.setColor(Color.black);
         g.setFont(new Font("Helvetica", Font.PLAIN, getWidth()/45));
         g.drawString("OBJECTIVES", (getWidth()/2) - (getWidth()/32) + (getWidth()/8), getHeight()/2+getHeight()/16);
 
+        if(ob1.getObjective().equals("Lords")) {obj1 = cardBack; } //fix later
+        else if(ob1.getObjective().equals("Miners")) {obj1 = miners;}
+        else if(ob1.getObjective().equals("Fishermen")) {obj1 = fisherman;}
+        else if(ob1.getObjective().equals("Workers")) {obj1 = worker;}
+        else if(ob1.getObjective().equals("Citizens")) {obj1 = citizens;}
+        else if(ob1.getObjective().equals("Hermits")) {obj1 = hermits;}
+        else if(ob1.getObjective().equals("Explorers")) {obj1 = discoverers;}
+        else if(ob1.getObjective().equals("Knights")) {obj1 = knights;}
+        else if(ob1.getObjective().equals("Merchants")) {obj1 = cardBack;} //fix later
+        else if(ob1.getObjective().equals("Farmers")) {obj1 = farmers;}
 
-        g.fillRect((getWidth()/2) - (getWidth()/32), getHeight()/2 + getHeight()/8, getWidth()/10, (2*getHeight()/7));
-        g.fillRect((getWidth()/2) - (getWidth()/32) + (getWidth()/8), getHeight()/2 + getHeight()/8, getWidth()/10, (2*getHeight()/7));
-        g.fillRect((getWidth()/2) - (getWidth()/32) + (2*(getWidth()/8)), getHeight()/2 + getHeight()/8, getWidth()/10, (2*getHeight()/7));
+        if(ob2.getObjective().equals("Lords")) {obj2 = cardBack; } //fix later
+        else if(ob2.getObjective().equals("Miners")) {obj2 = miners;}
+        else if(ob2.getObjective().equals("Fishermen")) {obj2 = fisherman;}
+        else if(ob2.getObjective().equals("Workers")) {obj2 = worker;}
+        else if(ob2.getObjective().equals("Citizens")) {obj2 = citizens;}
+        else if(ob2.getObjective().equals("Hermits")) {obj2 = hermits;}
+        else if(ob2.getObjective().equals("Explorers")) {obj2 = discoverers;}
+        else if(ob2.getObjective().equals("Knights")) {obj2 = knights;}
+        else if(ob2.getObjective().equals("Merchants")) {obj2 = cardBack;} //fix later
+        else if(ob2.getObjective().equals("Farmers")) {obj2 = farmers;}
+
+        if(ob3.getObjective().equals("Lords")) {obj3 = cardBack; } //fix later
+        else if(ob3.getObjective().equals("Miners")) {obj3 = miners;}
+        else if(ob3.getObjective().equals("Fishermen")) {obj3 = fisherman;}
+        else if(ob3.getObjective().equals("Workers")) {obj3 = worker;}
+        else if(ob3.getObjective().equals("Citizens")) {obj3 = citizens;}
+        else if(ob3.getObjective().equals("Hermits")) {obj3 = hermits;}
+        else if(ob3.getObjective().equals("Explorers")) {obj3 = discoverers;}
+        else if(ob3.getObjective().equals("Knights")) {obj3 = knights;}
+        else if(ob3.getObjective().equals("Merchants")) {obj3 = cardBack;} //fix later
+        else if(ob3.getObjective().equals("Farmers")) {obj3 = farmers;}
+
+        g.drawImage(obj1, (getWidth()/2) - (getWidth()/32), getHeight()/2 + getHeight()/8, getWidth()/10, (2*getHeight()/7), null);
+        g.drawImage(obj2, (getWidth()/2) - (getWidth()/32) + (getWidth()/8), getHeight()/2 + getHeight()/8, getWidth()/10, (2*getHeight()/7), null);
+        g.drawImage(obj3, (getWidth()/2) - (getWidth()/32) + (2*(getWidth()/8)), getHeight()/2 + getHeight()/8, getWidth()/10, (2*getHeight()/7), null);
     }
 
     public void drawActionTokens(Graphics g)
