@@ -9,11 +9,11 @@ import java.io.*;
 
 public class StartScreenPanel extends JPanel{
     private BufferedImage background, title;
+    private GameScreenPanel game = new GameScreenPanel();
     private String state;
-    private int event;
     public StartScreenPanel()
     {
-        event = 0;
+        state = "start";
         try
         {
             background = ImageIO.read(StartScreenPanel.class.getResource("/deez imgs/image (1).png"));
@@ -29,19 +29,20 @@ public class StartScreenPanel extends JPanel{
     public void paint(Graphics g)
     {
 
-        if(event == 0)
+        if(state == "start")
         {
             g.drawImage(background, 0,0,getWidth(),getHeight(),null);
             showStartingScreen(g);
         }
-        else if(event == 1)
+        else if(state == "rules")
         {
             showRules();
         }
-        /* else if(event == 2)
+        else if(state == "Game")
         {
-
-        }*/
+            Frame f = new Frame("Kingdom Builder", "game");
+            System.out.println("got here");
+        }
     }
 
     public void showRules(){

@@ -9,7 +9,7 @@ public class Frame extends JFrame {
     final int WIDTH = 1600;
     final int LENGTH = 800;
     private BufferedImage coolScreen;
-    public Frame(String name)
+    public Frame(String name, String panel)
     {
 
         super(name);
@@ -26,10 +26,18 @@ public class Frame extends JFrame {
         //setMinimumSize(new Dimension(1000,600));
         GameScreenPanel g = new GameScreenPanel();
         EpicMouseListener e = new EpicMouseListener(g,s);
-        g.addMouseListener(e);
-        s.addMouseListener(e);
-        add(s);
-        add(g);
+        if(panel == "game") {
+            g.addMouseListener(e);
+        }
+        if(panel == "begin") {
+            s.addMouseListener(e);
+        }
+        if(panel == "game") {
+            add(g);
+        }
+        if(panel == "begin") {
+            add(s);
+        }
  //       EpicMouseListener e = new EpicMouseListener(g,s);
  //       g.addMouseListener(e);
 //        s.addMouseListener(e);

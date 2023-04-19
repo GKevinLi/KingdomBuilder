@@ -8,7 +8,7 @@ public class EpicMouseListener implements MouseListener {
     public EpicMouseListener(GameScreenPanel a, StartScreenPanel d) {
         b = a;
         c=d;
-        state = "Game";
+        state = "start";
     }
 
     public void mouseClicked(MouseEvent e) {
@@ -55,6 +55,14 @@ public class EpicMouseListener implements MouseListener {
         }
         //System.out.println("W" + b.getWidth());
     	//System.out.println("H" + b.getHeight());
+        if(state.equals("start")){
+            if(x >= c.getWidth()/2 -162 && y >= c.getHeight()/3 && x <= c.getWidth()/2 - 162 + 325 && y <= c.getHeight()/3 + 125){
+                state = "Game";
+                c.setState("Game");
+                c.repaint();
+                System.out.println("state changed");
+            }
+        }
     }
 
     @Override
