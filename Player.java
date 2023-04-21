@@ -8,8 +8,14 @@ public class Player {
     private boolean isFirstPlayer;
     private TerrainCard terrainCard;
 
-    public Player(String s) {
+    public Player(String s)
+    {
         playerName = s;
+        score = 0;
+        houses = new ArrayList<Settlement>();
+        specialActions = new ArrayList<ActionToken>();
+        isFirstPlayer = false;
+        //terrainCard = new TerrainCard();
     }
     public void addScore(int a) {
         score += a;
@@ -26,6 +32,7 @@ public class Player {
     public TerrainCard getTerrainCard() {
         return terrainCard;
     }
+    public ArrayList<ActionToken> getSpecialActions() { return specialActions; }
     public void setTerrainCard(TerrainCard t) {
         terrainCard = t;
     }
