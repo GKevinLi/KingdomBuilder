@@ -235,6 +235,8 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         drawGameScreen(g);
         drawMap(g);
         drawObjective(g);
+        drawActionTokens(g);
+        drawTerrainCards(g);
         setPositions(g);
 
         //drawObjective(g);
@@ -487,13 +489,51 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
     public void drawActionTokens(Graphics g)
     {
-        g.drawImage(horse, 20, 20, 325, 200, null); //paddock
-        g.drawImage(field, 50, 50, 75, 70, null); //farm
+
+        g.drawImage(horse, getWidth()/90 + getWidth()/19, getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83), null); //paddock - DOES NOT WORK
+        g.drawImage(field, getWidth()/90, getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83), null); //farm - WORKS
+        g.drawImage(oasis, getWidth()/90 + (2*getWidth()/19), getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83), null); //oasis - DOES NOT WORK
+        g.drawImage(stonehenge, getWidth()/90 + (3*getWidth()/19), getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83), null); //oracle - DOES WORK
+        g.drawImage(tower, getWidth()/4+getWidth()/60, getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83), null);
+        g.drawImage(tavern, getWidth()/4+getWidth()/60 + getWidth()/19, getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83), null);
+        g.drawImage(house, getWidth()/4+getWidth()/60 + (2*getWidth()/19), getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83), null); //barn - WORKS
+        g.drawImage(boat, getWidth()/4+getWidth()/60 + (3*getWidth()/19), getHeight()/40 + getHeight()/6, (75*5), (70*5), null);
+
+        //delete this and ill haunt you forever :)
+        //USE FOR SIZE REFERENCES (based on 1600 x 829): g.fillRect(x, y, 75, 70);
+//        //player 1
+//        g.fillRect(getWidth()/90, getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83));
+//        g.fillRect(getWidth()/90 + getWidth()/19, getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83));
+//        g.fillRect(getWidth()/90 + (2*getWidth()/19), getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83));
+//        g.fillRect(getWidth()/90 + (3*getWidth()/19), getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83));
+        //player 2
+//        g.fillRect(getWidth()/4+getWidth()/60, getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83));
+//        g.fillRect(getWidth()/4+getWidth()/60 + getWidth()/19, getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83));
+//        g.fillRect(getWidth()/4+getWidth()/60 + (2*getWidth()/19), getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83));
+//        g.fillRect(getWidth()/4+getWidth()/60 + (3*getWidth()/19), getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83));
+        //player 3
+        g.fillRect(getWidth()/2+getWidth()/85, getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83));
+        g.fillRect(getWidth()/2+getWidth()/85 + getWidth()/19, getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83));
+        g.fillRect(getWidth()/2+getWidth()/85 + (2*getWidth()/19), getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83));
+        g.fillRect(getWidth()/2+getWidth()/85 + (3*getWidth()/19), getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83));
+        //player 4
+        g.fillRect(getWidth()-getWidth()/4+getWidth()/100, getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83));
+        g.fillRect(getWidth()-getWidth()/4+getWidth()/100 + getWidth()/19, getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83));
+        g.fillRect(getWidth()-getWidth()/4+getWidth()/100 + (2*getWidth()/19), getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83));
+        g.fillRect(getWidth()-getWidth()/4+getWidth()/100 + (3*getWidth()/19), getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83));
     }
 
     public void drawTerrainCards(Graphics g)
     {
+//        g.drawImage(desertTerrain, getWidth()/160 + (getWidth()/4)-(getWidth()/32) - 75, getHeight()/32, 70, 90, null);
+//        g.drawImage(desertTerrain, getWidth()/4+getWidth()/100 + (getWidth()/4)-(getWidth()/32) - 75, getHeight()/32, getWidth()/23, 90, null);
+//        g.drawImage(desertTerrain, getWidth()/2+getWidth()/160+getWidth()/800 + (getWidth()/4)-(getWidth()/32) - 75, getHeight()/32, 70, 90, null);
+//        g.drawImage(desertTerrain, getWidth()-getWidth()/4+getWidth()/200 + (getWidth()/4)-(getWidth()/32) - 75, getHeight()/32, 70, 90, null);
 
+        g.drawImage(desertTerrain, getWidth()/160 + (getWidth()/4)-(getWidth()/32) - (3*getWidth()/64), getHeight()/32, getWidth()/23, getHeight()/9, null);
+        g.drawImage(desertTerrain, getWidth()/4+getWidth()/100 + (getWidth()/4)-(getWidth()/32) - (3*getWidth()/64), getHeight()/32, getWidth()/23, getHeight()/9, null);
+        g.drawImage(desertTerrain, getWidth()/2+getWidth()/160+getWidth()/800 + (getWidth()/4)-(getWidth()/32) - (3*getWidth()/64), getHeight()/32, getWidth()/23, getHeight()/9, null);
+        g.drawImage(desertTerrain, getWidth()-getWidth()/4+getWidth()/200 + (getWidth()/4)-(getWidth()/32) - (3*getWidth()/64), getHeight()/32, getWidth()/23, getHeight()/9, null);
     }
     @Override
     public void mouseClicked(MouseEvent e) {
