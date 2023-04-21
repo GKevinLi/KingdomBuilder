@@ -26,22 +26,11 @@ public class Frame extends JFrame {
         //setMinimumSize(new Dimension(1000,600));
         GameScreenPanel g = new GameScreenPanel();
         EpicMouseListener e = new EpicMouseListener(g,s);
-        if(panel == "game") {
-            g.addMouseListener(e);
-        }
-        if(panel == "begin") {
-            s.addMouseListener(e);
-        }
-        if(panel == "game") {
-            add(g);
-        }
-        if(panel == "begin") {
-            add(s);
-        }
+
  //       EpicMouseListener e = new EpicMouseListener(g,s);
- //       g.addMouseListener(e);
-//        s.addMouseListener(e);
-        //add(g);
+        g.addMouseListener(e);
+       s.addMouseListener(e);
+        add(g);
 //        add(s);
         setIconImage(coolScreen);
         setVisible(true);

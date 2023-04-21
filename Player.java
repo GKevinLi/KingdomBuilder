@@ -26,6 +26,9 @@ public class Player {
     public ArrayList<Settlement> getHouses() {
         return houses;
     }
+    public void addHouse(Settlement s) {
+        houses.add(s);
+    }
     public boolean getFirstPlayer() {
         return isFirstPlayer;
     }

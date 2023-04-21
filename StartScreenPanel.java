@@ -40,7 +40,7 @@ public class StartScreenPanel extends JPanel{
         }
         else if(state == "Game")
         {
-            Frame f = new Frame("Kingdom Builder", "game");
+            //Frame f = new Frame("Kingdom Builder", "game");
             System.out.println("got here");
         }
     }

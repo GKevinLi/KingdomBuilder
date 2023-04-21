@@ -1,12 +1,18 @@
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class ObjectiveCard {
     private String objective;
-    public ObjectiveCard(String s) {
+    private BufferedImage img;
+    public ObjectiveCard(String s, BufferedImage b) {
         objective = s;
+        img = b;
     }
     public String getObjective() {
         return objective;
+    }
+    public BufferedImage getImg() {
+        return img;
     }
     public int scoreCard(Player p, FullBoard b, int x) {
         if(objective.equals("Lords")) {

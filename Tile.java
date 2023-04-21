@@ -60,6 +60,9 @@ public class Tile {
     public Settlement getSettlement() {
         return s;
     }
+    public void setSettlement(Settlement se) {
+        s=se;
+    }
     public void setX(int x) {
     	xPos = x;
     }

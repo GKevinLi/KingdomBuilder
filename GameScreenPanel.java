@@ -11,6 +11,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     private BufferedImage background, boat, field, horse, house, oasis, stonehenge, tower, tavern, board1, board2, board3, board4, board5, board6, board7, board8, blueHouse, greenHouse, yellowHouse, orangeHouse;
     private BufferedImage cardBack, knights, miners, discoverers, citizens, farmers, fisherman, hermits, worker, grasslandTerrain, flowerTerrain, forestTerrain, canyonTerrain, desertTerrain;
     private int currentPlayer;
+    private ArrayList<Player> players;
     BufferedImage joinedImg;
     private ArrayList<BoardSector> boards;
     private TerrainDeck d;
@@ -113,6 +114,8 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     {
 
         //needs to be updated with turn logic is done
+
+
         boards = new ArrayList<>();
         b = new FullBoard();
         d = new TerrainDeck();
@@ -123,6 +126,14 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         ob3 = temp3.get(2);
         //hi
         currentPlayer = 1;
+        players = new ArrayList<>();
+        players.add(new Player("1"));
+        players.add(new Player("2"));
+        players.add(new Player("3"));
+        players.add(new Player("4"));
+        for(int i = 0; i < 4; i++) {
+            players.get(i).setTerrainCard(d.pickRandom());
+        }
         //boards.add(new BoardSector())
         try {
             background = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/photo-1434725039720-aaad6dd32dfe.jpg"));
@@ -220,9 +231,9 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         }
         for(Tile[] t : combinedBoard) {
             for(Tile i : t) {
-                System.out.print(i.getType() + " ");
+
             }
-            System.out.println();
+
         }
         
 
@@ -230,13 +241,14 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
     public void paint(Graphics g)
     {
-        System.out.println(getWidth() + " " + getHeight());
+
         g.drawImage(background, 0, 0, getWidth(), getHeight(), null);
         drawGameScreen(g);
         drawMap(g);
         drawObjective(g);
         drawActionTokens(g);
         drawTerrainCards(g);
+        DrawAllSettlements(g);
         setPositions(g);
 
         //drawObjective(g);
@@ -371,7 +383,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     	//System.out.println("W" + getWidth());
     	//System.out.println("H" + getHeight());
     	//drawScaledImage(b.getBoards().get(0).getImg(), g);
-    	g.drawImage(joinedImg, getWidth() / 100, (getHeight() / 3) - (getHeight() / 30), 571 , 731 + (getHeight() / 3) - (getHeight() / 30), 0, 0, (int)((double)1200 / ((double)getWidth() / 1600)), (int)((double)1500 / ((double)getHeight() / 800)), null);
+    	g.drawImage(joinedImg, getWidth() / 100, (getHeight() / 3) - (getHeight() / 30), 571, 731 + (getHeight() / 3) - (getHeight() / 30), 0, 0, (int)((double)1200 / ((double)getWidth() / 1600)), (int)((double)1500 / ((double)getHeight() / 800)), null);
     	for(int i = 0; i < 20; i++) {
     		//double i = 27; i < 520; i += 25.8
     		g.drawOval((int)(i * (26.9 * ((double)getWidth() / 1600)))+getWidth() / 100, getHeight()/3 - getHeight()/37 , (int)(26 * ((double)getWidth() / 1600)), (int)(26 * ((double)getHeight() / 800)));
@@ -530,10 +542,10 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 //        g.drawImage(desertTerrain, getWidth()/2+getWidth()/160+getWidth()/800 + (getWidth()/4)-(getWidth()/32) - 75, getHeight()/32, 70, 90, null);
 //        g.drawImage(desertTerrain, getWidth()-getWidth()/4+getWidth()/200 + (getWidth()/4)-(getWidth()/32) - 75, getHeight()/32, 70, 90, null);
 
-        g.drawImage(desertTerrain, getWidth()/160 + (getWidth()/4)-(getWidth()/32) - (3*getWidth()/64), getHeight()/32, getWidth()/23, getHeight()/9, null);
-        g.drawImage(desertTerrain, getWidth()/4+getWidth()/100 + (getWidth()/4)-(getWidth()/32) - (3*getWidth()/64), getHeight()/32, getWidth()/23, getHeight()/9, null);
-        g.drawImage(desertTerrain, getWidth()/2+getWidth()/160+getWidth()/800 + (getWidth()/4)-(getWidth()/32) - (3*getWidth()/64), getHeight()/32, getWidth()/23, getHeight()/9, null);
-        g.drawImage(desertTerrain, getWidth()-getWidth()/4+getWidth()/200 + (getWidth()/4)-(getWidth()/32) - (3*getWidth()/64), getHeight()/32, getWidth()/23, getHeight()/9, null);
+        g.drawImage(players.get(0).getTerrainCard().getImg(), getWidth()/160 + (getWidth()/4)-(getWidth()/32) - (3*getWidth()/64), getHeight()/32, getWidth()/23, getHeight()/9, null);
+        g.drawImage(players.get(1).getTerrainCard().getImg(), getWidth()/4+getWidth()/100 + (getWidth()/4)-(getWidth()/32) - (3*getWidth()/64), getHeight()/32, getWidth()/23, getHeight()/9, null);
+        g.drawImage(players.get(2).getTerrainCard().getImg(), getWidth()/2+getWidth()/160+getWidth()/800 + (getWidth()/4)-(getWidth()/32) - (3*getWidth()/64), getHeight()/32, getWidth()/23, getHeight()/9, null);
+        g.drawImage(players.get(3).getTerrainCard().getImg(), getWidth()-getWidth()/4+getWidth()/200 + (getWidth()/4)-(getWidth()/32) - (3*getWidth()/64), getHeight()/32, getWidth()/23, getHeight()/9, null);
     }
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -600,6 +612,36 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         if(t.getHousePlaceable()) {
             g.drawImage(blueHouse, t.getX() - 10, t.getY() - 10, t.getX() + 300, t.getY() + 300, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
         }
+    }
+    public void DrawAllSettlements(Graphics g) {
+        Tile[][] combinedBoard = b.getCombinedBoard();
+        for(Tile[] i : combinedBoard) {
+            for(Tile j : i) {
+                if(j.getSettlement() != null) {
+                    if(j.getSettlement().getPlayerOwned() == players.get(0)) {
+                        g.drawImage(blueHouse, j.getX() - 10, j.getY() - 10, j.getX() + 300, j.getY() + 300, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+                    }
+                    if(j.getSettlement().getPlayerOwned() == players.get(1)) {
+                        g.drawImage(blueHouse, j.getX() - 10, j.getY() - 10, j.getX() + 300, j.getY() + 300, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+                    }
+                    if(j.getSettlement().getPlayerOwned() == players.get(2)) {
+                        g.drawImage(blueHouse, j.getX() - 10, j.getY() - 10, j.getX() + 300, j.getY() + 300, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+                    }
+                    if(j.getSettlement().getPlayerOwned() == players.get(3)) {
+                        g.drawImage(blueHouse, j.getX() - 10, j.getY() - 10, j.getX() + 300, j.getY() + 300, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+                    }
+                }
+            }
+        }
+    }
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+    public int getCurrentPlayer() {
+        return currentPlayer;
+    }
+    public void setCurrentPlayer(int x) {
+        currentPlayer = x;
     }
     
 
