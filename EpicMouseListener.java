@@ -74,7 +74,10 @@ public class EpicMouseListener implements MouseListener {
             else {
                 placingSettlements = false;
                 numSettlementsPlaced = 3;
-                b.setCurrentPlayer(2);
+
+                currentPlayer++;
+                currentPlayer = currentPlayer % 5;
+                b.setCurrentPlayer(currentPlayer);
                 b.repaint();
             }
         }
@@ -85,13 +88,22 @@ public class EpicMouseListener implements MouseListener {
             }
         }
         if(currentPlayer == 2) {
+            if(x >= 281 && y >= 26 && x <= 346 && y <= 122) {
+                placingSettlements = true;
 
+            }
         }
         if(currentPlayer == 3) {
+            if(x >= 281 && y >= 26 && x <= 346 && y <= 122) {
+                placingSettlements = true;
 
+            }
         }
         if(currentPlayer == 4) {
+            if(x >= 281 && y >= 26 && x <= 346 && y <= 122) {
+                placingSettlements = true;
 
+            }
         }
 
         if(state.equals("Game")) {

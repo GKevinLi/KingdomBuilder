@@ -622,13 +622,13 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             for(Tile j : i) {
                 if(j.getSettlement() != null) {
                     if(j.getSettlement().getPlayerOwned() == players.get(0)) {
-                        g.drawImage(blueHouse, j.getX() - 10, j.getY() - 10, j.getX() + 300, j.getY() + 300, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+                        g.drawImage(orangeHouse, j.getX() - 10, j.getY() - 10, j.getX() + 300, j.getY() + 300, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
                     }
                     if(j.getSettlement().getPlayerOwned() == players.get(1)) {
-                        g.drawImage(blueHouse, j.getX() - 10, j.getY() - 10, j.getX() + 300, j.getY() + 300, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+                        g.drawImage(yellowHouse, j.getX() - 10, j.getY() - 10, j.getX() + 300, j.getY() + 300, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
                     }
                     if(j.getSettlement().getPlayerOwned() == players.get(2)) {
-                        g.drawImage(blueHouse, j.getX() - 10, j.getY() - 10, j.getX() + 300, j.getY() + 300, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+                        g.drawImage(greenHouse, j.getX() - 10, j.getY() - 10, j.getX() + 300, j.getY() + 300, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
                     }
                     if(j.getSettlement().getPlayerOwned() == players.get(3)) {
                         g.drawImage(blueHouse, j.getX() - 10, j.getY() - 10, j.getX() + 300, j.getY() + 300, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);

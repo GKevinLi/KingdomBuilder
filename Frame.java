@@ -31,7 +31,7 @@ public class Frame extends JFrame {
         g.addMouseListener(e);
        s.addMouseListener(e);
         add(g);
-//        add(s);
+       //add(s);
         setIconImage(coolScreen);
         setVisible(true);
     }
