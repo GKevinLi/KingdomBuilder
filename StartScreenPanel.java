@@ -59,7 +59,7 @@ public class StartScreenPanel extends JPanel{
         g.fillRect(getWidth()/2 - 162, getHeight()/2 + getHeight()/20, 325, 125);
         g.setColor(Color.white);
         g.setFont(new Font("Helvetica", Font.BOLD, 100));
-        g.drawString("PLAY", getWidth()/2-145, getHeight()/3+getHeight()/10 + 20);
+        g.drawString("PLAY", getWidth()/2-135, getHeight()/3+getHeight()/10 + 20);
        //g.drawString("RULES", getWidth()/2 - 162, getHeight()/2 ;
         System.out.println(getWidth());
         System.out.println(getHeight());
