@@ -60,47 +60,85 @@ public class EpicMouseListener implements MouseListener {
                     }
                     System.out.println(players.get(currentPlayer-1).getTerrainCard().getCardType());
                     System.out.println(minTile.getType());
-                    if(minTile.getType().equals(players.get(currentPlayer-1).getTerrainCard().getCardType())) {
-                        Settlement s = new Settlement(minTile, players.get(currentPlayer-1));
-                        players.get(currentPlayer-1).addHouse(s);
-                        minTile.setSettlement(s);
-                        b.repaint();
-                        //b.DrawSettlementOn(minTile, b.getGraphics());
-                        numSettlementsPlaced --;
+                    if(minTile.getType().equals(players.get(currentPlayer-1).getTerrainCard().getCardType()) && minTile.getSettlement() == null) {
+                    	
+                    	ArrayList<Tile> temp16 = new ArrayList<>();
+                    	for(Tile t : players.get(currentPlayer-1).getAllAdjacentTiles()) {
+                    		if(t.getType().equals(players.get(currentPlayer-1).getTerrainCard().getCardType())) {
+                    			temp16.add(t);
+                    			//b.HighlightTile(t, b.getGraphics());
+                    		}
+                    	}
+                    	if(temp16.size() != 0) {
+                    		int cnt = 0;
+                    		for(Tile t : players.get(currentPlayer-1).getAllAdjacentTiles()) {
+                    			
+                    			if(t == minTile) {
+                    				cnt++;
+                    			}
+                    		} 
+                    		if(cnt >= 1) {
+                    			Settlement s = new Settlement(minTile, players.get(currentPlayer-1));
+                                players.get(currentPlayer-1).addHouse(s);
+                                minTile.setSettlement(s);
+                                b.repaint();
+                                //b.DrawSettlementOn(minTile, b.getGraphics());
+                                numSettlementsPlaced --;
+                    		}
+                    	}
+                    	else {
+                    		Settlement s = new Settlement(minTile, players.get(currentPlayer-1));
+                            players.get(currentPlayer-1).addHouse(s);
+                            minTile.setSettlement(s);
+                            b.repaint();
+                            //b.DrawSettlementOn(minTile, b.getGraphics());
+                            numSettlementsPlaced --;
+                    	}
+                        
                     }
 
                 }
             }
             else {
                 placingSettlements = false;
-                numSettlementsPlaced = 3;
+                //numSettlementsPlaced = 3;
 
-                currentPlayer++;
-                currentPlayer = currentPlayer % 5;
-                b.setCurrentPlayer(currentPlayer);
+                
+                
                 b.repaint();
             }
         }
+        if(x >= 604 && y >= 598 && x <= 945 && y <= 729 && numSettlementsPlaced == 0) {
+        	currentPlayer++;
+            currentPlayer = currentPlayer % 5;
+            if(currentPlayer == 0) {
+            	currentPlayer++;
+            }
+            b.setCurrentPlayer(currentPlayer);
+            b.repaint();
+            numSettlementsPlaced = 3;
+        }
         if(currentPlayer == 1) {
-            if(x >= 281 && y >= 26 && x <= 346 && y <= 122) {
+            if(x >= 222 && y >= 39 && x <= 337 && y <= 201) {
                 placingSettlements = true;
+                System.out.println("hi");
 
             }
         }
         if(currentPlayer == 2) {
-            if(x >= 281 && y >= 26 && x <= 346 && y <= 122) {
+            if(x >= 222 && y >= 39 && x <= 337 && y <= 201) {
                 placingSettlements = true;
 
             }
         }
         if(currentPlayer == 3) {
-            if(x >= 281 && y >= 26 && x <= 346 && y <= 122) {
+            if(x >= 222 && y >= 39 && x <= 337 && y <= 201) {
                 placingSettlements = true;
 
             }
         }
         if(currentPlayer == 4) {
-            if(x >= 281 && y >= 26 && x <= 346 && y <= 122) {
+            if(x >= 222 && y >= 39 && x <= 337 && y <= 201) {
                 placingSettlements = true;
 
             }
