@@ -365,7 +365,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
         //back of the card
         g.setColor(Color.white);
-        g.drawImage(cardBack, (10*getWidth()/12), getHeight()/2 + getHeight()/8, getWidth()/10, (2*getHeight()/7), null);
+        g.drawImage(cardBack, (getWidth()/2) - (getWidth()/32) + (3*(getWidth()/8)), getHeight()/3 + getHeight()/12, getWidth()/9, getHeight()/3, null);
     }
 
     public void drawMap(Graphics g)
@@ -459,7 +459,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         BufferedImage obj3 = cardBack;
         g.setColor(Color.black);
         g.setFont(new Font("Helvetica", Font.PLAIN, getWidth()/45));
-        g.drawString("OBJECTIVES", (getWidth()/2) - (getWidth()/32) + (getWidth()/8), getHeight()/2+getHeight()/16);
+        g.drawString("OBJECTIVES", (getWidth()/2) - (getWidth()/32) + (getWidth()/9), getHeight()/3 + getHeight()/30);
 
         if(ob1.getObjective().equals("Lords")) {obj1 = cardBack; } //fix later
         else if(ob1.getObjective().equals("Miners")) {obj1 = miners;}
@@ -494,9 +494,9 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         else if(ob3.getObjective().equals("Merchants")) {obj3 = cardBack;} //fix later
         else if(ob3.getObjective().equals("Farmers")) {obj3 = farmers;}
 
-        g.drawImage(obj1, (getWidth()/2) - (getWidth()/32), getHeight()/2 + getHeight()/8, getWidth()/10, (2*getHeight()/7), null);
-        g.drawImage(obj2, (getWidth()/2) - (getWidth()/32) + (getWidth()/8), getHeight()/2 + getHeight()/8, getWidth()/10, (2*getHeight()/7), null);
-        g.drawImage(obj3, (getWidth()/2) - (getWidth()/32) + (2*(getWidth()/8)), getHeight()/2 + getHeight()/8, getWidth()/10, (2*getHeight()/7), null);
+        g.drawImage(obj1, (getWidth()/2) - (getWidth()/32), getHeight()/3 + getHeight()/12, getWidth()/9, getHeight()/3, null);
+        g.drawImage(obj2, (getWidth()/2) - (getWidth()/32) + (getWidth()/8), getHeight()/3 + getHeight()/12, getWidth()/9, getHeight()/3, null);
+        g.drawImage(obj3, (getWidth()/2) - (getWidth()/32) + (2*(getWidth()/8)), getHeight()/3 + getHeight()/12, getWidth()/9, getHeight()/3, null);
     }
 
     public void drawActionTokens(Graphics g)
@@ -551,10 +551,12 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 //        g.drawImage(desertTerrain, getWidth()/2+getWidth()/160+getWidth()/800 + (getWidth()/4)-(getWidth()/32) - (3*getWidth()/64), getHeight()/32, getWidth()/23, getHeight()/9, null);
 //        g.drawImage(desertTerrain, getWidth()-getWidth()/4+getWidth()/200 + (getWidth()/4)-(getWidth()/32) - (3*getWidth()/64), getHeight()/32, getWidth()/23, getHeight()/9, null);
 
-        g.drawImage(desertTerrain, (getWidth()/6), getHeight()/32, 140, 190, null);
-        g.drawImage(desertTerrain, getWidth()/4+getWidth()/100 + (getWidth()/4)-(getWidth()/32) - (3*getWidth()/64), getHeight()/32, getWidth()/23, getHeight()/9, null);
-        g.drawImage(desertTerrain, getWidth()/2+getWidth()/160+getWidth()/800 + (getWidth()/4)-(getWidth()/32) - (3*getWidth()/64), getHeight()/32, getWidth()/23, getHeight()/9, null);
-        g.drawImage(desertTerrain, getWidth()-getWidth()/4+getWidth()/200 + (getWidth()/4)-(getWidth()/32) - (3*getWidth()/64), getHeight()/32, getWidth()/23, getHeight()/9, null);
+        System.out.println(getWidth());
+        System.out.println(getHeight());
+        g.drawImage(desertTerrain, (getWidth()/7), getHeight()/20, getWidth()/13, (10*getHeight()/46), null);
+        g.drawImage(desertTerrain, getWidth()/3 + getWidth()/16, getHeight()/20, getWidth()/13, (10*getHeight()/46), null);
+        g.drawImage(desertTerrain, getWidth()/2+getWidth()/7, getHeight()/20, getWidth()/13, (10*getHeight()/46), null);
+        g.drawImage(desertTerrain, getWidth()-getWidth()/5+getWidth()/11, getHeight()/20, getWidth()/13, (10*getHeight()/46), null);
     }
     @Override
     public void mouseClicked(MouseEvent e) {
