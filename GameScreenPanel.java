@@ -8,13 +8,14 @@ import java.util.ArrayList;
 
 public class GameScreenPanel extends JPanel implements MouseListener {
     //
-    private BufferedImage background, boat, field, horse, house, oasis, stonehenge, tower, tavern, board1, board2, board3, board4, board5, board6, board7, board8, blueHouse, greenHouse, yellowHouse, orangeHouse;
+    private BufferedImage background, boat, field, horse, house, oasis, stonehenge, tower, tavern, board1, board2, board3, board4, board5, board6, board7, board8, blueHouse, greenHouse, yellowHouse, orangeHouse, highlight;
     private BufferedImage cardBack, knights, miners, discoverers, citizens, farmers, fisherman, hermits, worker, grasslandTerrain, flowerTerrain, forestTerrain, canyonTerrain, desertTerrain;
     private int currentPlayer;
     private ArrayList<Player> players;
     BufferedImage joinedImg;
     private ArrayList<BoardSector> boards;
     private TerrainDeck d;
+    private Tile[][] combinedBoard;
     private ObjectiveDeck obj;
     private ObjectiveCard ob1;
     private ObjectiveCard ob2;
@@ -175,6 +176,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             board6 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/5.png"));
             board7 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/6.png"));
             board8 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/7.png"));
+            highlight = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/image-removebg-preview.png"));
 
 
         }
@@ -201,30 +203,53 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         joinedImg = joinBufferedImage2(temp, temp2);
         b.makeCombinedBoard();
 //hi
-        Tile[][] combinedBoard = b.getCombinedBoard();
+        combinedBoard = b.getCombinedBoard();
         double Ydiff = (getHeight() - (getHeight() / 13)-(getHeight()/3 - getHeight()/30)) / 20;
         double Xdiff = (((double)getWidth() / 3) + ((double)getWidth() / 50)) / 20;
         for(int i = 0; i < 20; i++) {
             for(int j = 0; j < 20; j++) {
-                ArrayList<Tile> t = new ArrayList<>();
-                if(i - 1 >= 0) {
-                    t.add(combinedBoard[i-1][j]);
-                }
-                if(i + 1 < 20) {
-                    t.add(combinedBoard[i+1][j]);
-                }
-                if(j + 1 < 20) {
-                    t.add(combinedBoard[i][j+1]);
-                }
-                if(j - 1 >= 0) {
-                    t.add(combinedBoard[i][j-1]);
-                }
-                if(i - 1 >= 0 && j - 1 >= 0) {
-                    t.add(combinedBoard[i-1][j-1]);
-                }
-                if(i + 1 < 20 && j - 1 >= 0) {
-                    t.add(combinedBoard[i+1][j-1]);
-                }
+            	ArrayList<Tile> t = new ArrayList<>();
+            	if(i % 2 == 0) {
+            		
+            		if(i - 1 >= 0) {
+            			t.add(combinedBoard[i-1][j]);
+            		}
+            		if(i + 1 < 20) {
+            			t.add(combinedBoard[i+1][j]);
+            		}
+            		if(j + 1 < 20) {
+            			t.add(combinedBoard[i][j+1]);
+            		}
+            		if(j - 1 >= 0) {
+            			t.add(combinedBoard[i][j-1]);
+            		}
+            		if(i - 1 >= 0 && j - 1 >= 0) {
+            			t.add(combinedBoard[i-1][j-1]);
+            		}
+            		if(i + 1 < 20 && j - 1 >= 0) {
+            			t.add(combinedBoard[i+1][j-1]);
+            		}
+            	}
+            	else {
+            		if(i - 1 >= 0) {
+            			t.add(combinedBoard[i-1][j]);
+            		}
+            		if(i + 1 < 20) {
+            			t.add(combinedBoard[i+1][j]);
+            		}
+            		if(j + 1 < 20) {
+            			t.add(combinedBoard[i][j+1]);
+            		}
+            		if(j - 1 >= 0) {
+            			t.add(combinedBoard[i][j-1]);
+            		}
+            		if(i - 1 >= 0 && j + 1 < 20) {
+            			t.add(combinedBoard[i-1][j+1]);
+            		}
+            		if(i + 1 < 20 && j + 1 < 20) {
+            			t.add(combinedBoard[i+1][j+1]);
+            		}
+            	}
                 combinedBoard[i][j].setAdjacentTiles(t);
                
             }
@@ -249,7 +274,13 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         drawActionTokens(g);
         drawTerrainCards(g);
         DrawAllSettlements(g);
+        HighlightTiles(g);
         setPositions(g);
+        g.drawRect(605, 598, 946-605, 731-598);
+        g.setColor(Color.WHITE);
+        g.fillRect(605, 598, 946-605, 731-598);
+        g.setColor(Color.BLACK);
+        g.drawString("End Turn", 700, 700);
 
         //drawObjective(g);
         //g.drawImage(grasslandTerrain, 0, 0, 117, 163, null);
@@ -553,10 +584,10 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
         System.out.println(getWidth());
         System.out.println(getHeight());
-        g.drawImage(desertTerrain, (getWidth()/7), getHeight()/20, getWidth()/13, (10*getHeight()/46), null);
-        g.drawImage(desertTerrain, getWidth()/3 + getWidth()/16, getHeight()/20, getWidth()/13, (10*getHeight()/46), null);
-        g.drawImage(desertTerrain, getWidth()/2+getWidth()/7, getHeight()/20, getWidth()/13, (10*getHeight()/46), null);
-        g.drawImage(desertTerrain, getWidth()-getWidth()/5+getWidth()/11, getHeight()/20, getWidth()/13, (10*getHeight()/46), null);
+        g.drawImage(players.get(0).getTerrainCard().getImg(), (getWidth()/7), getHeight()/20, getWidth()/13, (10*getHeight()/46), null);
+        g.drawImage(players.get(1).getTerrainCard().getImg(), getWidth()/3 + getWidth()/16, getHeight()/20, getWidth()/13, (10*getHeight()/46), null);
+        g.drawImage(players.get(2).getTerrainCard().getImg(), getWidth()/2+getWidth()/7, getHeight()/20, getWidth()/13, (10*getHeight()/46), null);
+        g.drawImage(players.get(3).getTerrainCard().getImg(), getWidth()-getWidth()/5+getWidth()/11, getHeight()/20, getWidth()/13, (10*getHeight()/46), null);
     }
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -630,20 +661,48 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             for(Tile j : i) {
                 if(j.getSettlement() != null) {
                     if(j.getSettlement().getPlayerOwned() == players.get(0)) {
-                        g.drawImage(orangeHouse, j.getX() - 10, j.getY() - 10, j.getX() + 300, j.getY() + 300, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+                        g.drawImage(orangeHouse, (int)(j.getX() - (double)(getWidth()/160)), (int)(j.getY() - (double)(getHeight()/80)), j.getX() + 300, j.getY() + 300, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
                     }
                     if(j.getSettlement().getPlayerOwned() == players.get(1)) {
-                        g.drawImage(yellowHouse, j.getX() - 10, j.getY() - 10, j.getX() + 300, j.getY() + 300, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+                        g.drawImage(yellowHouse, (int)(j.getX() - (double)(getWidth()/160)), (int)(j.getY() - (double)(getHeight()/80)), j.getX() + 300, j.getY() + 300, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
                     }
                     if(j.getSettlement().getPlayerOwned() == players.get(2)) {
-                        g.drawImage(greenHouse, j.getX() - 10, j.getY() - 10, j.getX() + 300, j.getY() + 300, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+                        g.drawImage(greenHouse, (int)(j.getX() - (double)(getWidth()/160)), (int)(j.getY() - (double)(getHeight()/80)), j.getX() + 300, j.getY() + 300, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
                     }
                     if(j.getSettlement().getPlayerOwned() == players.get(3)) {
-                        g.drawImage(blueHouse, j.getX() - 10, j.getY() - 10, j.getX() + 300, j.getY() + 300, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+                        g.drawImage(blueHouse, (int)(j.getX() - (double)(getWidth()/160)), (int)(j.getY() - (double)(getHeight()/80)), j.getX() + 300, j.getY() + 300, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
                     }
                 }
             }
         }
+    }
+    public void HighlightTiles(Graphics g) {
+    	ArrayList<Tile> temp16 = new ArrayList<>();
+    	for(Tile t : players.get(currentPlayer-1).getAllAdjacentTiles()) {
+    		if(t.getType().equals(players.get(currentPlayer-1).getTerrainCard().getCardType())) {
+    			temp16.add(t);
+    			//b.HighlightTile(t, b.getGraphics());
+    		}
+    	}
+    	if(temp16.size() > 0) {
+    		for(Tile j : players.get(currentPlayer-1).getAllAdjacentTiles()) {
+    			if(j.getType().equals(players.get(currentPlayer-1).getTerrainCard().getCardType())) {
+    				g.drawImage(highlight, j.getX() - 20, j.getY() - 20, j.getX() + 150, j.getY() + 180, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+    			
+    			}
+    		}
+    	}
+    	else {
+    		for(Tile[] j : combinedBoard) {
+                for(Tile i : j) {
+                	if(i.getType().equals(players.get(currentPlayer-1).getTerrainCard().getCardType()) && i.getSettlement() == null) {
+        				g.drawImage(highlight, i.getX() - 20, i.getY() - 20, i.getX() + 150, i.getY() + 180, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+        			
+        			}
+                }
+
+            }
+    	}
     }
     public ArrayList<Player> getPlayers() {
         return players;
