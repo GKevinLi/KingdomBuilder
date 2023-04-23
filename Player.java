@@ -47,7 +47,8 @@ public class Player {
         for(Settlement s : houses) {
             ArrayList<Tile> adj = s.getPlacedOn().getAdjacentTiles();
             for(Tile i : adj) {
-                if(!(i.HouseCheck()) && (i.getHousePlaceable())) {
+                if(!(i.getSettlement() != null) && (i.getHousePlaceable())) {
+                	
                     t.add(i);
                 }
             }
