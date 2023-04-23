@@ -537,12 +537,9 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
     public void drawActionTokens(Graphics g)
     {
-
-//        g.drawImage(horse, getWidth()/90 + getWidth()/19, getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83), null); //paddock - DOES NOT WORK
-//        g.drawImage(field, getWidth()/90, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17, null); //farm - WORKS
-//        g.drawImage(field, getWidth()/90, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/63), getHeight()/17, null);
-//        g.drawImage(field, getWidth()/90 + getWidth()/19, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17, null);
-//        g.drawImage(field, getWidth()/90 + getWidth()/19, getHeight()/40 +(3*getHeight()/15), (2*getWidth()/63), getHeight()/17, null);
+//          POSITIONS ARE SAVED ON A GOOGLE DOC
+//        g.drawImage(horse, getWidth()/90 - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/63), (3*getHeight()/18), null); //paddock - WORKS
+//        g.drawImage(field, getWidth()/90, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/60), getHeight()/16, null); //farm - WORKS
 //        g.drawImage(oasis, getWidth()/90 + (2*getWidth()/19), getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83), null); //oasis - DOES NOT WORK
 //        g.drawImage(stonehenge, getWidth()/90 + (3*getWidth()/19), getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83), null); //oracle - DOES WORK
 //        g.drawImage(tower, getWidth()/4+getWidth()/60, getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83), null);
@@ -550,28 +547,49 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 //        g.drawImage(house, getWidth()/4+getWidth()/60 + (2*getWidth()/19), getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83), null); //barn - WORKS
 //        g.drawImage(boat, getWidth()/4+getWidth()/60 + (3*getWidth()/19), getHeight()/40 + getHeight()/6, (75*5), (70*5), null);
 
+        //testing
+        g.drawImage(field, getWidth()/90, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/60), getHeight()/16, null);
+        g.drawImage(oasis, getWidth()-getWidth()/4+getWidth()/100 - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/63), (3*getHeight()/18), null);
+        g.drawImage(horse, getWidth()/90  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/14), (10*getWidth()/63), (3*getHeight()/18), null);
+        g.drawImage(oasis, getWidth()/90 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/60), (3*getHeight()/19), null);
+        g.drawImage(oasis, getWidth()/90 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/14), (10*getWidth()/60), (3*getHeight()/19), null);
+
+
         //delete this and ill haunt you forever :)
         //USE FOR SIZE REFERENCES (based on 1600 x 829): g.fillRect(x, y, 75, 70);
 //        //player 1
-          g.fillRect(getWidth()/90, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-          g.fillRect(getWidth()/90, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-          g.fillRect(getWidth()/90 + getWidth()/19, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-          g.fillRect(getWidth()/90 + getWidth()/19, getHeight()/40 +(3*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-        //player 2
-        g.fillRect(getWidth()/4+getWidth()/60, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-        g.fillRect(getWidth()/4+getWidth()/60, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-        g.fillRect(getWidth()/4+getWidth()/60 + + getWidth()/19, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-        g.fillRect(getWidth()/4+getWidth()/60 + + getWidth()/19, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-        //player 3
-        g.fillRect(getWidth()/2+getWidth()/85, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-        g.fillRect(getWidth()/2+getWidth()/85, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-        g.fillRect(getWidth()/2+getWidth()/85 + getWidth()/19, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-        g.fillRect(getWidth()/2+getWidth()/85 + getWidth()/19, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-        //player 4
-        g.fillRect(getWidth()-getWidth()/4+getWidth()/100, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-        g.fillRect(getWidth()-getWidth()/4+getWidth()/100, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-        g.fillRect(getWidth()-getWidth()/4+getWidth()/100 + getWidth()/19, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-        g.fillRect(getWidth()-getWidth()/4+getWidth()/100 + getWidth()/19, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/63), getHeight()/17);
+//          g.fillRect(getWidth()/90, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17);
+//          g.fillRect(getWidth()/90, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/63), getHeight()/17);
+//          g.fillRect(getWidth()/90 + getWidth()/19, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17);
+//          g.fillRect(getWidth()/90 + getWidth()/19, getHeight()/40 +(3*getHeight()/15), (2*getWidth()/63), getHeight()/17);
+//        //player 2
+//        g.fillRect(getWidth()/4+getWidth()/60, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17);
+//        g.fillRect(getWidth()/4+getWidth()/60, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/63), getHeight()/17);
+//        g.fillRect(getWidth()/4+getWidth()/60 + getWidth()/19, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17);
+//        g.fillRect(getWidth()/4+getWidth()/60 + getWidth()/19, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/63), getHeight()/17);
+//        //player 3
+//        g.fillRect(getWidth()/2+getWidth()/85, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17);
+//        g.fillRect(getWidth()/2+getWidth()/85, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/63), getHeight()/17);
+//        g.fillRect(getWidth()/2+getWidth()/85 + getWidth()/19, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17);
+//        g.fillRect(getWidth()/2+getWidth()/85 + getWidth()/19, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/63), getHeight()/17);
+//        //player 4
+//        g.fillRect(getWidth()-getWidth()/4+getWidth()/100, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17);
+//        g.fillRect(getWidth()-getWidth()/4+getWidth()/100, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/63), getHeight()/17);
+//        g.fillRect(getWidth()-getWidth()/4+getWidth()/100 + getWidth()/19, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17);
+//        g.fillRect(getWidth()-getWidth()/4+getWidth()/100 + getWidth()/19, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/63), getHeight()/17);
+
+        //FINAL + TEST CODE, DONT MESS WITH IT, I WILL END U
+        ArrayList<ActionToken> test = new ArrayList<ActionToken>();
+        test.add(new ActionToken("horse"));
+        test.add(new ActionToken("field")); //WILL BE REPLACED WITH PLAYER.GETSPECIALACTION()
+
+//        for(int i = 0; i < test.size(); i++) //PLAYER 1
+//        {
+//            if(test.get(i).getAction().equals("field"))
+//            {
+//                if()
+//            }
+//        }
     }
 
 
