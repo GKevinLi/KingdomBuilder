@@ -52,6 +52,9 @@ public class TerrainDeck {
     public void removeCard(TerrainCard t) {
         deck.remove(t);
     }
+    public int getDeckSize() {
+    	return deck.size();
+    }
 
 
 }
