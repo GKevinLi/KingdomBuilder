@@ -6,6 +6,7 @@ public class EpicMouseListener implements MouseListener {
     private StartScreenPanel c;
     private ArrayList<Player> players;
     private boolean placingSettlements;
+    private boolean drawnTerrainCard = false;
     private int currentPlayer;
     private int numSettlementsPlaced = 3;
 
@@ -28,8 +29,8 @@ public class EpicMouseListener implements MouseListener {
 
         int x = e.getX();
         int y = e.getY();
-        System.out.println(x);
-        System.out.println(y);
+        //System.out.println(x);
+        //System.out.println(y);
         if(placingSettlements) {
             if(numSettlementsPlaced >= 1) {
                 if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.getHeight()/30 && x <= ((b.getWidth() / 3) +(b.getWidth() / 50)) + (int)((16 * ((double)b.getWidth() / 1600))) && y <= (b.getHeight() - (b.getHeight() / 13)-(b.getHeight()/3 - b.getHeight()/30)) + b.getHeight()/3 - b.getHeight()/30) {
@@ -58,8 +59,9 @@ public class EpicMouseListener implements MouseListener {
                             }
                         }
                     }
-                    System.out.println(players.get(currentPlayer-1).getTerrainCard().getCardType());
-                    System.out.println(minTile.getType());
+                    //System.out.println(players.get(currentPlayer-1).getTerrainCard().getCardType());
+                    //System.out.println(minTile.getType());
+                    if(players.get(currentPlayer-1).getTerrainCard() != null) {
                     if(minTile.getType().equals(players.get(currentPlayer-1).getTerrainCard().getCardType()) && minTile.getSettlement() == null) {
                     	
                     	ArrayList<Tile> temp16 = new ArrayList<>();
@@ -90,23 +92,31 @@ public class EpicMouseListener implements MouseListener {
                     		Settlement s = new Settlement(minTile, players.get(currentPlayer-1));
                             players.get(currentPlayer-1).addHouse(s);
                             minTile.setSettlement(s);
-                            b.repaint();
+                            //b.repaint();
                             //b.DrawSettlementOn(minTile, b.getGraphics());
                             numSettlementsPlaced --;
                     	}
                         
-                    }
+                    }}
+                    
 
                 }
+                b.repaint();
             }
             else {
                 placingSettlements = false;
+                b.setPlacingSettlements(false);
                 //numSettlementsPlaced = 3;
 
                 
                 
                 b.repaint();
             }
+        }
+        if(x >= 1300 && y >= 320 && x <= 1467 && y <= 568 && !(drawnTerrainCard)) {
+        	drawnTerrainCard = true;
+        	b.AddTerrainCard(players.get(currentPlayer-1));
+        	b.repaint();
         }
         if(x >= 604 && y >= 598 && x <= 945 && y <= 729 && numSettlementsPlaced == 0) {
         	currentPlayer++;
@@ -117,29 +127,35 @@ public class EpicMouseListener implements MouseListener {
             b.setCurrentPlayer(currentPlayer);
             b.repaint();
             numSettlementsPlaced = 3;
+            drawnTerrainCard = false;
         }
         if(currentPlayer == 1) {
-            if(x >= 222 && y >= 39 && x <= 337 && y <= 201) {
+            if(x >= 222 && y >= 39 && x <= 337 && y <= 201 && drawnTerrainCard) {
                 placingSettlements = true;
-                System.out.println("hi");
-
+                
+                b.setPlacingSettlements(true);
+                b.repaint();
             }
         }
         if(currentPlayer == 2) {
-            if(x >= 222 && y >= 39 && x <= 337 && y <= 201) {
+            if(x >= 611 && y >= 39 && x <= 726 && y <= 201 && drawnTerrainCard) {
                 placingSettlements = true;
-
+                b.setPlacingSettlements(true);
+                b.repaint();
             }
         }
         if(currentPlayer == 3) {
-            if(x >= 222 && y >= 39 && x <= 337 && y <= 201) {
+            if(x >= 991 && y >= 39 && x <= 1107 && y <= 201 && drawnTerrainCard) {
                 placingSettlements = true;
-
+                b.setPlacingSettlements(true);
+                b.repaint();
             }
         }
         if(currentPlayer == 4) {
-            if(x >= 222 && y >= 39 && x <= 337 && y <= 201) {
+            if(x >= 1373 && y >= 39 && x <= 1489 && y <= 201 && drawnTerrainCard) {
                 placingSettlements = true;
+                b.setPlacingSettlements(true);
+                b.repaint();
 
             }
         }
@@ -186,7 +202,7 @@ public class EpicMouseListener implements MouseListener {
             if(x >= c.getWidth()/2 -162 && y >= c.getHeight()/3 && x <= c.getWidth()/2 - 162 + 325 && y <= c.getHeight()/3 + 125){
                 c.setState("Game");
                 c.repaint();
-                System.out.println("state changed");
+                //System.out.println("state changed");
             }
         }
     }
@@ -205,6 +221,9 @@ public class EpicMouseListener implements MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {
 
+    }
+    public boolean getPlacing() {
+    	return placingSettlements;
     }
 }
 
