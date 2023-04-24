@@ -7,6 +7,7 @@ public class Player {
     private ArrayList<ActionToken> specialActions;
     private boolean isFirstPlayer;
     private TerrainCard terrainCard;
+    private int numHousesLeft;
 
     public Player(String s)
     {
@@ -15,6 +16,7 @@ public class Player {
         houses = new ArrayList<Settlement>();
         specialActions = new ArrayList<ActionToken>();
         isFirstPlayer = false;
+        numHousesLeft = 40;
         //terrainCard = new TerrainCard();
     }
     public void addScore(int a) {
@@ -70,6 +72,12 @@ public class Player {
     }
     public String getName() {
         return playerName;
+    }
+    public void setNumHouses(int t) {
+        numHousesLeft = t;
+    }
+    public int getNumHouses() {
+        return numHousesLeft;
     }
 
 }

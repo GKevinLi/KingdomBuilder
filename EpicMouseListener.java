@@ -115,6 +115,7 @@ public class EpicMouseListener implements MouseListener {
                                 }
                                 //b.DrawSettlementOn(minTile, b.getGraphics());
                                 numSettlementsPlaced --;
+                                players.get(currentPlayer-1).setNumHouses(players.get(currentPlayer-1).getNumHouses()-1);
                     		}
                     	}
                     	else {
@@ -158,6 +159,7 @@ public class EpicMouseListener implements MouseListener {
                             //b.repaint();
                             //b.DrawSettlementOn(minTile, b.getGraphics());
                             numSettlementsPlaced --;
+                            players.get(currentPlayer-1).setNumHouses(players.get(currentPlayer-1).getNumHouses()-1);
                     	}
                         
                     }}

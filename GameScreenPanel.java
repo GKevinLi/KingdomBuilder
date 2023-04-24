@@ -403,13 +403,13 @@ public class GameScreenPanel extends JPanel implements MouseListener {
          g.setFont(new Font("Helvetica", Font.PLAIN, getWidth()/68));
         g.setColor(Color.black);
         g.drawImage(orangeHouse, getWidth()/80 + getWidth()/200, getHeight()/10, getWidth()/45, getHeight()/25, null);
-        g.drawString("= 40", getWidth()/20 + getWidth()/200, (getHeight()/8) + (getHeight()/80));
+        g.drawString("= " + (players.get(0).getNumHouses()), getWidth()/20 + getWidth()/200, (getHeight()/8) + (getHeight()/80));
         g.drawImage(yellowHouse, getWidth()/4 + getWidth()/80 + getWidth()/400, getHeight()/10, getWidth()/45, getHeight()/25, null);
-        g.drawString( "= 40", getWidth()/4 + getWidth()/20 + getWidth()/400, (getHeight()/8) + (getHeight()/80));
+        g.drawString( "= " + (players.get(1).getNumHouses()), getWidth()/4 + getWidth()/20 + getWidth()/400, (getHeight()/8) + (getHeight()/80));
         g.drawImage(greenHouse, getWidth()/2 + getWidth()/80, getHeight()/10, getWidth()/45, getHeight()/25, null);
-        g.drawString("= 40", getWidth()/2 + getWidth()/20, (getHeight()/8) + (getHeight()/80));
+        g.drawString("= " + (players.get(2).getNumHouses()), getWidth()/2 + getWidth()/20, (getHeight()/8) + (getHeight()/80));
         g.drawImage(blueHouse, getWidth() - (getWidth()/4) + getWidth()/100, getHeight()/10, getWidth()/45, getHeight()/25, null);
-        g.drawString("= 40", getWidth() - (getWidth()/4) + getWidth()/100 + getWidth()/32 + getWidth()/100, (getHeight()/8) + (getHeight()/80));
+        g.drawString("= " + (players.get(3).getNumHouses()), getWidth() - (getWidth()/4) + getWidth()/100 + getWidth()/32 + getWidth()/100, (getHeight()/8) + (getHeight()/80));
 
 
         //back of the card
@@ -560,16 +560,16 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
         //FINAL + TEST CODE, DONT MESS WITH IT, I WILL END U
         ArrayList<ActionToken> test = new ArrayList<ActionToken>();
-        test.add(new ActionToken("tower"));
-        test.add(new ActionToken("tavern"));
-        test.add(new ActionToken("field"));
-        test.add(new ActionToken("boat")); //WILL BE REPLACED WITH PLAYER.GETSPECIALACTION()
+        //test.add(new ActionToken("tower"));
+        //test.add(new ActionToken("tavern"));
+        //test.add(new ActionToken("field"));
+        //test.add(new ActionToken("boat")); //WILL BE REPLACED WITH PLAYER.GETSPECIALACTION()
 
         ArrayList<ActionToken> test2 = new ArrayList<ActionToken>();
-        test2.add(new ActionToken("horse"));
-        test2.add(new ActionToken("barn"));
-        test2.add(new ActionToken("oasis"));
-        test2.add(new ActionToken("oracle")); //WILL BE REPLACED WITH PLAYER.GETSPECIALACTION()
+        //test2.add(new ActionToken("horse"));
+        //test2.add(new ActionToken("barn"));
+        //test2.add(new ActionToken("oasis"));
+        //test2.add(new ActionToken("oracle")); //WILL BE REPLACED WITH PLAYER.GETSPECIALACTION()
 
         for(int i = 0; i < test.size(); i++) //PLAYER 1
         {
