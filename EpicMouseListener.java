@@ -186,6 +186,7 @@ public class EpicMouseListener implements MouseListener {
         	b.repaint();
         }
         if(x >= 604 && y >= 598 && x <= 945 && y <= 729 && numSettlementsPlaced == 0) {
+            //hi
             if(players.get(currentPlayer-1).getNumHouses() <= 0) {
                 endGame = true;
             }
