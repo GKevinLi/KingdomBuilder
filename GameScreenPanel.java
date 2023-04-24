@@ -552,25 +552,24 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     {
 //          POSITIONS ARE SAVED ON A GOOGLE DOC 
 	    //testing
-        g.drawImage(boat, getWidth()/90 - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/65), (3*getHeight()/16), null);
-        g.drawImage(boat, getWidth()/90 - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/14), (10*getWidth()/65), (3*getHeight()/16), null);
-        g.drawImage(boat, getWidth()/90 + getWidth()/19 - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/65), (3*getHeight()/16), null);
-        g.drawImage(boat, getWidth()/90 + getWidth()/19 - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/14), (10*getWidth()/65), (3*getHeight()/16), null);
+//         g.drawImage(boat, getWidth()/90 - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/65), (3*getHeight()/16), null);
+//         g.drawImage(boat, getWidth()/90 - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/14), (10*getWidth()/65), (3*getHeight()/16), null);
+//         g.drawImage(boat, getWidth()/90 + getWidth()/19 - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/65), (3*getHeight()/16), null);
+//         g.drawImage(boat, getWidth()/90 + getWidth()/19 - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/14), (10*getWidth()/65), (3*getHeight()/16), null);
 
 
         //FINAL + TEST CODE, DONT MESS WITH IT, I WILL END U
         ArrayList<ActionToken> test = new ArrayList<ActionToken>();
-        /*test.add(new ActionToken("tower"));
+        test.add(new ActionToken("tower"));
         test.add(new ActionToken("tavern"));
         test.add(new ActionToken("field"));
         test.add(new ActionToken("boat")); //WILL BE REPLACED WITH PLAYER.GETSPECIALACTION()
-        */
+
         ArrayList<ActionToken> test2 = new ArrayList<ActionToken>();
-        /*test2.add(new ActionToken("horse"));
+        test2.add(new ActionToken("horse"));
         test2.add(new ActionToken("barn"));
         test2.add(new ActionToken("oasis"));
         test2.add(new ActionToken("oracle")); //WILL BE REPLACED WITH PLAYER.GETSPECIALACTION()
-        */
 
         for(int i = 0; i < test.size(); i++) //PLAYER 1
         {
