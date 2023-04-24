@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class GameScreenPanel extends JPanel implements MouseListener {
     //
-    private BufferedImage background, boat, field, horse, house, oasis, stonehenge, tower, tavern, board1, board2, board3, board4, board5, board6, board7, board8, blueHouse, greenHouse, yellowHouse, orangeHouse, highlight;
+    private BufferedImage background, boat, field, horse, house, oasis, stonehenge, tower, tavern, board1, board2, board3, board4, board5, board6, board7, board8, blueHouse, greenHouse, yellowHouse, orangeHouse, highlight, barnIcon, cityIcon, farmIcon, harborIcon, oasisIcon, oracleIcon, paddockIcon, tavernIcon, towerIcon;
     private BufferedImage cardBack, knights, miners, discoverers, citizens, farmers, fisherman, hermits, worker, grasslandTerrain, flowerTerrain, forestTerrain, canyonTerrain, desertTerrain;
     private int currentPlayer;
     private ArrayList<Player> players;
@@ -30,7 +30,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             {new Tile("Canyon"), new Tile("Flower"), new SpecialTile("Castle"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert")},
             {new Tile("Canyon"), new Tile("Canyon"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Grass"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Desert"), new Tile("Desert")},
             {new Tile("Canyon"), new Tile("Canyon"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Grass"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Canyon")},
-            {new Tile("Water"), new Tile("Water"), new Tile("Grass"), new Tile("Grass"), new Tile("Water"), new Tile("Water"), new SpecialTile("Oasis", new ActionToken("1")), new Tile("Canyon"), new Tile("Mountain"), new Tile("Canyon")},
+            {new Tile("Water"), new Tile("Water"), new Tile("Grass"), new Tile("Grass"), new Tile("Water"), new Tile("Water"), new SpecialTile("Harbor", new ActionToken("Harbor", 1)), new Tile("Canyon"), new Tile("Mountain"), new Tile("Canyon")},
             {new Tile("Water"), new Tile("Desert"), new SpecialTile("Castle"), new Tile("Grass"), new Tile("Water"), new Tile("Mountain"), new Tile("Water"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Canyon")},
             {new Tile("Water"), new Tile("Desert"), new Tile("Desert"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Canyon")},
     };
@@ -40,48 +40,48 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             {new Tile("Water"), new Tile("Water"), new Tile("Flower"), new SpecialTile("Castle"), new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Mountain"), new Tile("Mountain")},
             {new Tile("Flower"), new Tile("Flower"), new Tile("Water"), new Tile("Water"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Canyon")},
             {new Tile("Flower"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Water"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Canyon")},
-            {new Tile("Desert"), new Tile("Flower"), new SpecialTile("Oasis", new ActionToken("1")), new Tile("Canyon"), new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new SpecialTile("Oasis", new ActionToken("1")), new Tile("Canyon"), new Tile("Grass")},
+            {new Tile("Desert"), new Tile("Flower"), new SpecialTile("Tavern", new ActionToken("Tavern", 2)), new Tile("Canyon"), new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new SpecialTile("Tavern", new ActionToken("Tavern", 3)), new Tile("Canyon"), new Tile("Grass")},
             {new Tile("Desert"), new Tile("Desert"), new Tile("Canyon"), new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass")},
             {new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass")},
             {new Tile("Desert"), new Tile("Desert"), new Tile("Water"), new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass")},
     };
     private Tile[][] b3 = {{new Tile("Canyon"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Desert"), new Tile("Desert"), new Tile("Water"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert")},
             {new Tile("Mountain"), new Tile("Mountain"), new Tile("Canyon"), new Tile("Desert"), new Tile("Desert"), new Tile("Water"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert")},
-            {new Tile("Mountain"), new Tile("Mountain"), new Tile("Canyon"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Water"), new Tile("Desert"), new Tile("Desert"), new SpecialTile("Paddock", new ActionToken("2")), new Tile("Flower")},
+            {new Tile("Mountain"), new Tile("Mountain"), new Tile("Canyon"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Water"), new Tile("Desert"), new Tile("Desert"), new SpecialTile("Paddock", new ActionToken("Paddock", 4)), new Tile("Flower")},
             {new Tile("Mountain"), new Tile("Canyon"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Water"), new Tile("Mountain"), new Tile("Desert"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower")},
             {new Tile("Canyon"), new Tile("Canyon"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Canyon"), new Tile("Flower"), new Tile("Flower")},
             {new Tile("Canyon"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Mountain"), new Tile("Flower"), new Tile("Flower")},
-            {new Tile("Canyon"), new SpecialTile("Paddock", new ActionToken("2")), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower")},
+            {new Tile("Canyon"), new SpecialTile("Paddock", new ActionToken("Paddock", 5)), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower")},
             {new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new SpecialTile("Castle"), new Tile("Grass"), new Tile("Flower"), new Tile("Grass"), new Tile("Forest")},
             {new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Forest")},
             {new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest")},
     };
     private Tile[][] b4 = {{new Tile("Desert"), new Tile("Desert"), new Tile("Canyon"), new Tile("Water"), new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass")},
             {new Tile("Desert"), new Tile("Canyon"), new Tile("Water"), new Tile("Flower"), new Tile("Flower"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Grass"), new Tile("Grass")},
-            {new Tile("Desert"), new Tile("Desert"), new Tile("Water"), new Tile("Flower"), new Tile("Flower"), new Tile("Forest"), new Tile("Forest"), new SpecialTile("Paddock", new ActionToken("2")), new Tile("Flower"), new Tile("Grass")},
+            {new Tile("Desert"), new Tile("Desert"), new Tile("Water"), new Tile("Flower"), new Tile("Flower"), new Tile("Forest"), new Tile("Forest"), new SpecialTile("Oasis", new ActionToken("Oasis", 6)), new Tile("Flower"), new Tile("Grass")},
             {new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Flower"), new Tile("Grass"), new Tile("Forest"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower")},
             {new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Flower"), new Tile("Flower")},
             {new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Grass"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Desert"), new Tile("Canyon")},
             {new Tile("Water"), new Tile("Forest"), new Tile("Canyon"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Desert"), new Tile("Canyon")},
-            {new Tile("Water"), new SpecialTile("Castle"), new Tile("Canyon"), new Tile("Flower"), new Tile("Water"), new SpecialTile("Paddock", new ActionToken("2")), new Tile("Desert"), new Tile("Desert"), new Tile("Canyon"), new Tile("Water")},
+            {new Tile("Water"), new SpecialTile("Castle"), new Tile("Canyon"), new Tile("Flower"), new Tile("Water"), new SpecialTile("Oasis", new ActionToken("Oasis", 7)), new Tile("Desert"), new Tile("Desert"), new Tile("Canyon"), new Tile("Water")},
             {new Tile("Water"), new Tile("Water"), new Tile("Canyon"), new Tile("Flower"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Desert"), new Tile("Desert"), new Tile("Water")},
             {new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water")},
     };
     private Tile[][] b5 = {{new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Grass"), new Tile("Mountain"), new Tile("Canyon"), new Tile("Canyon")},
             {new Tile("Forest"), new Tile("Mountain"), new Tile("Forest"), new Tile("Forest"), new Tile("Flower"), new Tile("Grass"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Canyon")},
             {new Tile("Flower"), new Tile("Flower"), new Tile("Forest"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Grass"), new Tile("Grass"), new Tile("Water"), new Tile("Mountain")},
-            {new Tile("Desert"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Water"), new SpecialTile("Paddock", new ActionToken("2")), new Tile("Grass"), new Tile("Water"), new Tile("Mountain"), new Tile("Mountain")},
+            {new Tile("Desert"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Water"), new SpecialTile("Tower", new ActionToken("Tower", 8)), new Tile("Grass"), new Tile("Water"), new Tile("Mountain"), new Tile("Mountain")},
             {new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Flower"), new Tile("Water"), new Tile("Grass"), new Tile("Water"), new Tile("Canyon"), new Tile("Canyon")},
             {new Tile("Desert"), new Tile("Canyon"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Water"), new Tile("Water"), new Tile("Canyon"), new Tile("Grass"), new Tile("Canyon")},
             {new Tile("Desert"), new Tile("Desert"), new Tile("Canyon"), new Tile("Desert"), new Tile("Desert"), new Tile("Water"), new Tile("Flower"), new SpecialTile("Castle"), new Tile("Grass"), new Tile("Canyon")},
-            {new Tile("Canyon"), new Tile("Canyon"),new SpecialTile("Paddock", new ActionToken("2")), new Tile("Desert"), new Tile("Water"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Grass"), new Tile("Grass")},
+            {new Tile("Canyon"), new Tile("Canyon"),new SpecialTile("Tower", new ActionToken("Tower", 9)), new Tile("Desert"), new Tile("Water"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Grass"), new Tile("Grass")},
             {new Tile("Desert"), new Tile("Canyon"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new Tile("Flower"), new Tile("Grass"), new Tile("Grass")},
             {new Tile("Desert"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Grass"), new Tile("Grass"), new Tile("Grass")},
     };
     private Tile[][] b6 = {{new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest")},
             {new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new SpecialTile("Castle"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest")},
             {new Tile("Grass"), new Tile("Flower"), new Tile("Flower"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Grass"), new Tile("Forest")},
-            {new Tile("Flower"), new Tile("Flower"), new Tile("Canyon"), new Tile("Grass"), new Tile("Forest"), new Tile("Water"), new Tile("Flower"), new SpecialTile("Paddock", new ActionToken("2")), new Tile("Forest"), new Tile("Forest")},
+            {new Tile("Flower"), new Tile("Flower"), new Tile("Canyon"), new Tile("Grass"), new Tile("Forest"), new Tile("Water"), new Tile("Flower"), new SpecialTile("Oracle", new ActionToken("Oracle", 10)), new Tile("Forest"), new Tile("Forest")},
             {new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Water"), new Tile("Flower"), new Tile("Flower"), new Tile("Water"), new Tile("Water")},
             {new Tile("Mountain"), new Tile("Mountain"), new Tile("Canyon"), new Tile("Grass"), new Tile("Grass"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Desert"), new Tile("Desert")},
             {new Tile("Canyon"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Mountain"), new Tile("Grass"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Desert"), new Tile("Desert")},
@@ -90,11 +90,11 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             {new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Canyon")},
     };
     private Tile[][] b7 = {{new Tile("Desert"), new Tile("Desert"), new Tile("Canyon"), new Tile("Water"), new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Grass"), new Tile("Grass")},
-            {new Tile("Desert"), new SpecialTile("Castle"), new Tile("Canyon"), new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new SpecialTile("Paddock", new ActionToken("2")), new Tile("Grass"), new Tile("Grass")},
+            {new Tile("Desert"), new SpecialTile("Castle"), new Tile("Canyon"), new Tile("Water"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new SpecialTile("Farm", new ActionToken("Farm", 11)), new Tile("Grass"), new Tile("Grass")},
             {new Tile("Canyon"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Forest"), new Tile("Canyon"), new Tile("Flower"), new Tile("Flower")},
             {new Tile("Canyon"), new Tile("Canyon"), new Tile("Flower"), new Tile("Flower"), new Tile("Water"), new Tile("Desert"), new Tile("Desert"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Flower")},
             {new Tile("Canyon"), new Tile("Grass"), new Tile("Grass"), new Tile("Water"), new Tile("Flower"), new Tile("Flower"), new Tile("Desert"), new Tile("Desert"), new Tile("Canyon"), new Tile("Canyon")},
-            {new Tile("Grass"), new Tile("Grass"), new SpecialTile("Paddock", new ActionToken("2")), new Tile("Flower"), new Tile("Water"), new Tile("Flower"), new Tile("Water"), new Tile("Desert"), new Tile("Desert"), new Tile("Canyon")},
+            {new Tile("Grass"), new Tile("Grass"), new SpecialTile("Farm", new ActionToken("Farm", 12)), new Tile("Flower"), new Tile("Water"), new Tile("Flower"), new Tile("Water"), new Tile("Desert"), new Tile("Desert"), new Tile("Canyon")},
             {new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Flower"), new Tile("Flower"), new Tile("Water"), new Tile("Water"), new Tile("Desert"), new Tile("Desert")},
             {new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Mountain"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Desert"), new Tile("Water")},
             {new Tile("Grass"), new Tile("Mountain"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water"), new Tile("Water")},
@@ -102,11 +102,11 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     };
     private Tile[][] b8 = {{new Tile("Canyon"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert")},
             {new Tile("Canyon"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Desert"), new Tile("Canyon"), new Tile("Desert")},
-            {new Tile("Mountain"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Desert"), new Tile("Mountain"), new Tile("Mountain"),new SpecialTile("Paddock", new ActionToken("2")), new Tile("Desert"), new Tile("Desert"), new Tile("Canyon")},
+            {new Tile("Mountain"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Desert"), new Tile("Mountain"), new Tile("Mountain"),new SpecialTile("Barn", new ActionToken("Barn", 13)), new Tile("Desert"), new Tile("Desert"), new Tile("Canyon")},
             {new Tile("Canyon"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Flower"), new Tile("Flower"), new Tile("Canyon"), new Tile("Canyon")},
             {new Tile("Canyon"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Mountain"), new Tile("Mountain"), new Tile("Water"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower"), new Tile("Canyon")},
             {new Tile("Grass"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Canyon"), new Tile("Mountain"), new Tile("Flower"), new Tile("Flower"), new Tile("Water"), new Tile("Forest"), new Tile("Canyon")},
-            {new Tile("Grass"), new Tile("Grass"), new SpecialTile("Paddock", new ActionToken("2")), new Tile("Forest"), new Tile("Flower"), new Tile("Flower"), new Tile("Water"), new Tile("Flower"), new Tile("Flower"), new Tile("Forest")},
+            {new Tile("Grass"), new Tile("Grass"), new SpecialTile("Barn", new ActionToken("Barn", 14)), new Tile("Forest"), new Tile("Flower"), new Tile("Flower"), new Tile("Water"), new Tile("Flower"), new Tile("Flower"), new Tile("Forest")},
             {new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Flower"), new Tile("Flower"), new Tile("Grass"), new SpecialTile("Castle"), new Tile("Forest"), new Tile("Forest")},
             {new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest")},
             {new Tile("Grass"), new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest")},
@@ -140,14 +140,24 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         //boards.add(new BoardSector())
         try {
             background = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/photo-1434725039720-aaad6dd32dfe.jpg"));
-            boat = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/BOAT (2).png"));
-            field = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/FieldCard.png"));
-            horse = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/horses-removebg-preview.png"));
-            house = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/House.png"));
-            oasis = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/oasis-removebg-preview.png"));
-            stonehenge = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/stonehenge-removebg-preview.png"));
-            tavern = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/TAVERN (2).png"));
-            tower = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/tower-removebg-preview.png"));
+            boat = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-harbor.png"));
+            field = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-farm.png"));
+            horse = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-paddock.png"));
+            house = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-barn.png"));
+            oasis = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-oasis.png"));
+            stonehenge = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-oracle.png"));
+            tavern = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-tavern.png"));
+            tower = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-tower.png"));
+            
+            barnIcon = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-Location-Barn.png"));
+            farmIcon = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-Location-Farm.png"));
+            cityIcon = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-Location-City.png"));
+            harborIcon = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-Location-Harbor.png"));
+            oasisIcon = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-Location-Oasis.png"));
+            oracleIcon = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-Location-Oracle.png"));
+            paddockIcon = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-Location-Paddock.png"));
+            tavernIcon = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-Location-Tavern.png"));
+            towerIcon = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-Location-Tower.png"));
 
             cardBack = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/back of card.png"));
             knights = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KnightsObjective (1).png"));
@@ -263,7 +273,6 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             }
 
         }
-        
 
     }
 
@@ -280,6 +289,10 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         HighlightTiles(g);
         setPositions(g);
         addAllSpecialTiles(g);
+        displayPlayerActionTokens(players.get(0),g, 19, 113);
+        displayPlayerActionTokens(players.get(1),g, 411, 113);
+        displayPlayerActionTokens(players.get(2),g, 789, 113);
+        displayPlayerActionTokens(players.get(3),g, 1171, 113);
         g.drawRect(605, 598, 946-605, 731-598);
         g.setColor(Color.WHITE);
         g.fillRect(605, 598, 946-605, 731-598);
@@ -548,13 +561,25 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 //        g.drawImage(boat, getWidth()/4+getWidth()/60 + (3*getWidth()/19), getHeight()/40 + getHeight()/6, (75*5), (70*5), null);
 
         //testing
-        g.drawImage(field, getWidth()/90, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/60), getHeight()/16, null);
-        g.drawImage(oasis, getWidth()-getWidth()/4+getWidth()/100 - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/63), (3*getHeight()/18), null);
-        g.drawImage(horse, getWidth()/90  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/14), (10*getWidth()/63), (3*getHeight()/18), null);
-        g.drawImage(oasis, getWidth()/90 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/60), (3*getHeight()/19), null);
-        g.drawImage(oasis, getWidth()/90 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/14), (10*getWidth()/60), (3*getHeight()/19), null);
-
-
+        
+        //g.drawImage(oasis, getWidth()-getWidth()/4+getWidth()/100 - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/63), (3*getHeight()/18), null);
+       // g.drawImage(horse, getWidth()/90  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/14), (10*getWidth()/63), (3*getHeight()/18), null);
+        //g.drawImage(oasis, getWidth()/90 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/60), (3*getHeight()/19), null);
+        //g.drawImage(oasis, getWidth()/90 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/14), (10*getWidth()/60), (3*getHeight()/19), null);
+    	//g.drawImage(field, 19, 112, 68, 161, 0, 0,field.getWidth(), field.getHeight(), null);
+    	//g.drawImage(field, 19, 161, 68, 218, 0, 0,field.getWidth(), field.getHeight(), null);
+    	//g.drawImage(field, 79, 112, 133, 161, 0, 0,field.getWidth(), field.getHeight(), null);
+    	//g.drawImage(field, 79, 161, 133, 218, 0, 0,field.getWidth(), field.getHeight(), null);
+    	//g.drawImage(field, 19, 112, (int)(68/1.3), 151/3, null);
+	
+	
+		//g.drawImage(field, 19, 161, (int)(68/1.3), 208/4, null);
+	
+	
+		//g.drawImage(field, 79, 112, 158/3, 151/3, null);
+	
+	
+		//g.drawImage(field, 79, 161, 158/3, 208/4, null);
         //delete this and ill haunt you forever :)
         //USE FOR SIZE REFERENCES (based on 1600 x 829): g.fillRect(x, y, 75, 70);
 //        //player 1
@@ -580,8 +605,8 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
         //FINAL + TEST CODE, DONT MESS WITH IT, I WILL END U
         ArrayList<ActionToken> test = new ArrayList<ActionToken>();
-        test.add(new ActionToken("horse"));
-        test.add(new ActionToken("field")); //WILL BE REPLACED WITH PLAYER.GETSPECIALACTION()
+        //test.add(new ActionToken("horse"));
+        //test.add(new ActionToken("field")); //WILL BE REPLACED WITH PLAYER.GETSPECIALACTION()
 
 //        for(int i = 0; i < test.size(); i++) //PLAYER 1
 //        {
@@ -710,12 +735,54 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             }
         }
     }
+    public void displayPlayerActionTokens(Player p, Graphics g, int x, int y) {
+    	if(p.getSpecialActions() != null) {
+    		if(p.getSpecialActions().size() >= 1) {
+    			g.drawImage(p.getSpecialActions().get(0).getImage(), x, y, x+49, y+49, 0, 0,field.getWidth(), field.getHeight(), null);
+    		}
+    		if(p.getSpecialActions().size() >= 2) {
+    			g.drawImage(p.getSpecialActions().get(1).getImage(), x, y+49, x+49, y+106, 0, 0,field.getWidth(), field.getHeight(), null);
+    		}
+    		if(p.getSpecialActions().size() >= 3) {
+    			
+    			g.drawImage(p.getSpecialActions().get(2).getImage(), x+60, y, x+114, y+49, 0, 0,field.getWidth(), field.getHeight(), null);
+    		}
+    		if(p.getSpecialActions().size() >= 4) {
+    			g.drawImage(p.getSpecialActions().get(3).getImage(), x+60, y+49, x+114, y+106, 0, 0,field.getWidth(), field.getHeight(), null);
+    		}
+    	}
+    	
+    }
     public void addAllSpecialTiles(Graphics g) {
     	for(Tile[] j : combinedBoard) {
             for(Tile i : j) {
             	if(!(i.getType().equals("Water")) && !(i.getType().equals("Grass")) && !(i.getType().equals("Mountain")) && !(i.getType().equals("Desert")) && !(i.getType().equals("Forest")) && !(i.getType().equals("Flower")) && !(i.getType().equals("Canyon"))) {
             		if(i.getType().equals("Castle")) {
-            			g.drawImage(horse, (int)(i.getX() - (double)(getWidth()/160)), (int)(i.getY() - (double)(getHeight()/80)), i.getX() + 300, i.getY() + 300, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+            			g.drawImage(cityIcon, (int)(i.getX() - (double)(getWidth()/72)), (int)(i.getY() - (double)(getHeight()/42)), i.getX() + 210, i.getY() + 210, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+            		}
+            		if(i.getType().equals("Paddock")) {
+            			g.drawImage(paddockIcon, (int)(i.getX() - (double)(getWidth()/72)), (int)(i.getY() - (double)(getHeight()/42)), i.getX() + 210, i.getY() + 210, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+            		}
+            		if(i.getType().equals("Farm")) {
+            			g.drawImage(farmIcon, (int)(i.getX() - (double)(getWidth()/72)), (int)(i.getY() - (double)(getHeight()/42)), i.getX() + 210, i.getY() + 210, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+            		}
+            		if(i.getType().equals("Barn")) {
+            			g.drawImage(barnIcon, (int)(i.getX() - (double)(getWidth()/72)), (int)(i.getY() - (double)(getHeight()/42)), i.getX() + 210, i.getY() + 210, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+            		}
+            		if(i.getType().equals("Harbor")) {
+            			g.drawImage(harborIcon, (int)(i.getX() - (double)(getWidth()/72)), (int)(i.getY() - (double)(getHeight()/42)), i.getX() + 210, i.getY() + 210, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+            		}
+            		if(i.getType().equals("Oasis")) {
+            			g.drawImage(oasisIcon, (int)(i.getX() - (double)(getWidth()/72)), (int)(i.getY() - (double)(getHeight()/42)), i.getX() + 210, i.getY() + 210, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+            		}
+            		if(i.getType().equals("Oracle")) {
+            			g.drawImage(oracleIcon, (int)(i.getX() - (double)(getWidth()/72)), (int)(i.getY() - (double)(getHeight()/42)), i.getX() + 210, i.getY() + 210, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+            		}
+            		if(i.getType().equals("Tavern")) {
+            			g.drawImage(tavernIcon, (int)(i.getX() - (double)(getWidth()/72)), (int)(i.getY() - (double)(getHeight()/42)), i.getX() + 210, i.getY() + 210, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+            		}
+            		if(i.getType().equals("Tower")) {
+            			g.drawImage(towerIcon, (int)(i.getX() - (double)(getWidth()/72)), (int)(i.getY() - (double)(getHeight()/42)), i.getX() + 210, i.getY() + 210, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
             		}
             	}
             }
@@ -770,7 +837,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     }
     public void AddTerrainCard(Player p) {
     	if(d.getDeckSize() == 0) {
-        	System.out.println("ji");
+        	//System.out.println("ji");
         	for(TerrainCard t : discardPile) {
         		d.addCard(t);
         	}
@@ -778,7 +845,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     	TerrainCard t = d.pickRandom();
     	p.setTerrainCard(t);
     	discardPile.add(t);
-    	System.out.println(d.getDeckSize());
+    	//System.out.println(d.getDeckSize());
     }
     
 
