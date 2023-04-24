@@ -552,10 +552,10 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     {
 //          POSITIONS ARE SAVED ON A GOOGLE DOC 
 	    //testing
-        g.drawImage(boat, getWidth()/90 - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/65), (3*getHeight()/16), null);
-        g.drawImage(boat, getWidth()/90 - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/14), (10*getWidth()/65), (3*getHeight()/16), null);
-        g.drawImage(boat, getWidth()/90 + getWidth()/19 - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/65), (3*getHeight()/16), null);
-        g.drawImage(boat, getWidth()/90 + getWidth()/19 - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/14), (10*getWidth()/65), (3*getHeight()/16), null);
+//         g.drawImage(boat, getWidth()/90 - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/65), (3*getHeight()/16), null);
+//         g.drawImage(boat, getWidth()/90 - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/14), (10*getWidth()/65), (3*getHeight()/16), null);
+//         g.drawImage(boat, getWidth()/90 + getWidth()/19 - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/65), (3*getHeight()/16), null);
+//         g.drawImage(boat, getWidth()/90 + getWidth()/19 - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/14), (10*getWidth()/65), (3*getHeight()/16), null);
 
 
         //FINAL + TEST CODE, DONT MESS WITH IT, I WILL END U
