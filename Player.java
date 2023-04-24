@@ -55,6 +55,19 @@ public class Player {
         }
         return t;
     }
+    public ArrayList<Tile> getRawAdjacentTiles() {
+        ArrayList<Tile> t = new ArrayList<>();
+        for(Settlement s : houses) {
+            ArrayList<Tile> adj = s.getPlacedOn().getAdjacentTiles();
+            for(Tile i : adj) {
+                if(!(i.getSettlement() != null)) {
+                	
+                    t.add(i);
+                }
+            }
+        }
+        return t;
+    }
     public String getName() {
         return playerName;
     }
