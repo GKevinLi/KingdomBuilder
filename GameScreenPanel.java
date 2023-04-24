@@ -293,11 +293,11 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         displayPlayerActionTokens(players.get(1),g, 411, 113);
         displayPlayerActionTokens(players.get(2),g, 789, 113);
         displayPlayerActionTokens(players.get(3),g, 1171, 113);
-        g.drawRect(605, 598, 946-605, 731-598);
-        g.setColor(Color.WHITE);
-        g.fillRect(605, 598, 946-605, 731-598);
-        g.setColor(Color.BLACK);
-        g.drawString("End Turn", 700, 700);
+        g.setColor(new Color(181, 155, 85));
+        g.fillRect((10*getWidth()/24), getHeight() - getHeight()/6, getWidth()/5, (10*getHeight()/76));
+        g.setColor(Color.black);
+        g.setFont(new Font("Helvetica", Font.PLAIN, getHeight()/15));
+        g.drawString("End Turn", (10*getWidth()/23), getHeight() - getHeight()/11);
         
 
         //drawObjective(g);
