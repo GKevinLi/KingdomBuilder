@@ -5,6 +5,7 @@ public class EpicMouseListener implements MouseListener {
     private GameScreenPanel b;
     private StartScreenPanel c;
     private ArrayList<Player> players;
+    private boolean endGame;
     private boolean placingSettlements;
     private boolean drawnTerrainCard = false;
     private int currentPlayer;
@@ -18,6 +19,7 @@ public class EpicMouseListener implements MouseListener {
         players = a.getPlayers();
         currentPlayer = a.getCurrentPlayer();
         state = c.getState();
+        endGame = false;
     }
 
     public void mouseClicked(MouseEvent e) {
@@ -184,8 +186,14 @@ public class EpicMouseListener implements MouseListener {
         	b.repaint();
         }
         if(x >= 604 && y >= 598 && x <= 945 && y <= 729 && numSettlementsPlaced == 0) {
+            if(players.get(currentPlayer-1).getNumHouses() <= 0) {
+                endGame = true;
+            }
         	currentPlayer++;
             currentPlayer = currentPlayer % 5;
+            if(currentPlayer == 0 && endGame) {
+                b.setState("End");
+            }
             if(currentPlayer == 0) {
             	currentPlayer++;
             }

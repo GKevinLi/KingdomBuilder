@@ -23,6 +23,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     private ObjectiveCard ob2;
     private ObjectiveCard ob3;
     private FullBoard b;
+    private String state;
     private Tile[][] b1 = {{new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Flower")},
             {new Tile("Grass"), new Tile("Flower"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Flower"), new Tile("Flower")},
             {new Tile("Grass"), new Tile("Flower"), new Tile("Flower"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Grass"), new Tile("Flower"), new Tile("Flower"), new Tile("Flower")},
@@ -118,7 +119,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
         //needs to be updated with turn logic is done
 
-
+        state = "Game";
         boards = new ArrayList<>();
         b = new FullBoard();
         d = new TerrainDeck();
@@ -278,26 +279,30 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
     public void paint(Graphics g)
     {
-
-        g.drawImage(background, 0, 0, getWidth(), getHeight(), null);
-        drawGameScreen(g);
-        drawMap(g);
-        drawObjective(g);
-        drawActionTokens(g);
-        drawTerrainCards(g);
-        DrawAllSettlements(g);
-        HighlightTiles(g);
-        setPositions(g);
-        addAllSpecialTiles(g);
-        displayPlayerActionTokens(players.get(0),g, 19, 113);
-        displayPlayerActionTokens(players.get(1),g, 411, 113);
-        displayPlayerActionTokens(players.get(2),g, 789, 113);
-        displayPlayerActionTokens(players.get(3),g, 1171, 113);
-        g.drawRect(605, 598, 946-605, 731-598);
-        g.setColor(Color.WHITE);
-        g.fillRect(605, 598, 946-605, 731-598);
-        g.setColor(Color.BLACK);
-        g.drawString("End Turn", 700, 700);
+        if(state.equals("Game")) {
+            g.drawImage(background, 0, 0, getWidth(), getHeight(), null);
+            drawGameScreen(g);
+            drawMap(g);
+            drawObjective(g);
+            drawActionTokens(g);
+            drawTerrainCards(g);
+            DrawAllSettlements(g);
+            HighlightTiles(g);
+            setPositions(g);
+            addAllSpecialTiles(g);
+            displayPlayerActionTokens(players.get(0), g, 19, 113);
+            displayPlayerActionTokens(players.get(1), g, 411, 113);
+            displayPlayerActionTokens(players.get(2), g, 789, 113);
+            displayPlayerActionTokens(players.get(3), g, 1171, 113);
+            g.drawRect(605, 598, 946 - 605, 731 - 598);
+            g.setColor(Color.WHITE);
+            g.fillRect(605, 598, 946 - 605, 731 - 598);
+            g.setColor(Color.BLACK);
+            g.drawString("End Turn", 700, 700);
+        }
+        else if(state.equals("End")) {
+            g.drawImage(background, 0, 0, getWidth(), getHeight(), null);
+        }
         
 
         //drawObjective(g);
@@ -1013,6 +1018,10 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     	p.setTerrainCard(t);
     	discardPile.add(t);
     	//System.out.println(d.getDeckSize());
+    }
+    public void setState(String s) {
+        state = s;
+        repaint();
     }
     
 
