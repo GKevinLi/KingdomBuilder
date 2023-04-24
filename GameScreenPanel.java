@@ -119,7 +119,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
         //needs to be updated with turn logic is done
 
-        state = "Game";
+
         boards = new ArrayList<>();
         b = new FullBoard();
         d = new TerrainDeck();
@@ -1023,6 +1023,6 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         state = s;
         repaint();
     }
-    
+
 
 }
