@@ -550,71 +550,238 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
     public void drawActionTokens(Graphics g)
     {
-//          POSITIONS ARE SAVED ON A GOOGLE DOC
-//        g.drawImage(horse, getWidth()/90 - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/63), (3*getHeight()/18), null); //paddock - WORKS
-//        g.drawImage(field, getWidth()/90, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/60), getHeight()/16, null); //farm - WORKS
-//        g.drawImage(oasis, getWidth()/90 + (2*getWidth()/19), getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83), null); //oasis - DOES NOT WORK
-//        g.drawImage(stonehenge, getWidth()/90 + (3*getWidth()/19), getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83), null); //oracle - DOES WORK
-//        g.drawImage(tower, getWidth()/4+getWidth()/60, getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83), null);
-//        g.drawImage(tavern, getWidth()/4+getWidth()/60 + getWidth()/19, getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83), null);
-//        g.drawImage(house, getWidth()/4+getWidth()/60 + (2*getWidth()/19), getHeight()/40 + getHeight()/6, (3*getWidth()/64), (7*getHeight()/83), null); //barn - WORKS
-//        g.drawImage(boat, getWidth()/4+getWidth()/60 + (3*getWidth()/19), getHeight()/40 + getHeight()/6, (75*5), (70*5), null);
+//          POSITIONS ARE SAVED ON A GOOGLE DOC 
+	    //testing
+        g.drawImage(boat, getWidth()/90 - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/65), (3*getHeight()/16), null);
+        g.drawImage(boat, getWidth()/90 - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/14), (10*getWidth()/65), (3*getHeight()/16), null);
+        g.drawImage(boat, getWidth()/90 + getWidth()/19 - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/65), (3*getHeight()/16), null);
+        g.drawImage(boat, getWidth()/90 + getWidth()/19 - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/14), (10*getWidth()/65), (3*getHeight()/16), null);
 
-        //testing
-        
-        //g.drawImage(oasis, getWidth()-getWidth()/4+getWidth()/100 - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/63), (3*getHeight()/18), null);
-       // g.drawImage(horse, getWidth()/90  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/14), (10*getWidth()/63), (3*getHeight()/18), null);
-        //g.drawImage(oasis, getWidth()/90 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/60), (3*getHeight()/19), null);
-        //g.drawImage(oasis, getWidth()/90 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/14), (10*getWidth()/60), (3*getHeight()/19), null);
-    	//g.drawImage(field, 19, 112, 68, 161, 0, 0,field.getWidth(), field.getHeight(), null);
-    	//g.drawImage(field, 19, 161, 68, 218, 0, 0,field.getWidth(), field.getHeight(), null);
-    	//g.drawImage(field, 79, 112, 133, 161, 0, 0,field.getWidth(), field.getHeight(), null);
-    	//g.drawImage(field, 79, 161, 133, 218, 0, 0,field.getWidth(), field.getHeight(), null);
-    	//g.drawImage(field, 19, 112, (int)(68/1.3), 151/3, null);
-	
-	
-		//g.drawImage(field, 19, 161, (int)(68/1.3), 208/4, null);
-	
-	
-		//g.drawImage(field, 79, 112, 158/3, 151/3, null);
-	
-	
-		//g.drawImage(field, 79, 161, 158/3, 208/4, null);
-        //delete this and ill haunt you forever :)
-        //USE FOR SIZE REFERENCES (based on 1600 x 829): g.fillRect(x, y, 75, 70);
-//        //player 1
-//          g.fillRect(getWidth()/90, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-//          g.fillRect(getWidth()/90, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-//          g.fillRect(getWidth()/90 + getWidth()/19, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-//          g.fillRect(getWidth()/90 + getWidth()/19, getHeight()/40 +(3*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-//        //player 2
-//        g.fillRect(getWidth()/4+getWidth()/60, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-//        g.fillRect(getWidth()/4+getWidth()/60, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-//        g.fillRect(getWidth()/4+getWidth()/60 + getWidth()/19, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-//        g.fillRect(getWidth()/4+getWidth()/60 + getWidth()/19, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-//        //player 3
-//        g.fillRect(getWidth()/2+getWidth()/85, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-//        g.fillRect(getWidth()/2+getWidth()/85, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-//        g.fillRect(getWidth()/2+getWidth()/85 + getWidth()/19, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-//        g.fillRect(getWidth()/2+getWidth()/85 + getWidth()/19, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-//        //player 4
-//        g.fillRect(getWidth()-getWidth()/4+getWidth()/100, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-//        g.fillRect(getWidth()-getWidth()/4+getWidth()/100, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-//        g.fillRect(getWidth()-getWidth()/4+getWidth()/100 + getWidth()/19, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/63), getHeight()/17);
-//        g.fillRect(getWidth()-getWidth()/4+getWidth()/100 + getWidth()/19, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/63), getHeight()/17);
 
         //FINAL + TEST CODE, DONT MESS WITH IT, I WILL END U
         ArrayList<ActionToken> test = new ArrayList<ActionToken>();
-        //test.add(new ActionToken("horse"));
-        //test.add(new ActionToken("field")); //WILL BE REPLACED WITH PLAYER.GETSPECIALACTION()
+        test.add(new ActionToken("tower"));
+        test.add(new ActionToken("tavern"));
+        test.add(new ActionToken("field"));
+        test.add(new ActionToken("boat")); //WILL BE REPLACED WITH PLAYER.GETSPECIALACTION()
 
-//        for(int i = 0; i < test.size(); i++) //PLAYER 1
-//        {
-//            if(test.get(i).getAction().equals("field"))
-//            {
-//                if()
-//            }
-//        }
+        ArrayList<ActionToken> test2 = new ArrayList<ActionToken>();
+        test2.add(new ActionToken("horse"));
+        test2.add(new ActionToken("barn"));
+        test2.add(new ActionToken("oasis"));
+        test2.add(new ActionToken("oracle")); //WILL BE REPLACED WITH PLAYER.GETSPECIALACTION()
+
+        for(int i = 0; i < test.size(); i++) //PLAYER 1
+        {
+            if(test.get(i).getAction().equals("horse"))
+            {
+                if(i == 0) { g.drawImage(horse, getWidth()/90 - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/63), (3*getHeight()/18), null);}
+                else if(i == 1) { g.drawImage(horse, getWidth()/90  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/14), (10*getWidth()/63), (3*getHeight()/18), null); }
+                else if(i == 2) { g.drawImage(horse, getWidth()/90 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/63), (3*getHeight()/18), null); }
+                else if(i == 3) { g.drawImage(horse, getWidth()/90 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 +(2*getHeight()/14), (10*getWidth()/63), (3*getHeight()/18), null); }
+            }
+            else if(test.get(i).getAction().equals("field"))
+            {
+                if(i == 0) { g.drawImage(field, getWidth()/90, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/60), getHeight()/16, null);}
+                else if(i == 1) { g.drawImage(field, getWidth()/90, getHeight()/40 + (3*getHeight()/15),(2*getWidth()/60), getHeight()/16, null); }
+                else if(i == 2) { g.drawImage(field, getWidth()/90 + getWidth()/19, getHeight()/40 + (2*getHeight()/15),(2*getWidth()/60), getHeight()/16, null); }
+                else if(i == 3) { g.drawImage(field, getWidth()/90 + getWidth()/19, getHeight()/40 +(3*getHeight()/15), (2*getWidth()/60), getHeight()/16, null); }
+            }
+            else if(test.get(i).getAction().equals("oasis"))
+            {
+                if(i==0) {g.drawImage(oasis, getWidth()/90  - (4*getWidth()/63), getHeight()/40 + (getHeight()/12), (10*getWidth()/62), (3*getHeight()/21), null);}
+                else if(i==1) {g.drawImage(oasis, getWidth()/90  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (10*getWidth()/62), (3*getHeight()/21), null);}
+                else if(i==2) {g.drawImage(oasis, getWidth()/90 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (getHeight()/12), (10*getWidth()/62), (3*getHeight()/21), null);}
+                else if(i==3) {g.drawImage(oasis, getWidth()/90 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (10*getWidth()/62), (3*getHeight()/21), null);}
+            }
+            else if(test.get(i).getAction().equals("oracle"))
+            {
+                if(i==0) {g.drawImage(stonehenge, getWidth()/90  - (4*getWidth()/63), getHeight()/40 + (getHeight()/12), (10*getWidth()/61), (3*getHeight()/20), null);}
+                else if(i==1) {g.drawImage(stonehenge, getWidth()/90  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (10*getWidth()/61), (3*getHeight()/20), null);}
+                else if(i==2) {g.drawImage(stonehenge, getWidth()/90 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (getHeight()/12), (10*getWidth()/61), (3*getHeight()/20), null);}
+                else if(i==3) {g.drawImage(stonehenge, getWidth()/90 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (10*getWidth()/61), (3*getHeight()/20), null);}
+            }
+            else if(test.get(i).getAction().equals("tower"))
+            {
+                if(i==0) {g.drawImage(tower, getWidth()/90  - (4*getWidth()/63), getHeight()/40 + (getHeight()/12), (10*getWidth()/60), (3*getHeight()/21), null);}
+                else if(i==1) {g.drawImage(tower, getWidth()/90  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (10*getWidth()/61), (3*getHeight()/21), null);}
+                else if(i==2) {g.drawImage(tower, getWidth()/90 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (getHeight()/12), (10*getWidth()/61), (3*getHeight()/21), null);}
+                else if(i==3) {g.drawImage(tower, getWidth()/90 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (10*getWidth()/61), (3*getHeight()/21), null); }
+            }
+            else if(test.get(i).getAction().equals("tavern"))
+            {
+                if(i==0) {g.drawImage(tavern, getWidth()/90  - (2*getWidth()/63), getHeight()/40 + (getHeight()/12), (6*getWidth()/59), (3*getHeight()/19), null);}
+                else if(i==1) {g.drawImage(tavern, getWidth()/90  - (2*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (6*getWidth()/59), (3*getHeight()/19), null);}
+                else if(i==2) {g.drawImage(tavern, getWidth()/90 + getWidth()/19  - (2*getWidth()/63), getHeight()/40 + (getHeight()/12), (6*getWidth()/59), (3*getHeight()/19), null);}
+                else if(i==3) {g.drawImage(tavern, getWidth()/90 + getWidth()/19  - (2*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (6*getWidth()/59), (3*getHeight()/19), null); }
+            }
+            else if(test.get(i).getAction().equals("barn"))
+            {
+                if(i==0) {g.drawImage(house, getWidth()/86, getHeight()/40 + (2*getHeight()/16), (2*getWidth()/60), getHeight()/16, null); }
+                else if(i==1) {g.drawImage(house, getWidth()/86, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/60), getHeight()/16, null);}
+                else if(i==2) {g.drawImage(house, getWidth()/86 + getWidth()/19, getHeight()/40 + (2*getHeight()/16), (2*getWidth()/60), getHeight()/16, null);}
+                else if(i==3) {g.drawImage(house, getWidth()/86 + getWidth()/19, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/60), getHeight()/16, null);}
+            }
+        }
+
+        for(int i = 0; i < test.size(); i++) //PLAYER 2
+        {
+            if(test.get(i).getAction().equals("horse"))
+            {
+                if(i == 0) { g.drawImage(horse, getWidth()/4+getWidth()/60 - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/63), (3*getHeight()/18), null);}
+                else if(i == 1) { g.drawImage(horse, getWidth()/4+getWidth()/60  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/14), (10*getWidth()/63), (3*getHeight()/18), null);}
+                else if(i == 2) { g.drawImage(horse, getWidth()/4+getWidth()/60 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/63), (3*getHeight()/18), null);}
+                else if(i == 3) { g.drawImage(horse, getWidth()/4+getWidth()/60 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 +(2*getHeight()/14), (10*getWidth()/63), (3*getHeight()/18), null); }
+            }
+            else if(test.get(i).getAction().equals("field"))
+            {
+                if(i == 0) { g.drawImage(field, getWidth()/4+getWidth()/60, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/60), getHeight()/16, null);}
+                else if(i==1) { g.drawImage(field, getWidth()/4+getWidth()/60, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/60), getHeight()/16, null);}
+                else if(i==2) { g.drawImage(field, getWidth()/4+getWidth()/60 + getWidth()/19, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/60), getHeight()/16, null);}
+                else if(i==3) { g.drawImage(field, getWidth()/4+getWidth()/60 + getWidth()/19, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/60), getHeight()/16, null);}
+            }
+            else if(test.get(i).getAction().equals("oasis"))
+            {
+                if (i==0) { g.drawImage(oasis, getWidth()/4+getWidth()/60  - (4*getWidth()/63), getHeight()/40 + (getHeight()/12), (10*getWidth()/62), (3*getHeight()/21), null); }
+                else if(i==1) {g.drawImage(oasis, getWidth()/4+getWidth()/60  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (10*getWidth()/62), (3*getHeight()/21), null);}
+                else if(i==2) {g.drawImage(oasis, getWidth()/4+getWidth()/60 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (getHeight()/12), (10*getWidth()/62), (3*getHeight()/21), null); }
+                else if(i==3) {g.drawImage(oasis, getWidth()/4+getWidth()/60 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (10*getWidth()/62), (3*getHeight()/21), null);}
+            }
+            else if(test.get(i).getAction().equals("oracle"))
+            {
+                if(i==0) {g.drawImage(stonehenge, getWidth()/4+getWidth()/60  - (4*getWidth()/63), getHeight()/40 + (getHeight()/12), (10*getWidth()/61), (3*getHeight()/20), null);}
+                else if(i==1) {g.drawImage(stonehenge, getWidth()/4+getWidth()/60  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (10*getWidth()/61), (3*getHeight()/20), null);}
+                else if(i==2) {g.drawImage(stonehenge, getWidth()/4+getWidth()/60 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (getHeight()/12), (10*getWidth()/61), (3*getHeight()/20), null);}
+                else if(i==3) {g.drawImage(stonehenge, getWidth()/4+getWidth()/60 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (10*getWidth()/61), (3*getHeight()/20), null);}
+            }
+            else if(test.get(i).getAction().equals("tower"))
+            {
+                if(i==0) {g.drawImage(tower, getWidth()/4+getWidth()/60  - (4*getWidth()/63), getHeight()/40 + (getHeight()/12), (10*getWidth()/60), (3*getHeight()/21), null);}
+                else if(i==1) {g.drawImage(tower, getWidth()/4+getWidth()/60  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (10*getWidth()/61), (3*getHeight()/21), null);}
+                else if(i==2) {g.drawImage(tower, getWidth()/4+getWidth()/60 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (getHeight()/12), (10*getWidth()/61), (3*getHeight()/21), null);}
+                else if(i==3) {g.drawImage(tower, getWidth()/4+getWidth()/60 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (10*getWidth()/61), (3*getHeight()/21), null); }
+            }
+            else if(test.get(i).getAction().equals("tavern"))
+            {
+                if(i==0) {g.drawImage(tavern, getWidth()/4+getWidth()/60  - (2*getWidth()/63), getHeight()/40 + (getHeight()/12), (6*getWidth()/59), (3*getHeight()/19), null);}
+                else if(i==1) {g.drawImage(tavern, getWidth()/4+getWidth()/60  - (2*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (6*getWidth()/59), (3*getHeight()/19), null);}
+                else if(i==2) {g.drawImage(tavern, getWidth()/4+getWidth()/60 + getWidth()/19  - (2*getWidth()/63), getHeight()/40 + (getHeight()/12), (6*getWidth()/59), (3*getHeight()/19), null);}
+                else if(i==3) {g.drawImage(tavern, getWidth()/4+getWidth()/60 + getWidth()/19  - (2*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (6*getWidth()/59), (3*getHeight()/19), null); }
+            }
+            else if(test.get(i).getAction().equals("barn"))
+            {
+                if(i==0) {g.drawImage(house, getWidth()/4+getWidth()/58, getHeight()/40 + (2*getHeight()/16), (2*getWidth()/60), getHeight()/16, null);}
+                else if(i==1) {g.drawImage(house, getWidth()/4+getWidth()/58, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/60), getHeight()/16, null);}
+                else if(i==2) {g.drawImage(house, getWidth()/4+getWidth()/58 + getWidth()/19, getHeight()/40 + (2*getHeight()/16), (2*getWidth()/60), getHeight()/16, null);}
+                else if(i==3) {g.drawImage(house, getWidth()/4+getWidth()/58 + getWidth()/19, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/60), getHeight()/16, null);}
+            }
+        }
+
+        for(int i = 0; i < test2.size(); i++) //PLAYER 3
+        {
+            if(test2.get(i).getAction().equals("horse"))
+            {
+                if(i == 0) { g.drawImage(horse, getWidth()/2+getWidth()/85 - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/63), (3*getHeight()/18), null);}
+                else if(i == 1) { g.drawImage(horse, getWidth()/2+getWidth()/85  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/14), (10*getWidth()/63), (3*getHeight()/18), null);}
+                else if(i == 2) { g.drawImage(horse, getWidth()/2+getWidth()/85 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/63), (3*getHeight()/18), null);}
+                else if(i == 3) { g.drawImage(horse, getWidth()/2+getWidth()/85 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 +(2*getHeight()/14), (10*getWidth()/63), (3*getHeight()/18), null); }
+            }
+            else if(test2.get(i).getAction().equals("field"))
+            {
+                if(i == 0) { g.drawImage(field, getWidth()/2+getWidth()/85, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/60), getHeight()/16, null);}
+                else if(i==1) { g.drawImage(field, getWidth()/2+getWidth()/85, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/60), getHeight()/16, null);}
+                else if(i==2) { g.drawImage(field, getWidth()/2+getWidth()/85 + getWidth()/19, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/60), getHeight()/16, null);}
+                else if(i==3) { g.drawImage(field, getWidth()/2+getWidth()/85 + getWidth()/19, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/60), getHeight()/16, null);}
+            }
+            else if(test2.get(i).getAction().equals("oasis"))
+            {
+                if(i==0) {g.drawImage(oasis, getWidth()/2+getWidth()/85  - (4*getWidth()/63), getHeight()/40 + (getHeight()/12), (10*getWidth()/62), (3*getHeight()/21), null);}
+                else if(i==1) {g.drawImage(oasis, getWidth()/2+getWidth()/85  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (10*getWidth()/62), (3*getHeight()/21), null);}
+                else if(i==2) {g.drawImage(oasis, getWidth()/2+getWidth()/85 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (getHeight()/12), (10*getWidth()/62), (3*getHeight()/21), null);}
+                else if(i==3) {g.drawImage(oasis, getWidth()/2+getWidth()/85 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (10*getWidth()/62), (3*getHeight()/21), null);}
+            }
+            else if(test2.get(i).getAction().equals("oracle"))
+            {
+                if(i==0) {g.drawImage(stonehenge, getWidth()/2+getWidth()/85  - (4*getWidth()/63), getHeight()/40 + (getHeight()/12), (10*getWidth()/61), (3*getHeight()/20), null);}
+                else if(i==1) {g.drawImage(stonehenge, getWidth()/2+getWidth()/85  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (10*getWidth()/61), (3*getHeight()/20), null);}
+                else if(i==2) {g.drawImage(stonehenge, getWidth()/2+getWidth()/85 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (getHeight()/12), (10*getWidth()/61), (3*getHeight()/20), null);}
+                else if(i==3) {g.drawImage(stonehenge, getWidth()/2+getWidth()/85 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (10*getWidth()/61), (3*getHeight()/20), null);}
+            }
+            else if(test2.get(i).getAction().equals("tower"))
+            {
+                if(i==0) {g.drawImage(tower, getWidth()/2+getWidth()/85  - (4*getWidth()/63), getHeight()/40 + (getHeight()/12), (10*getWidth()/60), (3*getHeight()/21), null);}
+                else if(i==1) {g.drawImage(tower, getWidth()/2+getWidth()/85  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (10*getWidth()/61), (3*getHeight()/21), null);}
+                else if(i==2) {g.drawImage(tower, getWidth()/2+getWidth()/85 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (getHeight()/12), (10*getWidth()/61), (3*getHeight()/21), null);}
+                else if(i==3) {g.drawImage(tower, getWidth()/2+getWidth()/85 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (10*getWidth()/61), (3*getHeight()/21), null); }
+            }
+            else if(test2.get(i).getAction().equals("tavern"))
+            {
+                if(i==0) {g.drawImage(tavern, getWidth()/2+getWidth()/85  - (2*getWidth()/63), getHeight()/40 + (getHeight()/12), (6*getWidth()/59), (3*getHeight()/19), null);}
+                else if(i==1) {g.drawImage(tavern, getWidth()/4+getWidth()/60  - (2*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (6*getWidth()/59), (3*getHeight()/19), null);}
+                else if(i==2) {g.drawImage(tavern, getWidth()/2+getWidth()/85 + getWidth()/19  - (2*getWidth()/63), getHeight()/40 + (getHeight()/12), (6*getWidth()/59), (3*getHeight()/19), null);}
+                else if(i==3) {g.drawImage(tavern, getWidth()/2+getWidth()/85 + getWidth()/19  - (2*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (6*getWidth()/59), (3*getHeight()/19), null); }
+            }
+            else if(test2.get(i).getAction().equals("barn"))
+            {
+                if(i==0) {g.drawImage(house, getWidth()/2+getWidth()/85, getHeight()/40 + (2*getHeight()/16), (2*getWidth()/60), getHeight()/16, null);}
+                else if(i==1) {g.drawImage(house, getWidth()/2+getWidth()/85, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/60), getHeight()/16, null);}
+                else if(i==2) {g.drawImage(house, getWidth()/2+getWidth()/85 + getWidth()/19, getHeight()/40 + (2*getHeight()/16), (2*getWidth()/60), getHeight()/16, null);}
+                else if(i==3) {g.drawImage(house, getWidth()/2+getWidth()/85 + getWidth()/19, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/60), getHeight()/16, null);}
+            }
+        }
+
+        for(int i = 0; i < test2.size(); i++) //PLAYER 4
+        {
+            if(test2.get(i).getAction().equals("horse"))
+            {
+                if(i == 0) { g.drawImage(horse, getWidth()-getWidth()/4+getWidth()/100 - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/63), (3*getHeight()/18), null);}
+                else if(i == 1) { g.drawImage(horse, getWidth()-getWidth()/4+getWidth()/100  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/14), (10*getWidth()/63), (3*getHeight()/18), null);}
+                else if(i == 2) { g.drawImage(horse, getWidth()-getWidth()/4+getWidth()/100 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/63), (3*getHeight()/18), null);}
+                else if(i == 3) { g.drawImage(horse, getWidth()-getWidth()/4+getWidth()/100 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 +(2*getHeight()/14), (10*getWidth()/63), (3*getHeight()/18), null); }
+            }
+            else if(test2.get(i).getAction().equals("field"))
+            {
+                if(i == 0) { g.drawImage(field, getWidth()-getWidth()/4+getWidth()/100, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/60), getHeight()/16, null);}
+                else if(i==1) { g.drawImage(field, getWidth()-getWidth()/4+getWidth()/100, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/60), getHeight()/16, null);}
+                else if(i==2) { g.drawImage(field, getWidth()-getWidth()/4+getWidth()/100 + getWidth()/19, getHeight()/40 + (2*getHeight()/15), (2*getWidth()/60), getHeight()/16, null);}
+                else if(i==3) { g.drawImage(field, getWidth()-getWidth()/4+getWidth()/100 + getWidth()/19, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/60), getHeight()/16, null);}
+            }
+            else if(test2.get(i).getAction().equals("oasis"))
+            {
+                if(i==0) {g.drawImage(oasis, getWidth()-getWidth()/4+getWidth()/100  - (4*getWidth()/63), getHeight()/40 + (getHeight()/12), (10*getWidth()/62), (3*getHeight()/21), null);}
+                else if(i==1) {g.drawImage(oasis, getWidth()-getWidth()/4+getWidth()/100  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (10*getWidth()/62), (3*getHeight()/21), null);}
+                else if(i==2) {g.drawImage(oasis, getWidth()-getWidth()/4+getWidth()/100 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (getHeight()/12), (10*getWidth()/62), (3*getHeight()/21), null);}
+                else if(i==3) {g.drawImage(oasis, getWidth()-getWidth()/4+getWidth()/100 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (10*getWidth()/62), (3*getHeight()/21), null);}
+            }
+            else if(test2.get(i).getAction().equals("oracle"))
+            {
+                if(i==0) {g.drawImage(stonehenge, getWidth()-getWidth()/4+getWidth()/100  - (4*getWidth()/63), getHeight()/40 + (getHeight()/12), (10*getWidth()/61), (3*getHeight()/20), null);}
+                else if(i==1) {g.drawImage(stonehenge, getWidth()-getWidth()/4+getWidth()/100  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (10*getWidth()/61), (3*getHeight()/20), null);}
+                else if(i==2) {g.drawImage(stonehenge, getWidth()-getWidth()/4+getWidth()/100 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (getHeight()/12), (10*getWidth()/61), (3*getHeight()/20), null);}
+                else if(i==3) {g.drawImage(stonehenge, getWidth()-getWidth()/4+getWidth()/100 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (10*getWidth()/61), (3*getHeight()/20), null);}
+            }
+            else if(test2.get(i).getAction().equals("tower"))
+            {
+                if(i==0) {g.drawImage(tower, getWidth()-getWidth()/4+getWidth()/100  - (4*getWidth()/63), getHeight()/40 + (getHeight()/12), (10*getWidth()/60), (3*getHeight()/21), null);}
+                else if(i==1) {g.drawImage(tower, getWidth()-getWidth()/4+getWidth()/100  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (10*getWidth()/61), (3*getHeight()/21), null);}
+                else if(i==2) {g.drawImage(tower, getWidth()-getWidth()/4+getWidth()/100 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (getHeight()/12), (10*getWidth()/61), (3*getHeight()/21), null);}
+                else if(i==3) {g.drawImage(tower, getWidth()-getWidth()/4+getWidth()/100 + getWidth()/19  - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (10*getWidth()/61), (3*getHeight()/21), null); }
+            }
+            else if(test2.get(i).getAction().equals("tavern"))
+            {
+                if(i==0) {g.drawImage(tavern, getWidth()-getWidth()/4+getWidth()/100  - (2*getWidth()/63), getHeight()/40 + (getHeight()/12), (6*getWidth()/59), (3*getHeight()/19), null);}
+                else if(i==1) {g.drawImage(tavern, getWidth()-getWidth()/4+getWidth()/100  - (2*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (6*getWidth()/59), (3*getHeight()/19), null);}
+                else if(i==2) {g.drawImage(tavern, getWidth()-getWidth()/4+getWidth()/100 + getWidth()/19  - (2*getWidth()/63), getHeight()/40 + (getHeight()/12), (6*getWidth()/59), (3*getHeight()/19), null);}
+                else if(i==3) {g.drawImage(tavern, getWidth()-getWidth()/4+getWidth()/100 + getWidth()/19  - (2*getWidth()/63), getHeight()/40 + (2*getHeight()/13), (6*getWidth()/59), (3*getHeight()/19), null); }
+            }
+            else if(test2.get(i).getAction().equals("barn"))
+            {
+                if(i==0) {g.drawImage(house, getWidth()-getWidth()/4+getWidth()/100, getHeight()/40 + (2*getHeight()/16), (2*getWidth()/60), getHeight()/16, null);}
+                else if(i==1) {g.drawImage(house, getWidth()-getWidth()/4+getWidth()/100, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/60), getHeight()/16, null);}
+                else if(i==2) {g.drawImage(house, getWidth()-getWidth()/4+getWidth()/100 + getWidth()/19, getHeight()/40 + (2*getHeight()/16), (2*getWidth()/60), getHeight()/16, null);}
+                else if(i==3) {g.drawImage(house, getWidth()-getWidth()/4+getWidth()/100 + getWidth()/19, getHeight()/40 + (3*getHeight()/15), (2*getWidth()/60), getHeight()/16, null);}
+            }
+        }
     }
 
 
