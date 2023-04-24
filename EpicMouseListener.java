@@ -83,7 +83,36 @@ public class EpicMouseListener implements MouseListener {
                     			Settlement s = new Settlement(minTile, players.get(currentPlayer-1));
                                 players.get(currentPlayer-1).addHouse(s);
                                 minTile.setSettlement(s);
-                                b.repaint();
+                                ArrayList<Tile> tt = minTile.getAdjacentTiles();
+                                for(Tile ttt:tt) {
+                                	if(!(ttt.getType().equals("Water")) && !(ttt.getType().equals("Grass")) && !(ttt.getType().equals("Mountain")) && !(ttt.getType().equals("Desert")) && !(ttt.getType().equals("Forest")) && !(ttt.getType().equals("Flower")) && !(ttt.getType().equals("Canyon"))) {
+                                		SpecialTile tttt= (SpecialTile) ttt;
+                                		if(tttt.getType().equals("Castle")) {
+                                			int cnt421 = 0;
+                                			for(Tile ttttt : players.get(currentPlayer-1).getRawAdjacentTiles()) {
+                                				if(ttttt.getX()==(tttt.getX()) && ttttt.getY()==(tttt.getY())) {
+                                					cnt421++;
+                                				}
+                                			}
+                                			if(cnt421 == 1) {
+                                				players.get(currentPlayer-1).addScore(3);
+                                			}
+                                			
+                                			System.out.println(players.get(currentPlayer-1).getScore());
+                                		}
+                                		else {
+                                			int cnt55 = 0;
+                                			for(ActionToken a : players.get(currentPlayer-1).getSpecialActions()) {
+                                				if(a.getID() == tttt.getAction().getID()) {
+                                					cnt55++;
+                                				}
+                                			}
+                                			if(cnt55 == 0) {
+                                				players.get(currentPlayer-1).addSpecialAction(tttt.getAction());
+                                			}
+                                		}
+                                	}
+                                }
                                 //b.DrawSettlementOn(minTile, b.getGraphics());
                                 numSettlementsPlaced --;
                     		}
@@ -92,6 +121,40 @@ public class EpicMouseListener implements MouseListener {
                     		Settlement s = new Settlement(minTile, players.get(currentPlayer-1));
                             players.get(currentPlayer-1).addHouse(s);
                             minTile.setSettlement(s);
+                            ArrayList<Tile> tt = minTile.getAdjacentTiles();
+                            for(Tile ttt:tt) {
+                            	if(!(ttt.getType().equals("Water")) && !(ttt.getType().equals("Grass")) && !(ttt.getType().equals("Mountain")) && !(ttt.getType().equals("Desert")) && !(ttt.getType().equals("Forest")) && !(ttt.getType().equals("Flower")) && !(ttt.getType().equals("Canyon"))) {
+                            		SpecialTile tttt= (SpecialTile) ttt;
+                            		if(tttt.getType().equals("Castle")) {
+                            			if(tttt.getType().equals("Castle")) {
+                                			int cnt420 = 0;
+                                			for(Tile ttttt : players.get(currentPlayer-1).getRawAdjacentTiles()) {
+                                				if(ttttt.getX()==(tttt.getX()) && ttttt.getY()==(tttt.getY())) {
+                                			
+                                					cnt420++;
+                                				}
+                                			}
+                                			
+                                			if(cnt420 == 1) {
+                                				players.get(currentPlayer-1).addScore(3);
+                                			}
+                                			
+                                			System.out.println(players.get(currentPlayer-1).getScore());
+                                		}
+                            		}
+                            		else {
+                            			int cnt69 = 0;
+                            			for(ActionToken a : players.get(currentPlayer-1).getSpecialActions()) {
+                            				if(a.getID() == tttt.getAction().getID()) {
+                            					cnt69++;
+                            				}
+                            			}
+                            			if(cnt69 == 0) {
+                            				players.get(currentPlayer-1).addSpecialAction(tttt.getAction());
+                            			}
+                            		}
+                            	}
+                            }
                             //b.repaint();
                             //b.DrawSettlementOn(minTile, b.getGraphics());
                             numSettlementsPlaced --;
