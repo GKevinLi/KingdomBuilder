@@ -140,10 +140,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         //for(int i = 0; i < 4; i++) {
             //players.get(i).setTerrainCard(d.pickRandom());
         //}
-        players.get(3).addSpecialAction(new ActionToken("Tavern",1));
-        players.get(3).addSpecialAction(new ActionToken("Tavern",1));
-        players.get(3).addSpecialAction(new ActionToken("Tavern",1));
-        players.get(3).addSpecialAction(new ActionToken("Tavern",1));
+
         //boards.add(new BoardSector())
         try {
             background = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/photo-1434725039720-aaad6dd32dfe.jpg"));
@@ -1080,7 +1077,46 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         	}
         }
         if(action.equals("Tower")) {
+            b.getEdgeTiles().removeIf(t -> t.getSettlement() != null);
+            repaint();
+            ArrayList<Tile> temp16 = new ArrayList<>();
+            for(Tile t : players.get(currentPlayer-1).getAllAdjacentTiles()) {
+                for(Tile j : b.getEdgeTiles()) {
+                    if(t.getX() == j.getX() && t.getY() == j.getY()) {
+                        temp16.add(t);
+                    }
+                }
 
+            }
+            if(temp16.size() > 0) {
+                for(Tile j : players.get(currentPlayer-1).getAllAdjacentTiles()) {
+                    if(players.get(currentPlayer-1).getTerrainCard() != null) {
+                        for(Tile jj : b.getEdgeTiles()) {
+                            if(jj.getX() == j.getX() && jj.getY() == j.getY()) {
+                                if(!isPlacingSettlements) {
+                                    g.drawImage(highlight, j.getX() - 20, j.getY() - 20, j.getX() + 150, j.getY() + 180, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+            else {
+                for(Tile[] j : combinedBoard) {
+                    for(Tile i : j) {
+
+                        for(Tile jj : b.getEdgeTiles()) {
+                            if(jj.getX() == i.getX() && jj.getY() == i.getY()) {
+                                if(!isPlacingSettlements) {
+                                    g.drawImage(highlight, i.getX() - 20, i.getY() - 20, i.getX() + 150, i.getY() + 180, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
         }
         if(action.equals("Tavern")) {
 
