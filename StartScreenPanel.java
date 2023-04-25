@@ -45,8 +45,13 @@ public class StartScreenPanel extends JPanel{
         }
     }
 
-    public void showRules(){
-
+    public void showRules(Graphics g){
+        g.setColor(new Color(181, 155, 85));
+        g.fillRect((2*getWidth()/8), (getHeight()/20), getWidth()/2, (10*getHeight()/11));
+        g.setFont(new Font("Helvetica", Font.PLAIN, 10));
+        g.setColor(Color.black);
+        g.drawString("At the beginning of the game, a random map will be arranged and three Objective cards will be drawn. These cards will help determine scoring./nEach player starts with 40 settlements that they will place throughout the game. A random player will be chosen to go first.", 2*getWidth()/8, getHeight()/20 + (10*getHeight()/11));
+        //repaint();
     }
 
 
