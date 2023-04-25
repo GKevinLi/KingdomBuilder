@@ -18,6 +18,8 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     private TerrainDeck d;
     private Tile[][] combinedBoard;
     private boolean isPlacingSettlements;
+    private String specialActionUsed;
+    private boolean usingSpecialAction;
     private ObjectiveDeck obj;
     private ObjectiveCard ob1;
     private ObjectiveCard ob2;
@@ -118,8 +120,8 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     {
 
         //needs to be updated with turn logic is done
-
-
+    	specialActionUsed = "";
+    	state = "Game";
         boards = new ArrayList<>();
         b = new FullBoard();
         d = new TerrainDeck();
@@ -138,6 +140,10 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         //for(int i = 0; i < 4; i++) {
             //players.get(i).setTerrainCard(d.pickRandom());
         //}
+        players.get(3).addSpecialAction(new ActionToken("Tavern",1));
+        players.get(3).addSpecialAction(new ActionToken("Tavern",1));
+        players.get(3).addSpecialAction(new ActionToken("Tavern",1));
+        players.get(3).addSpecialAction(new ActionToken("Tavern",1));
         //boards.add(new BoardSector())
         try {
             background = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/photo-1434725039720-aaad6dd32dfe.jpg"));
@@ -288,6 +294,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             drawTerrainCards(g);
             DrawAllSettlements(g);
             HighlightTiles(g);
+            highlightSpecialActionTiles(g);
             setPositions(g);
             addAllSpecialTiles(g);
             displayPlayerActionTokens(players.get(0), g, 19, 113);
@@ -960,6 +967,131 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             }
         }
     }
+    public void highlightSpecialActionTiles(Graphics g) {
+    	if(usingSpecialAction) {
+    	String action = specialActionUsed;
+    	if(action.equals("Paddock")) {
+    		
+        }
+        if(action.equals("Farm")) {
+        	ArrayList<Tile> temp16 = new ArrayList<>();
+        	for(Tile t : players.get(currentPlayer-1).getAllAdjacentTiles()) {
+        		if(t.getType().equals("Grass")) {
+        			temp16.add(t);
+        			//b.HighlightTile(t, b.getGraphics());
+        		}
+        	}
+        	if(temp16.size() > 0) {
+        		for(Tile j : players.get(currentPlayer-1).getAllAdjacentTiles()) {
+        			if(players.get(currentPlayer-1).getTerrainCard() != null) {
+        			if(j.getType().equals("Grass")) {
+        				if(!isPlacingSettlements) {
+        					g.drawImage(highlight, j.getX() - 20, j.getY() - 20, j.getX() + 150, j.getY() + 180, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+        				
+        			}}
+        			}
+        		}
+        	}
+        	else {
+        		for(Tile[] j : combinedBoard) {
+                    for(Tile i : j) {
+                    	
+                    	if(!isPlacingSettlements) {
+                    		if(i.getType().equals("Grass") && i.getSettlement() == null) {
+                    			g.drawImage(highlight, i.getX() - 20, i.getY() - 20, i.getX() + 150, i.getY() + 180, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+            			
+                    		}
+                    		
+                    	}
+                    }
+
+                }
+        	}
+        
+        }
+        if(action.equals("Oasis")) {
+        	ArrayList<Tile> temp16 = new ArrayList<>();
+        	for(Tile t : players.get(currentPlayer-1).getAllAdjacentTiles()) {
+        		if(t.getType().equals("Desert")) {
+        			temp16.add(t);
+        			//b.HighlightTile(t, b.getGraphics());
+        		}
+        	}
+        	if(temp16.size() > 0) {
+        		for(Tile j : players.get(currentPlayer-1).getAllAdjacentTiles()) {
+        			if(players.get(currentPlayer-1).getTerrainCard() != null) {
+        			if(j.getType().equals("Desert")) {
+        				if(!isPlacingSettlements) {
+        					g.drawImage(highlight, j.getX() - 20, j.getY() - 20, j.getX() + 150, j.getY() + 180, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+        				}
+        			}
+        			}
+        		}
+        	}
+        	else {
+        		for(Tile[] j : combinedBoard) {
+                    for(Tile i : j) {
+                    	
+                    	if(!isPlacingSettlements) {
+                    		if(i.getType().equals("Desert") && i.getSettlement() == null) {
+                    			g.drawImage(highlight, i.getX() - 20, i.getY() - 20, i.getX() + 150, i.getY() + 180, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+            			
+                    		}
+                    		
+                    	}
+                    }
+
+                }
+        	}
+        }
+        if(action.equals("Oracle")) {
+        	ArrayList<Tile> temp16 = new ArrayList<>();
+        	for(Tile t : players.get(currentPlayer-1).getAllAdjacentTiles()) {
+        		if(t.getType().equals(players.get(currentPlayer-1).getTerrainCard().getCardType())) {
+        			temp16.add(t);
+        			//b.HighlightTile(t, b.getGraphics());
+        		}
+        	}
+        	if(temp16.size() > 0) {
+        		for(Tile j : players.get(currentPlayer-1).getAllAdjacentTiles()) {
+        			if(players.get(currentPlayer-1).getTerrainCard() != null) {
+        			if(j.getType().equals(players.get(currentPlayer-1).getTerrainCard().getCardType())) {
+        				if(!isPlacingSettlements) {
+        					g.drawImage(highlight, j.getX() - 20, j.getY() - 20, j.getX() + 150, j.getY() + 180, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+        				}
+        			}
+        			}
+        		}
+        	}
+        	else {
+        		for(Tile[] j : combinedBoard) {
+                    for(Tile i : j) {
+                    	
+                    	if(!isPlacingSettlements) {
+                    		if(i.getType().equals(players.get(currentPlayer-1).getTerrainCard().getCardType()) && i.getSettlement() == null) {
+                    			g.drawImage(highlight, i.getX() - 20, i.getY() - 20, i.getX() + 150, i.getY() + 180, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+            			
+                    		}
+                    		
+                    	}
+                    }
+
+                }
+        	}
+        }
+        if(action.equals("Tower")) {
+
+        }
+        if(action.equals("Tavern")) {
+
+        }
+        if(action.equals("Barn")) {
+
+        }
+        if(action.equals("Harbor")) {
+
+        }}
+    }
     public void HighlightTiles(Graphics g) {
     	ArrayList<Tile> temp16 = new ArrayList<>();
     	for(Tile t : players.get(currentPlayer-1).getAllAdjacentTiles()) {
@@ -1003,6 +1135,12 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     }
     public void setCurrentPlayer(int x) {
         currentPlayer = x;
+    }
+    public void setPlacingSpecials(boolean b) {
+    	usingSpecialAction = b;
+    }
+    public void setSpecialActionUsed(String s) {
+    	specialActionUsed = s;
     }
     public void setPlacingSettlements(boolean b ) {
     	isPlacingSettlements = b;
