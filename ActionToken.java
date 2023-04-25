@@ -32,8 +32,9 @@ public class ActionToken {
     public BufferedImage getImage() {
     	return img;
     }
-    public void switchUsed() {
-        usedAlready = !(usedAlready);
+   
+    public void setUsed(boolean b) {
+    	usedAlready = b;
     }
     public void useAction(Player p) {
         if(action.equals("Paddock")) {
