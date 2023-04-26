@@ -285,7 +285,21 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
     public void paint(Graphics g)
     {
-        if(state.equals("Game")) {
+        if(state.equals("Start"))
+        {
+            g.drawImage(startScreen, 0,0,getWidth(),getHeight(),null);
+            g.drawImage(title, getWidth()/3 - getHeight()/40, getHeight()/16, null);
+            g.setColor(Color.lightGray);
+            g.fillRect(getWidth()/2 - 162, getHeight()/3, 325, 125);
+            g.fillRect(getWidth()/2 - 162, getHeight()/2 + getHeight()/20, 325, 125);
+            g.setColor(Color.white);
+            g.setFont(new Font("Helvetica", Font.BOLD, 100));
+            g.drawString("PLAY", getWidth()/2-135, getHeight()/3+getHeight()/10 + 20);
+            //g.drawString("RULES", getWidth()/2 - 162, getHeight()/2 ;
+            System.out.println(getWidth());
+            System.out.println(getHeight());
+        }
+        else if(state.equals("Game")) {
             g.drawImage(background, 0, 0, getWidth(), getHeight(), null);
             drawGameScreen(g);
             drawMap(g);
@@ -307,6 +321,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             g.setFont(new Font("Helvetica", Font.PLAIN, getHeight()/15));
             g.drawString("End Turn", (10*getWidth()/23), getHeight() - getHeight()/11);
 
+            //showRules(g); not done yet
         }
         else if(state.equals("End")) {
             g.drawImage(background, 0, 0, getWidth(), getHeight(), null);
@@ -1271,6 +1286,22 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             }
     	}
     }
+	
+public void showRules(Graphics g)
+    {
+        String rules = "At the beginning of the game, a random map will be arranged and three Objective cards will be drawn.\nThese cards will help determine scoring. Each player starts with 40 settlements that they will place throughout the game. A random player will be chosen to go first.";
+        //g.drawString(line, x, y += g.getFontMetrics().getHeight());
+        g.setColor(new Color(181, 155, 85));
+        g.fillRect((2*getWidth()/8), (getHeight()/20), getWidth()/2, (10*getHeight()/11));
+        g.setFont(new Font("Times New Roman", Font.BOLD, 30));
+        g.setColor(Color.black);
+        g.drawString("HOW TO PLAY", (2*getWidth()/8) + getWidth()/16, (getHeight()/10));
+        g.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+        g.drawString(rules, 2*getWidth()/8, getHeight()/15);
+        System.out.println(getWidth());
+        System.out.println(getHeight());
+    }
+	
     public ArrayList<Player> getPlayers() {
         return players;
     }
