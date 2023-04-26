@@ -63,6 +63,9 @@ public class Tile {
     public void setSettlement(Settlement se) {
         s=se;
     }
+    public void removeSettlement() {
+    	s = null;
+    }
     public void setX(int x) {
     	xPos = x;
     }
