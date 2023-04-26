@@ -969,9 +969,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     public void highlightSpecialActionTiles(Graphics g) {
     	if(usingSpecialAction || usingSpecialAction2) {
     	String action = specialActionUsed;
-    	if(action.equals("Paddock")) {
-    		
-        }
+
         if(action.equals("Farm")) {
         	ArrayList<Tile> temp16 = new ArrayList<>();
         	for(Tile t : players.get(currentPlayer-1).getAllAdjacentTiles()) {
@@ -1128,6 +1126,25 @@ public class GameScreenPanel extends JPanel implements MouseListener {
                    }
                }
 
+            }
+        }
+        if(action.equals("Paddock")) {
+            if(!(usingSpecialAction2)) {
+                for(Settlement s : players.get(currentPlayer-1).getHouses()) {
+                    if(b.paddockTileCheck(s.getPlacedOn(),players.get(currentPlayer-1))) {
+                        g.drawImage(highlight, s.getPlacedOn().getX() - 20, s.getPlacedOn().getY() - 20, s.getPlacedOn().getX() + 150, s.getPlacedOn().getY() + 180, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+                    }
+                }
+
+            }
+            for(Tile[] i : b.getCombinedBoard()) {
+            for(Tile t : i) {
+                if (b.paddockCheck(t, players.get(currentPlayer - 1))) {
+                    if (!isPlacingSettlements) {
+                        g.drawImage(highlight, t.getX() - 20, t.getY() - 20, t.getX() + 150, t.getY() + 180, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+                    }
+                }
+            }
             }
         }
         if(action.equals("Barn")) {
