@@ -1139,6 +1139,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
                 }
 
             }
+            //regoinjdkofgbj nm
             for(Tile[] i : b.getCombinedBoard()) {
             for(Tile t : i) {
                 if (b.paddockCheck(t, players.get(currentPlayer - 1))) {
