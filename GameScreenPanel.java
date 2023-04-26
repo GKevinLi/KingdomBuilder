@@ -20,6 +20,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     private boolean isPlacingSettlements;
     private String specialActionUsed;
     private boolean usingSpecialAction;
+    private boolean usingSpecialAction2;
     private ObjectiveDeck obj;
     private ObjectiveCard ob1;
     private ObjectiveCard ob2;
@@ -966,7 +967,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         }
     }
     public void highlightSpecialActionTiles(Graphics g) {
-    	if(usingSpecialAction) {
+    	if(usingSpecialAction || usingSpecialAction2) {
     	String action = specialActionUsed;
     	if(action.equals("Paddock")) {
     		
@@ -1120,13 +1121,99 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             }
         }
         if(action.equals("Tavern")) {
+        	for(Tile t : players.get(currentPlayer-1).getAllAdjacentTiles()) {
+               if(b.tavernCheck(t,players.get(currentPlayer-1))) {
+            	   if(!isPlacingSettlements) {
+                       g.drawImage(highlight, t.getX() - 20, t.getY() - 20, t.getX() + 150, t.getY() + 180, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+                   }
+               }
 
+            }
         }
         if(action.equals("Barn")) {
+        	if(!(usingSpecialAction2)) {
+        		for(Settlement s : players.get(currentPlayer-1).getHouses()) {
+        			g.drawImage(highlight, s.getPlacedOn().getX() - 20, s.getPlacedOn().getY() - 20, s.getPlacedOn().getX() + 150, s.getPlacedOn().getY() + 180, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+        		}
+        	}
+        	else {
+        		ArrayList<Tile> temp16 = new ArrayList<>();
+            	for(Tile t : players.get(currentPlayer-1).getRawAdjacentTiles()) {
+            		if(t.getType().equals(players.get(currentPlayer-1).getTerrainCard().getCardType())) {
+            			temp16.add(t);
+            			//b.HighlightTile(t, b.getGraphics());
+            		}
+            	}
+            	if(temp16.size() > 0) {
+            		for(Tile j : players.get(currentPlayer-1).getRawAdjacentTiles()) {
+            			if(players.get(currentPlayer-1).getTerrainCard() != null) {
+            			if(j.getType().equals(players.get(currentPlayer-1).getTerrainCard().getCardType())) {
+            				if(!isPlacingSettlements) {
+            					g.drawImage(highlight, j.getX() - 20, j.getY() - 20, j.getX() + 150, j.getY() + 180, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+            				}
+            			}
+            			}
+            		}
+            	}
+            	else {
+            		for(Tile[] j : combinedBoard) {
+                        for(Tile i : j) {
+                        	
+                        	if(!isPlacingSettlements) {
+                        		if(i.getType().equals(players.get(currentPlayer-1).getTerrainCard().getCardType()) && i.getSettlement() == null) {
+                        			g.drawImage(highlight, i.getX() - 20, i.getY() - 20, i.getX() + 150, i.getY() + 180, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+                			
+                        		}
+                        		
+                        	}
+                        }
 
+                    }
+            	}
+        	}
         }
+        
         if(action.equals("Harbor")) {
+        	if(!(usingSpecialAction2)) {
+        		for(Settlement s : players.get(currentPlayer-1).getHouses()) {
+        			g.drawImage(highlight, s.getPlacedOn().getX() - 20, s.getPlacedOn().getY() - 20, s.getPlacedOn().getX() + 150, s.getPlacedOn().getY() + 180, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+        		}
+        	}
+        	else {
+        		ArrayList<Tile> temp16 = new ArrayList<>();
+            	for(Tile t : players.get(currentPlayer-1).getRawAdjacentTiles()) {
+            		if(t.getType().equals("Water")) {
+            			temp16.add(t);
+            			//b.HighlightTile(t, b.getGraphics());
+            		}
+            	}
+            	if(temp16.size() > 0) {
+            		for(Tile j : players.get(currentPlayer-1).getRawAdjacentTiles()) {
+            			if(players.get(currentPlayer-1).getTerrainCard() != null) {
+            			if(j.getType().equals("Water")) {
+            				if(!isPlacingSettlements) {
+            					g.drawImage(highlight, j.getX() - 20, j.getY() - 20, j.getX() + 150, j.getY() + 180, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+            				}
+            			}
+            			}
+            		}
+            	}
+            	else {
+            		for(Tile[] j : combinedBoard) {
+                        for(Tile i : j) {
+                        	
+                        	if(!isPlacingSettlements) {
+                        		if(i.getType().equals("Water") && i.getSettlement() == null) {
+                        			g.drawImage(highlight, i.getX() - 20, i.getY() - 20, i.getX() + 150, i.getY() + 180, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+                			
+                        		}
+                        		
+                        	}
+                        }
 
+                    }
+            	}
+        	}
         }}
     }
     public void HighlightTiles(Graphics g) {
@@ -1175,6 +1262,9 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     }
     public void setPlacingSpecials(boolean b) {
     	usingSpecialAction = b;
+    }
+    public void setPlacingSpecials2(boolean b) {
+    	usingSpecialAction2 = b;
     }
     public void setSpecialActionUsed(String s) {
     	specialActionUsed = s;
