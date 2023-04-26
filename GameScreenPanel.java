@@ -8,9 +8,9 @@ import java.util.ArrayList;
 
 public class GameScreenPanel extends JPanel implements MouseListener {
     //
-    private BufferedImage background, boat, field, horse, house, oasis, stonehenge, tower, tavern, board1, board2, board3, board4, board5, board6, board7, board8, blueHouse, greenHouse, yellowHouse, orangeHouse, highlight, barnIcon, cityIcon, farmIcon, harborIcon, oasisIcon, oracleIcon, paddockIcon, tavernIcon, towerIcon;
+    private BufferedImage startScreen, title, background, boat, field, horse, house, oasis, stonehenge, tower, tavern, board1, board2, board3, board4, board5, board6, board7, board8, blueHouse, greenHouse, yellowHouse, orangeHouse, highlight, barnIcon, cityIcon, farmIcon, harborIcon, oasisIcon, oracleIcon, paddockIcon, tavernIcon, towerIcon;
     private BufferedImage cardBack, knights, miners, discoverers, citizens, farmers, fisherman, hermits, worker, grasslandTerrain, flowerTerrain, forestTerrain, canyonTerrain, desertTerrain;
-    private int currentPlayer;
+    private int currentPlayer, panelNumber;
     private ArrayList<Player> players;
     BufferedImage joinedImg;
     private ArrayList<BoardSector> boards;
@@ -144,6 +144,8 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
         //boards.add(new BoardSector())
         try {
+	    startScreen = ImageIO.read(StartScreenPanel.class.getResource("/deez imgs/image (1).png"));
+            title = ImageIO.read(StartScreenPanel.class.getResource("/deez imgs/Screenshot_2023-03-30_213259-removebg-preview.png"));
             background = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/photo-1434725039720-aaad6dd32dfe.jpg"));
             boat = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-harbor.png"));
             field = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-farm.png"));
