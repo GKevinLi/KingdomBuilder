@@ -37,6 +37,7 @@ public class StartScreenPanel extends JPanel{
         else if(state == "rules")
         {
             //showRules();
+            showRules(g);
         }
         else if(state == "Game")
         {
