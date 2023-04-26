@@ -31,6 +31,9 @@ public class Player {
     public void addHouse(Settlement s) {
         houses.add(s);
     }
+    public void removeHouse(Settlement s) {
+    	houses.remove(s);
+    }
     public boolean getFirstPlayer() {
         return isFirstPlayer;
     }
