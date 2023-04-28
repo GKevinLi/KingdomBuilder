@@ -322,7 +322,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             g.setFont(new Font("Helvetica", Font.PLAIN, getHeight()/15));
             g.drawString("End Turn", (10*getWidth()/23), getHeight() - getHeight()/11);
 
-            //showRules(g); not done yet
+            showRules(g); //not done yet
         }
         else if(state.equals("End")) {
             g.drawImage(background, 0, 0, getWidth(), getHeight(), null);
@@ -1326,15 +1326,24 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 	
 public void showRules(Graphics g)
     {
-        String rules = "At the beginning of the game, a random map will be arranged and three Objective cards will be drawn.\nThese cards will help determine scoring. Each player starts with 40 settlements that they will place throughout the game. A random player will be chosen to go first.";
+        String rules = "At the beginning of the game, a random map will be arranged and three Objective cards will be drawn.\nThese cards will help determine scoring. Each player starts with 40 settlements that they will place throughout the game.\nA random player will be chosen to go first. A player's box will be highlighted to indicate when it is their turn.\n";
+        rules += "\n\n" +;
         //g.drawString(line, x, y += g.getFontMetrics().getHeight());
         g.setColor(new Color(181, 155, 85));
         g.fillRect((2*getWidth()/8), (getHeight()/20), getWidth()/2, (10*getHeight()/11));
         g.setFont(new Font("Times New Roman", Font.BOLD, 30));
         g.setColor(Color.black);
-        g.drawString("HOW TO PLAY", (2*getWidth()/8) + getWidth()/16, (getHeight()/10));
+        g.drawString("HOW TO PLAY", (2*getWidth()/8) + getWidth()/16, (getHeight()/11));
         g.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-        g.drawString(rules, 2*getWidth()/8, getHeight()/15);
+        int x = 2*getWidth()/8;
+        int y = getHeight()/10;
+
+        for(String str: rules.split("\n"))
+        {
+            y += g.getFontMetrics().getAscent();
+            g.drawString(str, 2*getWidth()/8, y);
+        }
+        //g.drawString(rules, 2*getWidth()/8, getHeight()/15);
         System.out.println(getWidth());
         System.out.println(getHeight());
     }
