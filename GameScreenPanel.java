@@ -12,6 +12,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     private BufferedImage cardBack, knights, miners, discoverers, citizens, farmers, fisherman, hermits, worker, grasslandTerrain, flowerTerrain, forestTerrain, canyonTerrain, desertTerrain;
     private int currentPlayer, panelNumber;
     private ArrayList<Player> players;
+    private Tile paddockUsing;
     BufferedImage joinedImg;
     private ArrayList<BoardSector> boards;
     private ArrayList<TerrainCard> discardPile;
@@ -325,6 +326,41 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         }
         else if(state.equals("End")) {
             g.drawImage(background, 0, 0, getWidth(), getHeight(), null);
+            System.out.println(ob1.scoreCard(players.get(0), b, 0));
+            System.out.println(ob1.scoreCard(players.get(1), b, 0));
+            System.out.println(ob1.scoreCard(players.get(2), b, 0));
+            System.out.println(ob1.scoreCard(players.get(3), b, 0));
+            System.out.println(ob2.scoreCard(players.get(0), b, 0));
+            System.out.println(ob2.scoreCard(players.get(1), b, 0));
+            System.out.println(ob2.scoreCard(players.get(2), b, 0));
+            System.out.println(ob2.scoreCard(players.get(3), b, 0));
+            System.out.println(ob3.scoreCard(players.get(0), b, 0));
+            System.out.println(ob3.scoreCard(players.get(1), b, 0));
+            System.out.println(ob3.scoreCard(players.get(2), b, 0));
+            System.out.println(ob3.scoreCard(players.get(3), b, 0));
+
+
+
+            players.get(0).addScore(ob1.scoreCard(players.get(0), b, 0));
+
+            players.get(1).addScore(ob1.scoreCard(players.get(1), b, 0));
+            players.get(2).addScore(ob1.scoreCard(players.get(2), b, 0));
+            players.get(3).addScore(ob1.scoreCard(players.get(3), b, 0));
+            players.get(0).addScore(ob2.scoreCard(players.get(0), b, 0));
+            players.get(1).addScore(ob2.scoreCard(players.get(1), b, 0));
+            players.get(2).addScore(ob2.scoreCard(players.get(2), b, 0));
+            players.get(3).addScore(ob2.scoreCard(players.get(3), b, 0));
+            players.get(0).addScore(ob3.scoreCard(players.get(0), b, 0));
+            players.get(1).addScore(ob3.scoreCard(players.get(1), b, 0));
+            players.get(2).addScore(ob3.scoreCard(players.get(2), b, 0));
+            players.get(3).addScore(ob3.scoreCard(players.get(3), b, 0));
+            System.out.println(players.get(0).getName() + " " + players.get(0).getScore());
+            System.out.println(players.get(1).getName() + " " + players.get(1).getScore());
+            System.out.println(players.get(2).getName() + " " + players.get(2).getScore());
+            System.out.println(players.get(3).getName() + " " + players.get(3).getScore());
+
+
+
         }
         
 
@@ -1157,13 +1193,14 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             //regoinjdkofgbj nm
             for(Tile[] i : b.getCombinedBoard()) {
             for(Tile t : i) {
-                if (b.paddockCheck(t, players.get(currentPlayer - 1))) {
+                if(paddockUsing != null) {
+                if (b.paddockCheck(t, paddockUsing,players.get(currentPlayer - 1)) && t.getHousePlaceable()) {
                     if (!isPlacingSettlements) {
                         g.drawImage(highlight, t.getX() - 20, t.getY() - 20, t.getX() + 150, t.getY() + 180, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
                     }
                 }
             }
-            }
+            }}
         }
         if(action.equals("Barn")) {
         	if(!(usingSpecialAction2)) {
@@ -1322,6 +1359,9 @@ public void showRules(Graphics g)
     }
     public void setPlacingSettlements(boolean b ) {
     	isPlacingSettlements = b;
+    }
+    public void setPaddockUsing(Tile t) {
+        paddockUsing = t;
     }
     public void AddTerrainCard(Player p) {
     	if(d.getDeckSize() == 0) {

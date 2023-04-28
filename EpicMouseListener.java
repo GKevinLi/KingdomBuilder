@@ -325,11 +325,15 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
 					//System.out.println(minTile.getType());
 					//if(players.get(currentPlayer-1).getTerrainCard() != null) {
 
-					if(b.getBoard().paddockCheck(minTile,players.get(currentPlayer-1)) && minTile.getSettlement() == null) {
+					if(b.getBoard().paddockCheck(minTile,tileSelected,players.get(currentPlayer-1)) && minTile.getSettlement() == null && minTile.getHousePlaceable()) {
 
 						Settlement s = new Settlement(minTile, players.get(currentPlayer-1));
 						players.get(currentPlayer-1).addHouse(s);
 						minTile.setSettlement(s);
+
+						players.get(currentPlayer-1).removeHouse(tileSelected.getSettlement());
+						tileSelected.removeSettlement();
+
 						ArrayList<Tile> tt = minTile.getAdjacentTiles();
 						for(Tile ttt:tt) {
 							if(!(ttt.getType().equals("Water")) && !(ttt.getType().equals("Grass")) && !(ttt.getType().equals("Mountain")) && !(ttt.getType().equals("Desert")) && !(ttt.getType().equals("Forest")) && !(ttt.getType().equals("Flower")) && !(ttt.getType().equals("Canyon"))) {
@@ -402,9 +406,11 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
 							//System.out.println("hi");
 							b.setPlacingSpecials2(true);
 							tileSelected = minTile;
-							players.get(currentPlayer-1).removeHouse(tileSelected.getSettlement());
 
-							tileSelected.removeSettlement();
+							b.setPaddockUsing(tileSelected);
+
+
+
 						}
 					}
 				}

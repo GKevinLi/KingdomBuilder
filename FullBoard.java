@@ -67,7 +67,7 @@ public class FullBoard {
     public ArrayList<Tile> getEdgeTiles() {
         return edgeTiles;
     }
-    public boolean paddockCheck(Tile t, Player p) {
+    public boolean paddockCheck(Tile t, Tile t2, Player p) {
         int x = 0;
         int y = 0;
         for (int i = 0; i < 20; i++) {
@@ -79,53 +79,75 @@ public class FullBoard {
             }
         }
         if (x - 2 >= 0) {
-            if (combinedBoard[y][x - 2].getSettlement() != null && combinedBoard[y][x - 2].getHousePlaceable()) {
-                if(combinedBoard[y][x-2].getSettlement().getPlayerOwned().equals(p)) {
-                    return true;
+            if(t2 != null) {
+                if(t2.getSettlement() !=  null && combinedBoard[y][x-2].getSettlement() != null) {
+                    if (combinedBoard[y][x - 2].getSettlement().equals(t2.getSettlement()) && combinedBoard[y][x - 2].getHousePlaceable()) {
+                        //if (combinedBoard[y][x - 2].getSettlement().getPlayerOwned().equals(p)) {
+                        return true;
+                        //}
+                    }
                 }
             }
         }
         if (x + 2 < 20) {
-            if (combinedBoard[y][x + 2].getSettlement() != null && combinedBoard[y][x + 2].getHousePlaceable()) {
-                if(combinedBoard[y][x+2].getSettlement().getPlayerOwned().equals(p)) {
+            if(t2 != null) {
+                if(t2.getSettlement() !=  null && combinedBoard[y][x+2].getSettlement() != null) {
+            if (combinedBoard[y][x + 2].getSettlement().equals(t2.getSettlement()) && combinedBoard[y][x + 2].getHousePlaceable()) {
+               // if(combinedBoard[y][x+2].getSettlement().getPlayerOwned().equals(p)) {
                     return true;
-                }
-            }
+                //}
+            }}}
         }
         if(x - 1 >= 0 && y + 2 < 20) {
-            if(combinedBoard[y+2][x-1].getSettlement() != null && combinedBoard[y+2][x-1].getHousePlaceable())  {
+            if(t2 != null) {
+                if(t2.getSettlement() !=  null && combinedBoard[y+2][x-1].getSettlement() != null) {
+                    if (combinedBoard[y + 2][x - 1].getSettlement().equals(t2.getSettlement()) && combinedBoard[y + 2][x - 1].getHousePlaceable()) {
 
-                if(combinedBoard[y+2][x-1].getSettlement().getPlayerOwned().equals(p)) {
-                    return true;
+                        //if (combinedBoard[y + 2][x - 1].getSettlement().getPlayerOwned().equals(p)) {
+                        return true;
+                        //}
+
+                    }
                 }
-
             }
         }
         if(x + 1 < 20 && y + 2 < 20) {
-            if(combinedBoard[y+2][x+1].getSettlement() != null && combinedBoard[y+2][x+1].getHousePlaceable())  {
+            if(t2 != null) {
+                if(t2.getSettlement() !=  null && combinedBoard[y+2][x+1].getSettlement() != null) {
+                    if (combinedBoard[y + 2][x + 1].getSettlement().equals(t2.getSettlement()) && combinedBoard[y + 2][x + 1].getHousePlaceable()) {
 
-                if(combinedBoard[y+2][x+1].getSettlement().getPlayerOwned().equals(p)) {
-                    return true;
+                        //if (combinedBoard[y + 2][x + 1].getSettlement().getPlayerOwned().equals(p)) {
+                        return true;
+                        // }
+
+                    }
                 }
-
             }
         }
         if(x - 1 >= 0 && y - 2 >= 0) {
-            if(combinedBoard[y-2][x-1].getSettlement() != null && combinedBoard[y-2][x-1].getHousePlaceable())  {
+            if(t2 != null) {
+                if(t2.getSettlement() !=  null && combinedBoard[y-2][x-1].getSettlement() != null) {
+                    if (combinedBoard[y - 2][x - 1].getSettlement().equals(t2.getSettlement()) && combinedBoard[y - 2][x - 1].getHousePlaceable()) {
 
-                if(combinedBoard[y-2][x-1].getSettlement().getPlayerOwned().equals(p)) {
-                    return true;
+                        //if (combinedBoard[y - 2][x - 1].getSettlement().getPlayerOwned().equals(p)) {
+                        return true;
+                        //}
+
+                    }
                 }
-
             }
         }
         if(x + 1 < 20 && y - 2 >= 0) {
-            if(combinedBoard[y-2][x+1].getSettlement() != null && combinedBoard[y-2][x+1].getHousePlaceable())  {
+            if(t2 != null) {
+                if(t2.getSettlement() !=  null && combinedBoard[y-2][x+1].getSettlement() != null) {
+                    if (combinedBoard[y - 2][x + 1].getSettlement().equals(t2.getSettlement()) && combinedBoard[y - 2][x + 1].getHousePlaceable()) {
 
-                if(combinedBoard[y-2][x+1].getSettlement().getPlayerOwned().equals(p)) {
-                    return true;
+                        //if (combinedBoard[y - 2][x + 1].getSettlement().getPlayerOwned().equals(p)) {
+                        return true;
+                        //}
+
+                    }
                 }
-
             }
         }
 

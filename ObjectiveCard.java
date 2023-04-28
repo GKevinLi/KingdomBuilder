@@ -16,6 +16,7 @@ public class ObjectiveCard {
     }
     public int scoreCard(Player p, FullBoard b, int x) {
         if(objective.equals("Lords")) {
+            /*
             BoardSector bs = b.getBoards().get(x);
             int cnt = 0;
             for(Tile[] i : bs.getBoard()) {
@@ -28,6 +29,8 @@ public class ObjectiveCard {
                 }
             }
             return cnt;
+            */
+
         }
         if(objective.equals("Miners")) {
             ArrayList<Settlement> s = p.getHouses();
