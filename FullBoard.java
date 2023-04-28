@@ -67,6 +67,140 @@ public class FullBoard {
     public ArrayList<Tile> getEdgeTiles() {
         return edgeTiles;
     }
+    public boolean paddockCheck(Tile t, Player p) {
+        int x = 0;
+        int y = 0;
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 20; j++) {
+                if (combinedBoard[i][j].equals(t)) {
+                    y = i;
+                    x = j;
+                }
+            }
+        }
+        if (x - 2 >= 0) {
+            if (combinedBoard[y][x - 2].getSettlement() != null && combinedBoard[y][x - 2].getHousePlaceable()) {
+                if(combinedBoard[y][x-2].getSettlement().getPlayerOwned().equals(p)) {
+                    return true;
+                }
+            }
+        }
+        if (x + 2 < 20) {
+            if (combinedBoard[y][x + 2].getSettlement() != null && combinedBoard[y][x + 2].getHousePlaceable()) {
+                if(combinedBoard[y][x+2].getSettlement().getPlayerOwned().equals(p)) {
+                    return true;
+                }
+            }
+        }
+        if(x - 1 >= 0 && y + 2 < 20) {
+            if(combinedBoard[y+2][x-1].getSettlement() != null && combinedBoard[y+2][x-1].getHousePlaceable())  {
+
+                if(combinedBoard[y+2][x-1].getSettlement().getPlayerOwned().equals(p)) {
+                    return true;
+                }
+
+            }
+        }
+        if(x + 1 < 20 && y + 2 < 20) {
+            if(combinedBoard[y+2][x+1].getSettlement() != null && combinedBoard[y+2][x+1].getHousePlaceable())  {
+
+                if(combinedBoard[y+2][x+1].getSettlement().getPlayerOwned().equals(p)) {
+                    return true;
+                }
+
+            }
+        }
+        if(x - 1 >= 0 && y - 2 >= 0) {
+            if(combinedBoard[y-2][x-1].getSettlement() != null && combinedBoard[y-2][x-1].getHousePlaceable())  {
+
+                if(combinedBoard[y-2][x-1].getSettlement().getPlayerOwned().equals(p)) {
+                    return true;
+                }
+
+            }
+        }
+        if(x + 1 < 20 && y - 2 >= 0) {
+            if(combinedBoard[y-2][x+1].getSettlement() != null && combinedBoard[y-2][x+1].getHousePlaceable())  {
+
+                if(combinedBoard[y-2][x+1].getSettlement().getPlayerOwned().equals(p)) {
+                    return true;
+                }
+
+            }
+        }
+
+
+
+
+        return false;
+    }
+    public boolean paddockTileCheck(Tile t, Player p) {
+        int x = 0;
+        int y = 0;
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 20; j++) {
+                if (combinedBoard[i][j].equals(t)) {
+                    y = i;
+                    x = j;
+                }
+            }
+        }
+        if (x - 2 >= 0) {
+            if (combinedBoard[y][x - 2].getSettlement() == null && combinedBoard[y][x - 2].getHousePlaceable()) {
+
+                    return true;
+
+            }
+        }
+        if (x + 2 < 20) {
+            if (combinedBoard[y][x + 2].getSettlement() == null && combinedBoard[y][x + 2].getHousePlaceable()) {
+
+                    return true;
+
+            }
+        }
+        if(x - 1 >= 0 && y + 2 < 20) {
+            if(combinedBoard[y+2][x-1].getSettlement() == null && combinedBoard[y+2][x-1].getHousePlaceable())  {
+
+
+                    return true;
+
+
+            }
+        }
+        if(x + 1 < 20 && y + 2 < 20) {
+            if(combinedBoard[y+2][x+1].getSettlement() == null && combinedBoard[y+2][x+1].getHousePlaceable())  {
+
+
+                    return true;
+
+
+            }
+        }
+        if(x - 1 >= 0 && y - 2 >= 0) {
+            if(combinedBoard[y-2][x-1].getSettlement() == null && combinedBoard[y-2][x-1].getHousePlaceable())  {
+
+
+                    return true;
+
+
+            }
+        }
+        if(x + 1 < 20 && y - 2 >= 0) {
+            if(combinedBoard[y-2][x+1].getSettlement() == null && combinedBoard[y-2][x+1].getHousePlaceable())  {
+
+
+                    return true;
+
+
+            }
+        }
+
+
+
+
+        return false;
+    }
     public boolean tavernCheck(Tile t, Player p) {
         int x = 0;
         int y = 0;

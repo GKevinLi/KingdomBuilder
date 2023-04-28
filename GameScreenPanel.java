@@ -120,7 +120,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     public GameScreenPanel()
     {
 
-        //needs to be updated with turn logic is done;
+        //needs to be updated with turn logic is done
     	specialActionUsed = "";
     	state = "Game";
         boards = new ArrayList<>();
@@ -196,6 +196,8 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             board7 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/6.png"));
             board8 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/7.png"));
             highlight = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/image-removebg-preview.png"));
+
+
         }
         catch (Exception E)
         {
@@ -984,9 +986,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     public void highlightSpecialActionTiles(Graphics g) {
     	if(usingSpecialAction || usingSpecialAction2) {
     	String action = specialActionUsed;
-    	if(action.equals("Paddock")) {
-    		
-        }
+
         if(action.equals("Farm")) {
         	ArrayList<Tile> temp16 = new ArrayList<>();
         	for(Tile t : players.get(currentPlayer-1).getAllAdjacentTiles()) {
@@ -1145,6 +1145,26 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
             }
         }
+        if(action.equals("Paddock")) {
+            if(!(usingSpecialAction2)) {
+                for(Settlement s : players.get(currentPlayer-1).getHouses()) {
+                    if(b.paddockTileCheck(s.getPlacedOn(),players.get(currentPlayer-1))) {
+                        g.drawImage(highlight, s.getPlacedOn().getX() - 20, s.getPlacedOn().getY() - 20, s.getPlacedOn().getX() + 150, s.getPlacedOn().getY() + 180, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+                    }
+                }
+
+            }
+            //regoinjdkofgbj nm
+            for(Tile[] i : b.getCombinedBoard()) {
+            for(Tile t : i) {
+                if (b.paddockCheck(t, players.get(currentPlayer - 1))) {
+                    if (!isPlacingSettlements) {
+                        g.drawImage(highlight, t.getX() - 20, t.getY() - 20, t.getX() + 150, t.getY() + 180, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+                    }
+                }
+            }
+            }
+        }
         if(action.equals("Barn")) {
         	if(!(usingSpecialAction2)) {
         		for(Settlement s : players.get(currentPlayer-1).getHouses()) {
@@ -1266,10 +1286,11 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             }
     	}
     }
-
-    public void showRules(Graphics g)
+	
+public void showRules(Graphics g)
     {
         String rules = "At the beginning of the game, a random map will be arranged and three Objective cards will be drawn.\nThese cards will help determine scoring. Each player starts with 40 settlements that they will place throughout the game. A random player will be chosen to go first.";
+        //g.drawString(line, x, y += g.getFontMetrics().getHeight());
         g.setColor(new Color(181, 155, 85));
         g.fillRect((2*getWidth()/8), (getHeight()/20), getWidth()/2, (10*getHeight()/11));
         g.setFont(new Font("Times New Roman", Font.BOLD, 30));
@@ -1280,6 +1301,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         System.out.println(getWidth());
         System.out.println(getHeight());
     }
+	
     public ArrayList<Player> getPlayers() {
         return players;
     }
