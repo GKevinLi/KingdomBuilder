@@ -123,7 +123,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
         //needs to be updated with turn logic is done
     	specialActionUsed = "";
-    	state = "Game";
+    	state = "Start";
         displayRules = 0;
         boards = new ArrayList<>();
         b = new FullBoard();
@@ -289,20 +289,20 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
     public void paint(Graphics g)
     {
-        //System.out.println(displayRules);
-        if(state.equals("Start"))
+       if(state.equals("Start"))
         {
             g.drawImage(startScreen, 0,0,getWidth(),getHeight(),null);
             g.drawImage(title, getWidth()/3 - getHeight()/40, getHeight()/16, null);
-            g.setColor(Color.lightGray);
+            g.setColor(new Color(181, 155, 85));
             g.fillRect(getWidth()/2 - 162, getHeight()/3, 325, 125);
             g.fillRect(getWidth()/2 - 162, getHeight()/2 + getHeight()/20, 325, 125);
             g.setColor(Color.white);
             g.setFont(new Font("Helvetica", Font.BOLD, 100));
             g.drawString("PLAY", getWidth()/2-135, getHeight()/3+getHeight()/10 + 20);
-            //g.drawString("RULES", getWidth()/2 - 162, getHeight()/2 ;
-            //System.out.println(getWidth());
-            //System.out.println(getHeight());
+            g.setFont(new Font("Helvetica", Font.BOLD, 42));
+            g.drawString("HOW TO PLAY", getWidth()/2-135, getHeight()/3+getHeight()/4+ getHeight()/14);
+            System.out.println(getWidth());
+            System.out.println(getHeight());
         }
         else if(state.equals("Game")) {
             g.drawImage(background, 0, 0, getWidth(), getHeight(), null);
@@ -900,6 +900,26 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             if(state == "Game" && displayRules == 1)
             {
                 displayRules = 0;
+                repaint();
+            }
+            else if(state == "Start" && displayRules == 1)
+            {
+                displayRules = 0;
+                repaint();
+            }
+        }
+        else if(x>=getWidth()/2 - 162 && x <=getWidth()/2 + 325 && y >= getHeight()/3 && y <= getHeight()/3 + 125)
+        {
+            if(state == "Start")
+            {
+                state = "Game";
+            }
+        }
+        else if(x >= getWidth()/2 - 162 && x <= getWidth()/2 - 162 + 325 && y >= getHeight()/2 + getHeight()/20 && y <= getHeight()/2 + getHeight()/20 + 125)
+        {
+            if(state == "Start" && displayRules == 0)
+            {
+                displayRules = 1;
                 repaint();
             }
         }
