@@ -1327,7 +1327,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 public void showRules(Graphics g)
     {
         String rules = "At the beginning of the game, a random map will be arranged and three Objective cards will be drawn.\nThese cards will help determine scoring. Each player starts with 40 settlements that they will place throughout the game.\nA random player will be chosen to go first. A player's box will be highlighted to indicate when it is their turn.\n";
-        rules += "\n\n" +;
+       //rules += "\n\n" +;
         //g.drawString(line, x, y += g.getFontMetrics().getHeight());
         g.setColor(new Color(181, 155, 85));
         g.fillRect((2*getWidth()/8), (getHeight()/20), getWidth()/2, (10*getHeight()/11));

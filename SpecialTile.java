@@ -22,7 +22,7 @@ public class SpecialTile extends Tile{
     public void subtractNumCharges() {
         numCharges--;
     }
-}
+}/*
     public class HorseCard extends SpecialActionCard {
         public HorseCard() {
             super("horse", CardType.HORSE);
@@ -72,4 +72,5 @@ public class SpecialTile extends Tile{
 //}
 // public class HouseCard extends SpecialActionCard {
 //}
+*/
 //}
