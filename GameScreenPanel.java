@@ -10,7 +10,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     //
     private BufferedImage startScreen, title, background, boat, field, horse, house, oasis, stonehenge, tower, tavern, board1, board2, board3, board4, board5, board6, board7, board8, blueHouse, greenHouse, yellowHouse, orangeHouse, highlight, barnIcon, cityIcon, farmIcon, harborIcon, oasisIcon, oracleIcon, paddockIcon, tavernIcon, towerIcon;
     private BufferedImage cardBack, knights, miners, discoverers, citizens, farmers, fisherman, hermits, worker, grasslandTerrain, flowerTerrain, forestTerrain, canyonTerrain, desertTerrain;
-    private int currentPlayer, panelNumber;
+    private int currentPlayer, panelNumber, displayRules;
     private ArrayList<Player> players;
     private Tile paddockUsing;
     BufferedImage joinedImg;
@@ -124,6 +124,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         //needs to be updated with turn logic is done
     	specialActionUsed = "";
     	state = "Game";
+        displayRules = 0;
         boards = new ArrayList<>();
         b = new FullBoard();
         d = new TerrainDeck();
@@ -156,7 +157,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             stonehenge = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-oracle.png"));
             tavern = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-tavern.png"));
             tower = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-tower.png"));
-            
+
             barnIcon = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-Location-Barn.png"));
             farmIcon = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-Location-Farm.png"));
             cityIcon = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/KB-Location-City.png"));
@@ -281,11 +282,14 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             }
 
         }
+        addMouseListener(this);
+
 
     }
 
     public void paint(Graphics g)
     {
+        System.out.println(displayRules);
         if(state.equals("Start"))
         {
             g.drawImage(startScreen, 0,0,getWidth(),getHeight(),null);
@@ -318,11 +322,11 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             displayPlayerActionTokens(players.get(3), g, 1171, 113);
             g.setColor(new Color(181, 155, 85));
             g.fillRect((10*getWidth()/24), getHeight() - getHeight()/6, getWidth()/5, (10*getHeight()/76));
+            g.fillRect((3*getWidth()/4), getHeight() - getHeight()/6, getWidth()/5, (10*getHeight()/76));
             g.setColor(Color.black);
             g.setFont(new Font("Helvetica", Font.PLAIN, getHeight()/15));
             g.drawString("End Turn", (10*getWidth()/23), getHeight() - getHeight()/11);
-
-            showRules(g); //not done yet
+            g.drawString("How to Play", (3*getWidth()/4), getHeight() - getHeight()/11);
         }
         else if(state.equals("End")) {
             g.drawImage(background, 0, 0, getWidth(), getHeight(), null);
@@ -359,10 +363,8 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             System.out.println(players.get(2).getName() + " " + players.get(2).getScore());
             System.out.println(players.get(3).getName() + " " + players.get(3).getScore());
 
-
-
         }
-        
+        if(displayRules == 1) { showRules(g);}
 
         //drawObjective(g);
         //g.drawImage(grasslandTerrain, 0, 0, 117, 163, null);
@@ -614,7 +616,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
     public void drawActionTokens(Graphics g)
     {
-//          POSITIONS ARE SAVED ON A GOOGLE DOC 
+//          POSITIONS ARE SAVED ON A GOOGLE DOC
 	    //testing
 //         g.drawImage(boat, getWidth()/90 - (4*getWidth()/63), getHeight()/40 + (getHeight()/15), (10*getWidth()/65), (3*getHeight()/16), null);
 //         g.drawImage(boat, getWidth()/90 - (4*getWidth()/63), getHeight()/40 + (2*getHeight()/14), (10*getWidth()/65), (3*getHeight()/16), null);
@@ -881,7 +883,26 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         
     @Override
     public void mouseClicked(MouseEvent e) {
-
+        int x = e.getX();
+        int y = e.getY();
+        //g.fillRect((10*getWidth()/16) + getWidth()/107, getHeight()/19, (10*getWidth()/145), getHeight()/16);
+        System.out.println(x + " " + y);
+        if((x >= 3*getWidth()/4) && (x <= (3*getWidth()/4) + getWidth()/5) && (y >= getHeight() - getHeight()/6) && (y <= getHeight() - getHeight()/6 + (10*getHeight()/76)))
+        {
+            if(state == "Game" && displayRules == 0)
+            {
+                displayRules = 1;
+                repaint();
+            }
+        }
+        else if(x>= (10*getWidth()/16) + getWidth()/107 && x <= (10*getWidth()/16) + getWidth()/107 + (10*getWidth()/145) && y >= getHeight()/19 && y <= getHeight()/19 + getHeight()/16)
+        {
+            if(state == "Game" && displayRules == 1)
+            {
+                displayRules = 0;
+                repaint();
+            }
+        }
     }
 
     @Override
@@ -975,14 +996,14 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     			g.drawImage(p.getSpecialActions().get(1).getImage(), x, y+49, x+49, y+106, 0, 0,field.getWidth(), field.getHeight(), null);
     		}
     		if(p.getSpecialActions().size() >= 3) {
-    			
+
     			g.drawImage(p.getSpecialActions().get(2).getImage(), x+60, y, x+114, y+49, 0, 0,field.getWidth(), field.getHeight(), null);
     		}
     		if(p.getSpecialActions().size() >= 4) {
     			g.drawImage(p.getSpecialActions().get(3).getImage(), x+60, y+49, x+114, y+106, 0, 0,field.getWidth(), field.getHeight(), null);
     		}
     	}
-    	
+
     }
     public void addAllSpecialTiles(Graphics g) {
     	for(Tile[] j : combinedBoard) {
@@ -1326,24 +1347,37 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 	
 public void showRules(Graphics g)
     {
-        String rules = "At the beginning of the game, a random map will be arranged and three Objective cards will be drawn.\nThese cards will help determine scoring. Each player starts with 40 settlements that they will place throughout the game.\nA random player will be chosen to go first. A player's box will be highlighted to indicate when it is their turn.\n";
-       //rules += "\n\n" +;
-        //g.drawString(line, x, y += g.getFontMetrics().getHeight());
+        String rules = "At the beginning of the game, a random map will be generated and 3 Objective cards will be drawn.\nThese cards will help determine scoring. Each player starts with 40 settlements that they will place throughout the game.\nA random player will be chosen to go first. A player's box will be highlighted to indicate when it is their turn.\n";
+        rules += "\nNOTE TO PLAYERS: DO NOT MAXIMIZE THE GAME SCREEN.\nPLEASE PLAY AT THE GAME SCREEN SIZE THAT AUTOMATICALLY OPENS.\n";
+        rules += "\nON A PLAYER’S TURN:\n1. Click on the deck of the card at the far right of the screen. A terrain card will be drawn.\n2. Click on the terrain card. Available tiles will be highlighted.\n3. Click on the tile to place a settlement.\n    Settlements can only be placed adjacently to each other and in the terrain drawn.\n    At the beginning of each turn, 3 settlements are placed.";
+        rules += "\n4. If a player has action tokens that can be played, click on the action token and play it accordingly.\n5. To end a player's turn, click the 'End Turn' button\n6. The game progresses like this until the starting player runs out of settlements.\n    Once all players have had their final turn afterward, the game ends.\n";
+        rules += "\nACTION TOKENS:\nHorse: Allows for a settlement to be moved two tiles in any direction\n           Landing spot cannot be on WATER, MOUNTAINS, or a special action tile.\nFarm: Allows for an extra settlement to be placed on a tile in the PLAINS terrain\n          The settlement has to be placed adjacent to a previously placed settlement.\n          If the player has no settlements in the terrain, the settlement can be placed on any Plains tile.";
+        rules += "\nOasis: Allows for an extra settlement to be placed on a tile in the DESERT terrain\n         The settlement has to be placed adjacent to a previously placed settlement.\n          If the player has no settlements in the terrain, the settlement can be placed on any Desert tile.";
+        rules += "\nOracle: Allows for an extra settlement to be placed on a tile in the terrain of the card the player drew\n            The settlement has to be placed adjacent to a previously placed settlement.\n             If the player has no settlements in the terrain, the settlement can be placed on any tile of the terrain type card drawn.";
+        rules += "\nTower: Allows for an extra settlement to be placed at the edge of the board\n            The settlement has to be placed adjacent to a previously placed settlement.\n            If the player has no settlements in the terrain, the settlement can be placed on any tile on the edge of the board.";
+        rules += "\nTavern: Allows for an extra settlement to be placed at the end of an existing chain of 3 settlements\n             Landing spot cannot be on WATER, MOUNTAINS, or a special action tile.";
+        rules += "\nBarn: Allows an existing settlement to be moved to a tile in the terrain of the card the player drew\n         The settlement has to be placed adjacent to a previously placed settlement.\n         If the player has no settlements in the terrain, the settlement can be placed on any tile of the terrain type card drawn.";
+        rules += "\nHarbor: Allows an existing settlement to be moved to a WATER tile\n             The settlement has to be placed adjacent to a previously placed settlement.\n             If there is no adjacency, the settlement can be moved to any water tile.\n\n~ENJOY!!!";
+
         g.setColor(new Color(181, 155, 85));
         g.fillRect((2*getWidth()/8), (getHeight()/20), getWidth()/2, (10*getHeight()/11));
-        g.setFont(new Font("Times New Roman", Font.BOLD, 30));
+        g.setColor(Color.black);
+        g.drawRect((2*getWidth()/8), (getHeight()/20), getWidth()/2, (10*getHeight()/11));
+        g.setColor(Color.white);
+        g.fillRect((10*getWidth()/16) + getWidth()/107, getHeight()/19, (10*getWidth()/145), getHeight()/16);
+        g.setFont(new Font("Times New Roman", Font.BOLD, getWidth()/53));
         g.setColor(Color.black);
         g.drawString("HOW TO PLAY", (2*getWidth()/8) + getWidth()/16, (getHeight()/11));
-        g.setFont(new Font("Times New Roman", Font.PLAIN, 15));
+        g.drawString("EXIT", getWidth()-(10*(getWidth()/28)), getHeight()/10);
+        g.setFont(new Font("Times New Roman", Font.PLAIN, getWidth()/96));
         int x = 2*getWidth()/8;
-        int y = getHeight()/10;
+        int y = getHeight()/9;
 
         for(String str: rules.split("\n"))
         {
             y += g.getFontMetrics().getAscent();
             g.drawString(str, 2*getWidth()/8, y);
         }
-        //g.drawString(rules, 2*getWidth()/8, getHeight()/15);
         System.out.println(getWidth());
         System.out.println(getHeight());
     }
