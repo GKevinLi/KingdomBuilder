@@ -289,7 +289,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
     public void paint(Graphics g)
     {
-        System.out.println(displayRules);
+        //System.out.println(displayRules);
         if(state.equals("Start"))
         {
             g.drawImage(startScreen, 0,0,getWidth(),getHeight(),null);
@@ -301,8 +301,8 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             g.setFont(new Font("Helvetica", Font.BOLD, 100));
             g.drawString("PLAY", getWidth()/2-135, getHeight()/3+getHeight()/10 + 20);
             //g.drawString("RULES", getWidth()/2 - 162, getHeight()/2 ;
-            System.out.println(getWidth());
-            System.out.println(getHeight());
+            //System.out.println(getWidth());
+            //System.out.println(getHeight());
         }
         else if(state.equals("Game")) {
             g.drawImage(background, 0, 0, getWidth(), getHeight(), null);
@@ -330,18 +330,18 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         }
         else if(state.equals("End")) {
             g.drawImage(background, 0, 0, getWidth(), getHeight(), null);
-            System.out.println(ob1.scoreCard(players.get(0), b, 0));
-            System.out.println(ob1.scoreCard(players.get(1), b, 0));
-            System.out.println(ob1.scoreCard(players.get(2), b, 0));
-            System.out.println(ob1.scoreCard(players.get(3), b, 0));
-            System.out.println(ob2.scoreCard(players.get(0), b, 0));
-            System.out.println(ob2.scoreCard(players.get(1), b, 0));
-            System.out.println(ob2.scoreCard(players.get(2), b, 0));
-            System.out.println(ob2.scoreCard(players.get(3), b, 0));
-            System.out.println(ob3.scoreCard(players.get(0), b, 0));
-            System.out.println(ob3.scoreCard(players.get(1), b, 0));
-            System.out.println(ob3.scoreCard(players.get(2), b, 0));
-            System.out.println(ob3.scoreCard(players.get(3), b, 0));
+            System.out.println(ob1.getObjective() + " " + players.get(0).getName() + " " + ob1.scoreCard(players.get(0), b, 0));
+            System.out.println(ob1.getObjective() + " " + players.get(1).getName() + " " + ob1.scoreCard(players.get(1), b, 0));
+            System.out.println(ob1.getObjective() + " " + players.get(2).getName() + " " + ob1.scoreCard(players.get(2), b, 0));
+            System.out.println(ob1.getObjective() + " " + players.get(3).getName() + " " + ob1.scoreCard(players.get(3), b, 0));
+            System.out.println(ob2.getObjective() + " " + players.get(0).getName() + " " + ob2.scoreCard(players.get(0), b, 0));
+            System.out.println(ob2.getObjective() + " " + players.get(1).getName() + " " + ob2.scoreCard(players.get(1), b, 0));
+            System.out.println(ob2.getObjective() + " " + players.get(2).getName() + " " + ob2.scoreCard(players.get(2), b, 0));
+            System.out.println(ob2.getObjective() + " " + players.get(3).getName() + " " + ob2.scoreCard(players.get(3), b, 0));
+            System.out.println(ob3.getObjective() + " " + players.get(0).getName() + " " + ob3.scoreCard(players.get(0), b, 0));
+            System.out.println(ob3.getObjective() + " " + players.get(1).getName() + " " + ob3.scoreCard(players.get(1), b, 0));
+            System.out.println(ob3.getObjective() + " " + players.get(2).getName() + " " + ob3.scoreCard(players.get(2), b, 0));
+            System.out.println(ob3.getObjective() + " " + players.get(3).getName() + " " + ob3.scoreCard(players.get(3), b, 0));
 
 
 

@@ -16,7 +16,7 @@ public class Player {
         houses = new ArrayList<Settlement>();
         specialActions = new ArrayList<ActionToken>();
         isFirstPlayer = false;
-        numHousesLeft = 40;
+        numHousesLeft = 10;
         //terrainCard = new TerrainCard();
     }
     public void addScore(int a) {

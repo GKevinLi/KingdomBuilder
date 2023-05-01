@@ -76,6 +76,9 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                                 players.get(currentPlayer-1).addHouse(s);
                                 
                                 minTile.setSettlement(s);
+								players.get(currentPlayer-1).removeHouse(tileSelected.getSettlement());
+
+								tileSelected.removeSettlement();
                                 ArrayList<Tile> tt = minTile.getAdjacentTiles();
                                 for(Tile ttt:tt) {
                                 	if(!(ttt.getType().equals("Water")) && !(ttt.getType().equals("Grass")) && !(ttt.getType().equals("Mountain")) && !(ttt.getType().equals("Desert")) && !(ttt.getType().equals("Forest")) && !(ttt.getType().equals("Flower")) && !(ttt.getType().equals("Canyon"))) {
@@ -121,7 +124,10 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                             players.get(currentPlayer-1).addHouse(s);
                             players.get(currentPlayer-1).removeHouse(tileSelected.getSettlement());
                             minTile.setSettlement(s);
-                            tileSelected.removeSettlement();
+
+							players.get(currentPlayer-1).removeHouse(tileSelected.getSettlement());
+
+							tileSelected.removeSettlement();
                             ArrayList<Tile> tt = minTile.getAdjacentTiles();
                             for(Tile ttt:tt) {
                             	if(!(ttt.getType().equals("Water")) && !(ttt.getType().equals("Grass")) && !(ttt.getType().equals("Mountain")) && !(ttt.getType().equals("Desert")) && !(ttt.getType().equals("Forest")) && !(ttt.getType().equals("Flower")) && !(ttt.getType().equals("Canyon"))) {
@@ -210,6 +216,9 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                                 players.get(currentPlayer-1).addHouse(s);
                                 
                                 minTile.setSettlement(s);
+								players.get(currentPlayer-1).removeHouse(tileSelected.getSettlement());
+
+								tileSelected.removeSettlement();
                                 ArrayList<Tile> tt = minTile.getAdjacentTiles();
                                 for(Tile ttt:tt) {
                                 	if(!(ttt.getType().equals("Water")) && !(ttt.getType().equals("Grass")) && !(ttt.getType().equals("Mountain")) && !(ttt.getType().equals("Desert")) && !(ttt.getType().equals("Forest")) && !(ttt.getType().equals("Flower")) && !(ttt.getType().equals("Canyon"))) {
@@ -255,7 +264,9 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                             players.get(currentPlayer-1).addHouse(s);
                             players.get(currentPlayer-1).removeHouse(tileSelected.getSettlement());
                             minTile.setSettlement(s);
-                            tileSelected.removeSettlement();
+							players.get(currentPlayer-1).removeHouse(tileSelected.getSettlement());
+
+							tileSelected.removeSettlement();
                             ArrayList<Tile> tt = minTile.getAdjacentTiles();
                             for(Tile ttt:tt) {
                             	if(!(ttt.getType().equals("Water")) && !(ttt.getType().equals("Grass")) && !(ttt.getType().equals("Mountain")) && !(ttt.getType().equals("Desert")) && !(ttt.getType().equals("Forest")) && !(ttt.getType().equals("Flower")) && !(ttt.getType().equals("Canyon"))) {
@@ -1037,9 +1048,7 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
 	            			//System.out.println("hi");
 	                        b.setPlacingSpecials2(true);
 	            			tileSelected = minTile;
-	            			players.get(currentPlayer-1).removeHouse(tileSelected.getSettlement());
-                            
-                            tileSelected.removeSettlement();
+
 	            		}
 	            	}
             	}
@@ -1063,8 +1072,7 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
 	            			doingSpecialAction2 = true;
 	            			//System.out.println("hi");
 	                        b.setPlacingSpecials2(true);
-	            			tileSelected = minTile;
-	            			players.get(currentPlayer-1).removeHouse(tileSelected.getSettlement());
+	            			tileSelected = minTile;players.get(currentPlayer-1).removeHouse(tileSelected.getSettlement());
                             
                             tileSelected.removeSettlement();
 	            		}

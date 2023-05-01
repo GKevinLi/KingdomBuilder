@@ -106,16 +106,18 @@ public class ObjectiveCard {
             int cnt = 0;
             Tile[][] board = b.getCombinedBoard();
             for(Tile[] i : board) {
+                int temp = 0;
                 for(Tile j : i) {
-                    int temp = 0;
-                    if(j.getFilled()) {
+
+                    if(j.getSettlement() != null) {
                         if (j.getSettlement().getPlayerOwned() == p) {
                             temp++;
                         }
                     }
-                    if(temp >= 1) {
-                        cnt++;
-                    }
+
+                }
+                if(temp >= 1) {
+                    cnt++;
                 }
             }
             return cnt;
@@ -124,16 +126,18 @@ public class ObjectiveCard {
             int max = 0;
             Tile[][] board = b.getCombinedBoard();
             for(Tile[] i : board) {
+                int temp = 0;
                 for(Tile j : i) {
-                    int temp = 0;
-                    if(j.getFilled()) {
+
+                    if(j.getSettlement() != null) {
                         if (j.getSettlement().getPlayerOwned() == p) {
                             temp++;
                         }
                     }
-                    if(temp > max) {
-                        max = temp;
-                    }
+
+                }
+                if(temp > max) {
+                    max = temp;
                 }
             }
             return max * 2;
@@ -147,7 +151,7 @@ public class ObjectiveCard {
                 int cnt = 0;
                 for(Tile[] i : bs.getBoard()) {
                     for(Tile j : i) {
-                        if(j.getFilled()) {
+                        if(j.getSettlement() != null) {
                             if (j.getSettlement().getPlayerOwned() == p) {
                                 cnt++;
                             }
