@@ -301,6 +301,8 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             g.drawString("PLAY", getWidth()/2-135, getHeight()/3+getHeight()/10 + 20);
             g.setFont(new Font("Helvetica", Font.BOLD, 42));
             g.drawString("HOW TO PLAY", getWidth()/2-135, getHeight()/3+getHeight()/4+ getHeight()/14);
+            g.setFont(new Font("Helvetica", Font.BOLD, 30));
+            g.drawString("Please read HOW TO PLAY before playing", getWidth()/2-getWidth()/6, getHeight()/2+getHeight()/3);
             System.out.println(getWidth());
             System.out.println(getHeight());
         }
@@ -323,7 +325,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             g.setColor(new Color(181, 155, 85));
             g.fillRect((10*getWidth()/24), getHeight() - getHeight()/6, getWidth()/5, (10*getHeight()/76));
             g.fillRect((3*getWidth()/4), getHeight() - getHeight()/6, getWidth()/5, (10*getHeight()/76));
-            g.setColor(Color.black);
+            g.setColor(Color.white);
             g.setFont(new Font("Helvetica", Font.PLAIN, getHeight()/15));
             g.drawString("End Turn", (10*getWidth()/23), getHeight() - getHeight()/11);
             g.drawString("How to Play", (3*getWidth()/4), getHeight() - getHeight()/11);
