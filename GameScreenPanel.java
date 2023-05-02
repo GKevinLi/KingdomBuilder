@@ -885,9 +885,8 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         int x = e.getX();
         int y = e.getY();
-        //g.fillRect((10*getWidth()/16) + getWidth()/107, getHeight()/19, (10*getWidth()/145), getHeight()/16);
         System.out.println(x + " " + y);
-        if((x >= 3*getWidth()/4) && (x <= (3*getWidth()/4) + getWidth()/5) && (y >= getHeight() - getHeight()/6) && (y <= getHeight() - getHeight()/6 + (10*getHeight()/76)))
+        if((x >= 3*getWidth()/4) && (x <= (3*getWidth()/4) + getWidth()/5) && (y >= getHeight() - getHeight()/6) && (y <= getHeight() - getHeight()/6 + (10*getHeight()/76)) && state == "Game")
         {
             if(state == "Game" && displayRules == 0)
             {
@@ -908,12 +907,19 @@ public class GameScreenPanel extends JPanel implements MouseListener {
                 repaint();
             }
         }
-        else if(x>=getWidth()/2 - 162 && x <=getWidth()/2 + 325 && y >= getHeight()/3 && y <= getHeight()/3 + 125)
+        else if(x>=getWidth()/2 - 162 && x <=getWidth()/2 + 325 && y >= getHeight()/3 && y <= getHeight()/3 + 125 && state == "Start" && displayRules == 0)
         {
-            if(state == "Start")
-            {
-                state = "Game";
-            }
+//            if(displayRules == 0)
+//            {
+//                state = "Game";
+//                repaint();
+//            }
+//            else if(displayRules == 1)
+//            {
+//                repaint();
+//            }
+            state = "Game";
+            repaint();
         }
         else if(x >= getWidth()/2 - 162 && x <= getWidth()/2 - 162 + 325 && y >= getHeight()/2 + getHeight()/20 && y <= getHeight()/2 + getHeight()/20 + 125)
         {
@@ -923,6 +929,9 @@ public class GameScreenPanel extends JPanel implements MouseListener {
                 repaint();
             }
         }
+        System.out.println(state);
+        System.out.println(displayRules);
+        //g.fillRect(getWidth()/2 - 162, getHeight()/2 + getHeight()/20, 325, 125);
     }
 
     @Override
