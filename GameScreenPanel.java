@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class GameScreenPanel extends JPanel implements MouseListener {
     //
     private BufferedImage startScreen, title, background, boat, field, horse, house, oasis, stonehenge, tower, tavern, board1, board2, board3, board4, board5, board6, board7, board8, blueHouse, greenHouse, yellowHouse, orangeHouse, highlight, barnIcon, cityIcon, farmIcon, harborIcon, oasisIcon, oracleIcon, paddockIcon, tavernIcon, towerIcon;
-    private BufferedImage cardBack, knights, miners, discoverers, citizens, farmers, fisherman, hermits, worker, lords, merchant, grasslandTerrain, flowerTerrain, forestTerrain, canyonTerrain, desertTerrain;
+    private BufferedImage cardBack, knights, miners, discoverers, citizens, farmers, fisherman, hermits, worker, lords, merchant, startingToken, grasslandTerrain, flowerTerrain, forestTerrain, canyonTerrain, desertTerrain;
     private int currentPlayer, panelNumber, displayRules;
     private ArrayList<Player> players;
     private Tile paddockUsing;
@@ -200,7 +200,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             board7 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/6.png"));
             board8 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/7.png"));
             highlight = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/image-removebg-preview.png"));
-
+	    startingToken = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/starting token clean.png"));
 
         }
         catch (Exception E)
@@ -423,6 +423,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             g.setColor(orange);
             g.drawRect(getWidth()/160, getHeight()/40, (getWidth()/4)-(getWidth()/32), (getHeight()/4 + getHeight()/10)/4*3);
             g.drawString(" PLAYER 1", getWidth()/160, getHeight()/16);
+            g.drawImage(startingToken, getWidth()/160+getWidth()/11, getHeight()/35, 50, 50, null);
 
             g.setColor(transGrey);
             g.fillRect(getWidth()/4+getWidth()/100, getHeight()/40, (getWidth()/4)-(getWidth()/32), (getHeight()/4 + getHeight()/10)/4*3);
@@ -436,6 +437,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             g.setColor(Color.yellow);
             g.drawRect(getWidth()/4+getWidth()/100, getHeight()/40, (getWidth()/4)-(getWidth()/32), (getHeight()/4 + getHeight()/10)/4*3);
             g.drawString(" PLAYER 2", getWidth()/4+getWidth()/100, getHeight()/16);
+            g.drawImage(startingToken, getWidth()/4+getWidth()/100+getWidth()/11, getHeight()/35, 50, 50, null);
 
             g.setColor(transGrey);
             g.fillRect(getWidth()/160, getHeight()/40, (getWidth()/4)-(getWidth()/32), (getHeight()/4 + getHeight()/10)/4*3);
@@ -449,6 +451,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             g.setColor(Color.green);
             g.drawRect(getWidth()/2+getWidth()/160+getWidth()/800, getHeight()/40, (getWidth()/4)-(getWidth()/32), (getHeight()/4 + getHeight()/10)/4*3);
             g.drawString(" PLAYER 3", getWidth()/2+getWidth()/160+getWidth()/800, getHeight()/16);
+            g.drawImage(startingToken, getWidth()/2+getWidth()/160+getWidth()/800+getWidth()/11, getHeight()/35, 50, 50, null);
 
             g.setColor(transGrey);
             g.fillRect(getWidth()/160, getHeight()/40, (getWidth()/4)-(getWidth()/32), (getHeight()/4 + getHeight()/10)/4*3);
@@ -462,6 +465,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             g.setColor(blue);
             g.drawRect(getWidth()-getWidth()/4+getWidth()/200, getHeight()/40, (getWidth()/4)-(getWidth()/32), (getHeight()/4 + getHeight()/10)/4*3);
             g.drawString(" PLAYER 4", getWidth()-getWidth()/4+getWidth()/200, getHeight()/16);
+            g.drawImage(startingToken, getWidth()-getWidth()/4+getWidth()/200+getWidth()/11, getHeight()/35, 50, 50, null);
 
             g.setColor(transGrey);
             g.fillRect(getWidth()/160, getHeight()/40, (getWidth()/4)-(getWidth()/32), (getHeight()/4 + getHeight()/10)/4*3);
