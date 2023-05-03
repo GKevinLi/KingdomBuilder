@@ -25,8 +25,8 @@ public class Settlement {
         ArrayList<Tile> a = new ArrayList<Tile>();
         int cnt = 0;
         for(Tile t : adjacents) {
-            if(t.HouseCheck() && !t.getFilled()) {
-                if(t.getSettlement().getPlayerOwned() == p) {
+            if(t.getSettlement() != null && !t.getFilled()) {
+                if(t.getSettlement().getPlayerOwned().equals(p)) {
                     a.add(t);
                     cnt++;
                     t.setFilled();
@@ -35,14 +35,14 @@ public class Settlement {
 
         }
         if(cnt == 0) {
-            return 1;
+            return 0;
         }
         else {
             int sum = 0;
             for(Tile t : a) {
                 sum += countAdjacentHouses(t, p);
             }
-            return sum + cnt;
+            return sum + cnt + 1;
         }
     }
 }

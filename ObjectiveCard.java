@@ -82,16 +82,25 @@ public class ObjectiveCard {
         }
         if(objective.equals("Citizens")) {
             ArrayList<Settlement> s = p.getHouses();
+            for(Settlement huse : s) {
+                huse.getPlacedOn().resetFilled();
+            }
             int max = 0;
             for(Settlement huse : s) {
-                if(huse.countAdjacentHouses(huse.getPlacedOn(), p) > max) {
-                    max = huse.countAdjacentHouses(huse.getPlacedOn(), p);
+                int t = huse.countAdjacentHouses(huse.getPlacedOn(), p);
+                System.out.println(t);
+                if(t > max) {
+                    max = t;
                 }
             }
-            return max /2;
+            double d = max / 2.0;
+            return (int)(Math.floor(d));
         }
         if(objective.equals("Hermits")) {
             ArrayList<Settlement> s = p.getHouses();
+            for(Settlement huse : s) {
+                huse.getPlacedOn().resetFilled();
+            }
             int cnt = 0;
             for(Settlement huse : s) {
                 if(!(huse.getPlacedOn().getFilled())) {
