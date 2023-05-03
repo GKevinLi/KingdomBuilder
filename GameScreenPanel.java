@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class GameScreenPanel extends JPanel implements MouseListener {
     //
     private BufferedImage startScreen, title, background, boat, field, horse, house, oasis, stonehenge, tower, tavern, board1, board2, board3, board4, board5, board6, board7, board8, blueHouse, greenHouse, yellowHouse, orangeHouse, highlight, barnIcon, cityIcon, farmIcon, harborIcon, oasisIcon, oracleIcon, paddockIcon, tavernIcon, towerIcon;
-    private BufferedImage cardBack, knights, miners, discoverers, citizens, farmers, fisherman, hermits, worker, lords, grasslandTerrain, flowerTerrain, forestTerrain, canyonTerrain, desertTerrain;
+    private BufferedImage cardBack, knights, miners, discoverers, citizens, farmers, fisherman, hermits, worker, lords, merchant, grasslandTerrain, flowerTerrain, forestTerrain, canyonTerrain, desertTerrain;
     private int currentPlayer, panelNumber, displayRules;
     private ArrayList<Player> players;
     private Tile paddockUsing;
@@ -178,6 +178,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             worker = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/Worker Objective.png"));
             fisherman = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/Fisherman Objective.png"));
             lords = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/lords objective.png"));
+            merchant = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/merchants objective.png"));
 
             blueHouse = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/image (2).png"));
             greenHouse = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/image (3).png"));
@@ -587,7 +588,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         else if(ob1.getObjective().equals("Hermits")) {obj1 = hermits;}
         else if(ob1.getObjective().equals("Explorers")) {obj1 = discoverers;}
         else if(ob1.getObjective().equals("Knights")) {obj1 = knights;}
-        else if(ob1.getObjective().equals("Merchants")) {obj1 = cardBack;} //fix later
+        else if(ob1.getObjective().equals("Merchants")) {obj1 = merchant;}
         else if(ob1.getObjective().equals("Farmers")) {obj1 = farmers;}
 
         if(ob2.getObjective().equals("Lords")) {obj2 = lords; }
@@ -598,7 +599,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         else if(ob2.getObjective().equals("Hermits")) {obj2 = hermits;}
         else if(ob2.getObjective().equals("Explorers")) {obj2 = discoverers;}
         else if(ob2.getObjective().equals("Knights")) {obj2 = knights;}
-        else if(ob2.getObjective().equals("Merchants")) {obj2 = cardBack;} //fix later
+        else if(ob2.getObjective().equals("Merchants")) {obj2 = merchant;}
         else if(ob2.getObjective().equals("Farmers")) {obj2 = farmers;}
 
         if(ob3.getObjective().equals("Lords")) {obj3 = lords; }
@@ -609,7 +610,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         else if(ob3.getObjective().equals("Hermits")) {obj3 = hermits;}
         else if(ob3.getObjective().equals("Explorers")) {obj3 = discoverers;}
         else if(ob3.getObjective().equals("Knights")) {obj3 = knights;}
-        else if(ob3.getObjective().equals("Merchants")) {obj3 = cardBack;} //fix later
+        else if(ob3.getObjective().equals("Merchants")) {obj3 = merchant;}
         else if(ob3.getObjective().equals("Farmers")) {obj3 = farmers;}
 
         g.drawImage(obj1, (getWidth()/2) - (getWidth()/32), getHeight()/3 + getHeight()/12, getWidth()/9, getHeight()/3, null);
