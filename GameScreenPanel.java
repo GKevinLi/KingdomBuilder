@@ -10,7 +10,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     //
     private BufferedImage startScreen, title, background, boat, field, horse, house, oasis, stonehenge, tower, tavern, board1, board2, board3, board4, board5, board6, board7, board8, blueHouse, greenHouse, yellowHouse, orangeHouse, highlight, barnIcon, cityIcon, farmIcon, harborIcon, oasisIcon, oracleIcon, paddockIcon, tavernIcon, towerIcon;
     private BufferedImage cardBack, knights, miners, discoverers, citizens, farmers, fisherman, hermits, worker, lords, merchant, startingToken, grasslandTerrain, flowerTerrain, forestTerrain, canyonTerrain, desertTerrain;
-    private int currentPlayer, panelNumber, displayRules;
+    private int currentPlayer, panelNumber, displayRules, startingPlayer;
     private ArrayList<Player> players;
     private Tile paddockUsing;
     BufferedImage joinedImg;
@@ -135,6 +135,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         ob3 = temp3.get(2);
         //hi
         currentPlayer = 1;
+        startingPlayer = currentPlayer;
         players = new ArrayList<>();
         players.add(new Player("1"));
         players.add(new Player("2"));
@@ -423,7 +424,6 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             g.setColor(orange);
             g.drawRect(getWidth()/160, getHeight()/40, (getWidth()/4)-(getWidth()/32), (getHeight()/4 + getHeight()/10)/4*3);
             g.drawString(" PLAYER 1", getWidth()/160, getHeight()/16);
-            g.drawImage(startingToken, getWidth()/160+getWidth()/11, getHeight()/35, 50, 50, null);
 
             g.setColor(transGrey);
             g.fillRect(getWidth()/4+getWidth()/100, getHeight()/40, (getWidth()/4)-(getWidth()/32), (getHeight()/4 + getHeight()/10)/4*3);
@@ -437,7 +437,6 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             g.setColor(Color.yellow);
             g.drawRect(getWidth()/4+getWidth()/100, getHeight()/40, (getWidth()/4)-(getWidth()/32), (getHeight()/4 + getHeight()/10)/4*3);
             g.drawString(" PLAYER 2", getWidth()/4+getWidth()/100, getHeight()/16);
-            g.drawImage(startingToken, getWidth()/4+getWidth()/100+getWidth()/11, getHeight()/35, 50, 50, null);
 
             g.setColor(transGrey);
             g.fillRect(getWidth()/160, getHeight()/40, (getWidth()/4)-(getWidth()/32), (getHeight()/4 + getHeight()/10)/4*3);
@@ -451,7 +450,6 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             g.setColor(Color.green);
             g.drawRect(getWidth()/2+getWidth()/160+getWidth()/800, getHeight()/40, (getWidth()/4)-(getWidth()/32), (getHeight()/4 + getHeight()/10)/4*3);
             g.drawString(" PLAYER 3", getWidth()/2+getWidth()/160+getWidth()/800, getHeight()/16);
-            g.drawImage(startingToken, getWidth()/2+getWidth()/160+getWidth()/800+getWidth()/11, getHeight()/35, 50, 50, null);
 
             g.setColor(transGrey);
             g.fillRect(getWidth()/160, getHeight()/40, (getWidth()/4)-(getWidth()/32), (getHeight()/4 + getHeight()/10)/4*3);
@@ -465,13 +463,17 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             g.setColor(blue);
             g.drawRect(getWidth()-getWidth()/4+getWidth()/200, getHeight()/40, (getWidth()/4)-(getWidth()/32), (getHeight()/4 + getHeight()/10)/4*3);
             g.drawString(" PLAYER 4", getWidth()-getWidth()/4+getWidth()/200, getHeight()/16);
-            g.drawImage(startingToken, getWidth()-getWidth()/4+getWidth()/200+getWidth()/11, getHeight()/35, 50, 50, null);
 
             g.setColor(transGrey);
             g.fillRect(getWidth()/160, getHeight()/40, (getWidth()/4)-(getWidth()/32), (getHeight()/4 + getHeight()/10)/4*3);
             g.fillRect(getWidth()/4+getWidth()/100, getHeight()/40, (getWidth()/4)-(getWidth()/32), (getHeight()/4 + getHeight()/10)/4*3);
             g.fillRect(getWidth()/2+getWidth()/160+getWidth()/800, getHeight()/40, (getWidth()/4)-(getWidth()/32), (getHeight()/4 + getHeight()/10)/4*3);
         }
+
+        if(startingPlayer == 1) {g.drawImage(startingToken, getWidth()/160+getWidth()/11, getHeight()/35, 50, 50, null);}
+        else if(startingPlayer == 2) {g.drawImage(startingToken, getWidth()/4+getWidth()/100+getWidth()/11, getHeight()/35, 50, 50, null);}
+        else if(startingPlayer == 3) {g.drawImage(startingToken, getWidth()/2+getWidth()/160+getWidth()/800+getWidth()/11, getHeight()/35, 50, 50, null);}
+        else if(startingPlayer == 4) {g.drawImage(startingToken, getWidth()-getWidth()/4+getWidth()/200+getWidth()/11, getHeight()/35, 50, 50, null);}
 
         //change number when getHouse() is done
          g.setFont(new Font("Helvetica", Font.PLAIN, getWidth()/68));
