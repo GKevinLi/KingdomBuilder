@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class GameScreenPanel extends JPanel implements MouseListener {
     //
     private BufferedImage startScreen, title, background, boat, field, horse, house, oasis, stonehenge, tower, tavern, board1, board2, board3, board4, board5, board6, board7, board8, blueHouse, greenHouse, yellowHouse, orangeHouse, highlight, barnIcon, cityIcon, farmIcon, harborIcon, oasisIcon, oracleIcon, paddockIcon, tavernIcon, towerIcon;
-    private BufferedImage cardBack, knights, miners, discoverers, citizens, farmers, fisherman, hermits, worker, grasslandTerrain, flowerTerrain, forestTerrain, canyonTerrain, desertTerrain;
+    private BufferedImage cardBack, knights, miners, discoverers, citizens, farmers, fisherman, hermits, worker, lords, grasslandTerrain, flowerTerrain, forestTerrain, canyonTerrain, desertTerrain;
     private int currentPlayer, panelNumber, displayRules;
     private ArrayList<Player> players;
     private Tile paddockUsing;
@@ -177,6 +177,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             hermits = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/Hermits Objective.png"));
             worker = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/Worker Objective.png"));
             fisherman = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/Fisherman Objective.png"));
+            lords = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/lords objective.png"));
 
             blueHouse = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/image (2).png"));
             greenHouse = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/image (3).png"));
@@ -578,7 +579,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         g.setFont(new Font("Helvetica", Font.PLAIN, getWidth()/45));
         g.drawString("OBJECTIVES", (getWidth()/2) - (getWidth()/32) + (getWidth()/9), getHeight()/3 + getHeight()/30);
 
-        if(ob1.getObjective().equals("Lords")) {obj1 = cardBack; } //fix later
+        if(ob1.getObjective().equals("Lords")) {obj1 = lords; }
         else if(ob1.getObjective().equals("Miners")) {obj1 = miners;}
         else if(ob1.getObjective().equals("Fishermen")) {obj1 = fisherman;}
         else if(ob1.getObjective().equals("Workers")) {obj1 = worker;}
@@ -589,7 +590,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         else if(ob1.getObjective().equals("Merchants")) {obj1 = cardBack;} //fix later
         else if(ob1.getObjective().equals("Farmers")) {obj1 = farmers;}
 
-        if(ob2.getObjective().equals("Lords")) {obj2 = cardBack; } //fix later
+        if(ob2.getObjective().equals("Lords")) {obj2 = lords; }
         else if(ob2.getObjective().equals("Miners")) {obj2 = miners;}
         else if(ob2.getObjective().equals("Fishermen")) {obj2 = fisherman;}
         else if(ob2.getObjective().equals("Workers")) {obj2 = worker;}
@@ -600,7 +601,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         else if(ob2.getObjective().equals("Merchants")) {obj2 = cardBack;} //fix later
         else if(ob2.getObjective().equals("Farmers")) {obj2 = farmers;}
 
-        if(ob3.getObjective().equals("Lords")) {obj3 = cardBack; } //fix later
+        if(ob3.getObjective().equals("Lords")) {obj3 = lords; }
         else if(ob3.getObjective().equals("Miners")) {obj3 = miners;}
         else if(ob3.getObjective().equals("Fishermen")) {obj3 = fisherman;}
         else if(ob3.getObjective().equals("Workers")) {obj3 = worker;}
@@ -911,15 +912,6 @@ public class GameScreenPanel extends JPanel implements MouseListener {
         }
         else if(x>=getWidth()/2 - 162 && x <=getWidth()/2 + 325 && y >= getHeight()/3 && y <= getHeight()/3 + 125 && state == "Start" && displayRules == 0)
         {
-//            if(displayRules == 0)
-//            {
-//                state = "Game";
-//                repaint();
-//            }
-//            else if(displayRules == 1)
-//            {
-//                repaint();
-//            }
             state = "Game";
             repaint();
         }
