@@ -123,7 +123,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
         //needs to be updated with turn logic is done
     	specialActionUsed = "";
-    	state = "Start";
+    	state = "End";
         displayRules = 0;
         boards = new ArrayList<>();
         b = new FullBoard();
@@ -201,7 +201,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             board7 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/6.png"));
             board8 = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/7.png"));
             highlight = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/image-removebg-preview.png"));
-	    startingToken = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/starting token clean.png"));
+	        startingToken = ImageIO.read(GameScreenPanel.class.getResource("/deez imgs/starting token clean.png"));
 
         }
         catch (Exception E)
@@ -348,8 +348,6 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             System.out.println(ob3.getObjective() + " " + players.get(2).getName() + " " + ob3.scoreCard(players.get(2), b, 0));
             System.out.println(ob3.getObjective() + " " + players.get(3).getName() + " " + ob3.scoreCard(players.get(3), b, 0));
 
-
-
             players.get(0).addScore(ob1.scoreCard(players.get(0), b, 0));
 
             players.get(1).addScore(ob1.scoreCard(players.get(1), b, 0));
@@ -368,6 +366,36 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             System.out.println(players.get(2).getName() + " " + players.get(2).getScore());
             System.out.println(players.get(3).getName() + " " + players.get(3).getScore());
 
+            //code for end screen graphics
+            ArrayList<Integer> scores = new ArrayList<Integer>();
+           for(int i = 0; i < players.size(); i++)
+           {
+                scores.add(players.get(i).getScore());
+           }
+
+            g.setColor(Color.black);
+            g.drawRect(10,  getHeight()/3 - getHeight()/12, getWidth()-20, getHeight()/8);
+            g.drawRect(10,  getHeight()/3 - getHeight()/12 + getHeight()/8, getWidth()-20, getHeight()/8);
+            g.drawRect(10,  getHeight()/3 - getHeight()/12 + (2*getHeight()/8), getWidth()-20, getHeight()/8);
+            g.drawRect(10,  getHeight()/3 - getHeight()/12 + (3*getHeight()/8), getWidth()-20, getHeight()/8);
+            g.drawRect(10, getHeight()/3-getHeight()/12, (getWidth()-20)/6, getHeight()/2);
+            g.drawRect(10+(getWidth()-20)/6, getHeight()/3-getHeight()/12, (getWidth()-20)/6, getHeight()/2);
+            g.drawRect(10+ ((getWidth()-20)/3), getHeight()/3-getHeight()/12, (getWidth()-20)/6, getHeight()/2);
+            g.drawRect(10+ ((getWidth()-20)/2), getHeight()/3-getHeight()/12, (getWidth()-20)/6, getHeight()/2);
+            g.drawRect(10+(4*(getWidth()-20)/6), getHeight()/3-getHeight()/12, (getWidth()-20)/6, getHeight()/2);
+            g.drawRect(10+(5*(getWidth()-20)/6), getHeight()/3-getHeight()/12, (getWidth()-20)/6, getHeight()/2);
+
+            g.setFont(new Font("Helvetica", Font.BOLD, getHeight()/19));
+            g.drawString("First Place", 10, getHeight()/3 - getHeight()/12 + getHeight()/12);
+            g.drawString("Second Place", 10, getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+            g.drawString("Third Place", 10, getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+            g.drawString("Fourth Place", 10, getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+            g.setFont(new Font("Helvetica", Font.BOLD, getHeight()/25));
+            g.drawString("Objective 1", 60+ ((getWidth()-20)/6), getHeight()/3-getHeight()/12);
+            g.drawString("Objective 2", 60+ ((getWidth()-20)/3), getHeight()/3-getHeight()/12);
+            g.drawString("Objective 3", 60+ ((getWidth()-20)/2), getHeight()/3-getHeight()/12);
+            g.drawString("Castles", 80 + (4*(getWidth()-20)/6), getHeight()/3-getHeight()/12);
+           g.drawString("TOTAL", 80 + (5*(getWidth()-20)/6), getHeight()/3-getHeight()/12);
         }
         if(displayRules == 1) { showRules(g);}
 
