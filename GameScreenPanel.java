@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class GameScreenPanel extends JPanel implements MouseListener {
     //
@@ -123,7 +124,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
         //needs to be updated with turn logic is done
     	specialActionUsed = "";
-    	state = "Start";
+    	state = "End";
         displayRules = 0;
         boards = new ArrayList<>();
         b = new FullBoard();
@@ -368,10 +369,22 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
             //code for end screen graphics
             ArrayList<Integer> scores = new ArrayList<Integer>();
-           for(int i = 0; i < players.size(); i++)
+            for(int k = 0; k < players.size(); k++)
            {
-                scores.add(players.get(i).getScore());
+                scores.add(players.get(k).getScore());
            }
+            Collections.sort(scores);
+            ArrayList<Player> ranking = new ArrayList<Player>();
+            for(int i = 0; i < scores.size(); i++)
+            {
+                for(int j = 0; j<players.size(); j++)
+                {
+                    if(scores.get(i) == players.get(j).getScore())
+                    {
+                        ranking.add(players.get(j));
+                    }
+                }
+            }
 
            g.setColor(new Color(181, 155, 85));
             g.fillRect(10, getHeight()/3- getHeight()/12, (getWidth()-20), (getHeight()/8) * 4);
@@ -398,6 +411,31 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             g.drawString("Objective 3", 60+ ((getWidth()-20)/2), getHeight()/3-getHeight()/12);
             g.drawString("Castles", 80 + (4*(getWidth()-20)/6), getHeight()/3-getHeight()/12);
            g.drawString("TOTAL", 80 + (5*(getWidth()-20)/6), getHeight()/3-getHeight()/12);
+           //objective 1
+           g.drawString("" + ob1.scoreCard(ranking.get(0), b, 0), 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
+           g.drawString("" + ob1.scoreCard(ranking.get(1), b, 0), 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+           g.drawString("" + ob1.scoreCard(ranking.get(2), b, 0), 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+           g.drawString("" + ob1.scoreCard(ranking.get(3), b, 0), 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+           //objective 2
+           g.drawString("" + ob2.scoreCard(ranking.get(0), b, 0), 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + getHeight()/12);
+           g.drawString("" + ob2.scoreCard(ranking.get(1), b, 0), 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+           g.drawString("" + ob2.scoreCard(ranking.get(2), b, 0), 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+           g.drawString("" + ob2.scoreCard(ranking.get(3), b, 0), 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+           //objective 3
+           g.drawString("" + ob3.scoreCard(ranking.get(0), b, 0), 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + getHeight()/12);
+           g.drawString("" + ob3.scoreCard(ranking.get(1), b, 0), 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+           g.drawString("" + ob3.scoreCard(ranking.get(2), b, 0), 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+           g.drawString("" + ob3.scoreCard(ranking.get(3), b, 0), 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+           //castles
+           g.drawString("" + ranking.get(0).getNumHouses(), 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
+           g.drawString("" + ranking.get(1).getNumHouses(), 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+           g.drawString("" + ranking.get(2).getNumHouses(), 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+           g.drawString("" + ranking.get(3).getNumHouses(), 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+           //score
+           g.drawString("" + ranking.get(0).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
+           g.drawString("" + ranking.get(1).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+           g.drawString("" + ranking.get(2).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+           g.drawString("" + ranking.get(3).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
         }
         if(displayRules == 1) { showRules(g);}
 
@@ -424,6 +462,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
             }
 
+            g.drawRect(0, getHeight()/2, getWidth(), getHeight()/20);
         }
     }
     public void drawGameScreen(Graphics g)
