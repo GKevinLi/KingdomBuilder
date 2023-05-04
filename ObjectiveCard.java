@@ -70,7 +70,7 @@ public class ObjectiveCard {
             for(Settlement house : s) {
                 int Count = 0;
                 for(Tile t : house.getPlacedOn().getAdjacentTiles()) {
-                    if(t.getType().equals("Castle") || t.getType().equals("Horse") || t.getType().equals("Farm") || t.getType().equals("Oasis") || t.getType().equals("Oracle") || t.getType().equals("Tower") || t.getType().equals("Tavern") || t.getType().equals("Barn") || t.getType().equals("Harbor")) {
+                    if(t.getType().equals("Castle") || t.getType().equals("Paddock") || t.getType().equals("Farm") || t.getType().equals("Oasis") || t.getType().equals("Oracle") || t.getType().equals("Tower") || t.getType().equals("Tavern") || t.getType().equals("Barn") || t.getType().equals("Harbor")) {
                         Count++;
                     }
                 }
