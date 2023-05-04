@@ -88,7 +88,7 @@ public class ObjectiveCard {
             int max = 0;
             for(Settlement huse : s) {
                 int t = huse.countAdjacentHouses(huse.getPlacedOn(), p);
-                System.out.println(t);
+
                 if(t > max) {
                     max = t;
                 }
@@ -161,12 +161,13 @@ public class ObjectiveCard {
                 for(Tile[] i : bs.getBoard()) {
                     for(Tile j : i) {
                         if(j.getSettlement() != null) {
-                            if (j.getSettlement().getPlayerOwned() == p) {
+                            if (j.getSettlement().getPlayerOwned().equals(p)) {
                                 cnt++;
                             }
                         }
                     }
                 }
+                System.out.println(cnt);
                 if(cnt < least) {
                     least = cnt;
                 }

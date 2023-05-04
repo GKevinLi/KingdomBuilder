@@ -34,6 +34,7 @@ public class Settlement {
             }
 
         }
+
         if(cnt == 0) {
             return 0;
         }
@@ -42,7 +43,11 @@ public class Settlement {
             for(Tile t : a) {
                 sum += countAdjacentHouses(t, p);
             }
-            return sum + cnt + 1;
+            if(!(b.getFilled())) {
+                sum++;
+            }
+            b.setFilled();
+            return (sum + cnt);
         }
     }
 }
