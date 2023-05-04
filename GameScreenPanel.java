@@ -123,7 +123,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
         //needs to be updated with turn logic is done
     	specialActionUsed = "";
-    	state = "End";
+    	state = "Start";
         displayRules = 0;
         boards = new ArrayList<>();
         b = new FullBoard();
@@ -373,6 +373,8 @@ public class GameScreenPanel extends JPanel implements MouseListener {
                 scores.add(players.get(i).getScore());
            }
 
+           g.setColor(new Color(181, 155, 85));
+            g.fillRect(10, getHeight()/3- getHeight()/12, (getWidth()-20), (getHeight()/8) * 4);
             g.setColor(Color.black);
             g.drawRect(10,  getHeight()/3 - getHeight()/12, getWidth()-20, getHeight()/8);
             g.drawRect(10,  getHeight()/3 - getHeight()/12 + getHeight()/8, getWidth()-20, getHeight()/8);
