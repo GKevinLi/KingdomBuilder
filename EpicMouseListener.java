@@ -32,7 +32,7 @@ public class EpicMouseListener implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-
+		if(!(state.equals("End"))) {
         int x = e.getX();
         int y = e.getY();
         //System.out.println(x);
@@ -76,9 +76,7 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                                 players.get(currentPlayer-1).addHouse(s);
                                 
                                 minTile.setSettlement(s);
-								players.get(currentPlayer-1).removeHouse(tileSelected.getSettlement());
 
-								tileSelected.removeSettlement();
                                 ArrayList<Tile> tt = minTile.getAdjacentTiles();
                                 for(Tile ttt:tt) {
                                 	if(!(ttt.getType().equals("Water")) && !(ttt.getType().equals("Grass")) && !(ttt.getType().equals("Mountain")) && !(ttt.getType().equals("Desert")) && !(ttt.getType().equals("Forest")) && !(ttt.getType().equals("Flower")) && !(ttt.getType().equals("Canyon"))) {
@@ -105,7 +103,10 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                                 			}
                                 			if(cnt55 == 0) {
                                 				tttt.getAction().setUsed(true);
-                                				players.get(currentPlayer-1).addSpecialAction(tttt.getAction());
+												if(tttt.getNumCharges() > 0) {
+													players.get(currentPlayer - 1).addSpecialAction(tttt.getAction());
+													tttt.subtractNumCharges();
+												}
                                 			}
                                 		}
                                 	}
@@ -125,9 +126,7 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                             players.get(currentPlayer-1).removeHouse(tileSelected.getSettlement());
                             minTile.setSettlement(s);
 
-							players.get(currentPlayer-1).removeHouse(tileSelected.getSettlement());
 
-							tileSelected.removeSettlement();
                             ArrayList<Tile> tt = minTile.getAdjacentTiles();
                             for(Tile ttt:tt) {
                             	if(!(ttt.getType().equals("Water")) && !(ttt.getType().equals("Grass")) && !(ttt.getType().equals("Mountain")) && !(ttt.getType().equals("Desert")) && !(ttt.getType().equals("Forest")) && !(ttt.getType().equals("Flower")) && !(ttt.getType().equals("Canyon"))) {
@@ -158,7 +157,10 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                             			}
                             			if(cnt69 == 0) {
                             				tttt.getAction().setUsed(true);
-                            				players.get(currentPlayer-1).addSpecialAction(tttt.getAction());
+											if(tttt.getNumCharges() > 0) {
+												players.get(currentPlayer - 1).addSpecialAction(tttt.getAction());
+												tttt.subtractNumCharges();
+											}
                             			}
                             		}
                             	}
@@ -216,9 +218,7 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                                 players.get(currentPlayer-1).addHouse(s);
                                 
                                 minTile.setSettlement(s);
-								players.get(currentPlayer-1).removeHouse(tileSelected.getSettlement());
 
-								tileSelected.removeSettlement();
                                 ArrayList<Tile> tt = minTile.getAdjacentTiles();
                                 for(Tile ttt:tt) {
                                 	if(!(ttt.getType().equals("Water")) && !(ttt.getType().equals("Grass")) && !(ttt.getType().equals("Mountain")) && !(ttt.getType().equals("Desert")) && !(ttt.getType().equals("Forest")) && !(ttt.getType().equals("Flower")) && !(ttt.getType().equals("Canyon"))) {
@@ -245,7 +245,10 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                                 			}
                                 			if(cnt55 == 0) {
                                 				tttt.getAction().setUsed(true);
-                                				players.get(currentPlayer-1).addSpecialAction(tttt.getAction());
+												if(tttt.getNumCharges() > 0) {
+													players.get(currentPlayer - 1).addSpecialAction(tttt.getAction());
+													tttt.subtractNumCharges();
+												}
                                 			}
                                 		}
                                 	}
@@ -264,9 +267,7 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                             players.get(currentPlayer-1).addHouse(s);
                             players.get(currentPlayer-1).removeHouse(tileSelected.getSettlement());
                             minTile.setSettlement(s);
-							players.get(currentPlayer-1).removeHouse(tileSelected.getSettlement());
 
-							tileSelected.removeSettlement();
                             ArrayList<Tile> tt = minTile.getAdjacentTiles();
                             for(Tile ttt:tt) {
                             	if(!(ttt.getType().equals("Water")) && !(ttt.getType().equals("Grass")) && !(ttt.getType().equals("Mountain")) && !(ttt.getType().equals("Desert")) && !(ttt.getType().equals("Forest")) && !(ttt.getType().equals("Flower")) && !(ttt.getType().equals("Canyon"))) {
@@ -297,7 +298,10 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                             			}
                             			if(cnt69 == 0) {
                             				tttt.getAction().setUsed(true);
-                            				players.get(currentPlayer-1).addSpecialAction(tttt.getAction());
+											if(tttt.getNumCharges() > 0) {
+												players.get(currentPlayer - 1).addSpecialAction(tttt.getAction());
+												tttt.subtractNumCharges();
+											}
                             			}
                             		}
                             	}
@@ -371,7 +375,10 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
 									}
 									if(cnt55 == 0) {
 										tttt.getAction().setUsed(true);
-										players.get(currentPlayer-1).addSpecialAction(tttt.getAction());
+										if(tttt.getNumCharges() > 0) {
+											players.get(currentPlayer - 1).addSpecialAction(tttt.getAction());
+											tttt.subtractNumCharges();
+										}
 									}
 								}
 							}
@@ -460,6 +467,7 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                     			}
                     		} 
                     		if(cnt >= 1) {
+								if(players.get(currentPlayer-1).getNumHouses() > 0) {
                     			Settlement s = new Settlement(minTile, players.get(currentPlayer-1));
                                 players.get(currentPlayer-1).addHouse(s);
                                 minTile.setSettlement(s);
@@ -489,7 +497,10 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                                 			}
                                 			if(cnt55 == 0) {
                                 				tttt.getAction().setUsed(true);
-                                				players.get(currentPlayer-1).addSpecialAction(tttt.getAction());
+												if(tttt.getNumCharges() > 0) {
+													players.get(currentPlayer - 1).addSpecialAction(tttt.getAction());
+													tttt.subtractNumCharges();
+												}
                                 			}
                                 		}
                                 	}
@@ -499,9 +510,10 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                                 players.get(currentPlayer-1).setNumHouses(players.get(currentPlayer-1).getNumHouses()-1);
                                 doingSpecialAction = false;
                                 b.setPlacingSpecials(false);
-                    		}
+                    		}}
                     	}
                     	else {
+							if(players.get(currentPlayer-1).getNumHouses() > 0) {
                     		Settlement s = new Settlement(minTile, players.get(currentPlayer-1));
                             players.get(currentPlayer-1).addHouse(s);
                             minTile.setSettlement(s);
@@ -535,7 +547,10 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                             			}
                             			if(cnt69 == 0) {
                             				tttt.getAction().setUsed(true);
-                            				players.get(currentPlayer-1).addSpecialAction(tttt.getAction());
+											if(tttt.getNumCharges() > 0) {
+												players.get(currentPlayer - 1).addSpecialAction(tttt.getAction());
+												tttt.subtractNumCharges();
+											}
                             			}
                             		}
                             	}
@@ -546,7 +561,7 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                             players.get(currentPlayer-1).setNumHouses(players.get(currentPlayer-1).getNumHouses()-1);
                             doingSpecialAction = false;
                             b.setPlacingSpecials(false);
-                    	}
+                    	}}
                         
                     }
                     
@@ -589,6 +604,7 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                     			}
                     		} 
                     		if(cnt >= 1) {
+								if(players.get(currentPlayer-1).getNumHouses() > 0) {
                     			Settlement s = new Settlement(minTile, players.get(currentPlayer-1));
                                 players.get(currentPlayer-1).addHouse(s);
                                 minTile.setSettlement(s);
@@ -618,7 +634,10 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                                 			}
                                 			if(cnt55 == 0) {
                                 				tttt.getAction().setUsed(true);
-                                				players.get(currentPlayer-1).addSpecialAction(tttt.getAction());
+												if(tttt.getNumCharges() > 0) {
+													players.get(currentPlayer - 1).addSpecialAction(tttt.getAction());
+													tttt.subtractNumCharges();
+												}
                                 			}
                                 		}
                                 	}
@@ -628,9 +647,10 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                                 players.get(currentPlayer-1).setNumHouses(players.get(currentPlayer-1).getNumHouses()-1);
                                 doingSpecialAction = false;
                                 b.setPlacingSpecials(false);
-                    		}
+                    		}}
                     	}
                     	else {
+							if(players.get(currentPlayer-1).getNumHouses() > 0) {
                     		Settlement s = new Settlement(minTile, players.get(currentPlayer-1));
                             players.get(currentPlayer-1).addHouse(s);
                             minTile.setSettlement(s);
@@ -664,7 +684,10 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                             			}
                             			if(cnt69 == 0) {
                             				tttt.getAction().setUsed(true);
-                            				players.get(currentPlayer-1).addSpecialAction(tttt.getAction());
+											if(tttt.getNumCharges() > 0) {
+												players.get(currentPlayer - 1).addSpecialAction(tttt.getAction());
+												tttt.subtractNumCharges();
+											}
                             			}
                             		}
                             	}
@@ -675,7 +698,7 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                             players.get(currentPlayer-1).setNumHouses(players.get(currentPlayer-1).getNumHouses()-1);
                             doingSpecialAction = false;
                             b.setPlacingSpecials(false);
-                    	}
+                    	}}
                         
                     }
                     
@@ -718,6 +741,7 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                     			}
                     		} 
                     		if(cnt >= 1) {
+								if(players.get(currentPlayer-1).getNumHouses() > 0) {
                     			Settlement s = new Settlement(minTile, players.get(currentPlayer-1));
                                 players.get(currentPlayer-1).addHouse(s);
                                 minTile.setSettlement(s);
@@ -747,7 +771,10 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                                 			}
                                 			if(cnt55 == 0) {
                                 				tttt.getAction().setUsed(true);
-                                				players.get(currentPlayer-1).addSpecialAction(tttt.getAction());
+												if(tttt.getNumCharges() > 0) {
+													players.get(currentPlayer - 1).addSpecialAction(tttt.getAction());
+													tttt.subtractNumCharges();
+												}
                                 			}
                                 		}
                                 	}
@@ -757,9 +784,10 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                                 players.get(currentPlayer-1).setNumHouses(players.get(currentPlayer-1).getNumHouses()-1);
                                 doingSpecialAction = false;
                                 b.setPlacingSpecials(false);
-                    		}
+                    		}}
                     	}
                     	else {
+							if(players.get(currentPlayer-1).getNumHouses() > 0) {
                     		Settlement s = new Settlement(minTile, players.get(currentPlayer-1));
                             players.get(currentPlayer-1).addHouse(s);
                             minTile.setSettlement(s);
@@ -793,7 +821,10 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                             			}
                             			if(cnt69 == 0) {
                             				tttt.getAction().setUsed(true);
-                            				players.get(currentPlayer-1).addSpecialAction(tttt.getAction());
+											if(tttt.getNumCharges() > 0) {
+												players.get(currentPlayer - 1).addSpecialAction(tttt.getAction());
+												tttt.subtractNumCharges();
+											}
                             			}
                             		}
                             	}
@@ -804,7 +835,7 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                             players.get(currentPlayer-1).setNumHouses(players.get(currentPlayer-1).getNumHouses()-1);
                             doingSpecialAction = false;
                             b.setPlacingSpecials(false);
-                    	}
+                    	}}
                         
                     }
                     
@@ -859,6 +890,7 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
 								}
 							}
 							if(cnt >= 1) {
+								if(players.get(currentPlayer-1).getNumHouses() > 0) {
 								Settlement s = new Settlement(minTile, players.get(currentPlayer-1));
 								players.get(currentPlayer-1).addHouse(s);
 								minTile.setSettlement(s);
@@ -888,7 +920,10 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
 											}
 											if(cnt55 == 0) {
 												tttt.getAction().setUsed(true);
-												players.get(currentPlayer-1).addSpecialAction(tttt.getAction());
+												if(tttt.getNumCharges() > 0) {
+													players.get(currentPlayer - 1).addSpecialAction(tttt.getAction());
+													tttt.subtractNumCharges();
+												}
 											}
 										}
 									}
@@ -898,9 +933,10 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
 								players.get(currentPlayer-1).setNumHouses(players.get(currentPlayer-1).getNumHouses()-1);
 								doingSpecialAction = false;
 								b.setPlacingSpecials(false);
-							}
+							}}
 						}
 						else {
+							if(players.get(currentPlayer-1).getNumHouses() > 0) {
 							Settlement s = new Settlement(minTile, players.get(currentPlayer-1));
 							players.get(currentPlayer-1).addHouse(s);
 							minTile.setSettlement(s);
@@ -934,7 +970,10 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
 										}
 										if(cnt69 == 0) {
 											tttt.getAction().setUsed(true);
-											players.get(currentPlayer-1).addSpecialAction(tttt.getAction());
+											if(tttt.getNumCharges() > 0) {
+												players.get(currentPlayer - 1).addSpecialAction(tttt.getAction());
+												tttt.subtractNumCharges();
+											}
 										}
 									}
 								}
@@ -945,7 +984,7 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
 							players.get(currentPlayer-1).setNumHouses(players.get(currentPlayer-1).getNumHouses()-1);
 							doingSpecialAction = false;
 							b.setPlacingSpecials(false);
-						}
+						}}
 
 					}
 
@@ -970,49 +1009,51 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
 					//if(players.get(currentPlayer-1).getTerrainCard() != null) {
 
 					if(b.getBoard().tavernCheck(minTile,players.get(currentPlayer-1)) && minTile.getSettlement() == null) {
-						
-							Settlement s = new Settlement(minTile, players.get(currentPlayer-1));
-							players.get(currentPlayer-1).addHouse(s);
+						if(players.get(currentPlayer-1).getNumHouses() > 0) {
+							Settlement s = new Settlement(minTile, players.get(currentPlayer - 1));
+							players.get(currentPlayer - 1).addHouse(s);
 							minTile.setSettlement(s);
 							ArrayList<Tile> tt = minTile.getAdjacentTiles();
-							for(Tile ttt:tt) {
-								if(!(ttt.getType().equals("Water")) && !(ttt.getType().equals("Grass")) && !(ttt.getType().equals("Mountain")) && !(ttt.getType().equals("Desert")) && !(ttt.getType().equals("Forest")) && !(ttt.getType().equals("Flower")) && !(ttt.getType().equals("Canyon"))) {
-									SpecialTile tttt= (SpecialTile) ttt;
-									if(tttt.getType().equals("Castle")) {
+							for (Tile ttt : tt) {
+								if (!(ttt.getType().equals("Water")) && !(ttt.getType().equals("Grass")) && !(ttt.getType().equals("Mountain")) && !(ttt.getType().equals("Desert")) && !(ttt.getType().equals("Forest")) && !(ttt.getType().equals("Flower")) && !(ttt.getType().equals("Canyon"))) {
+									SpecialTile tttt = (SpecialTile) ttt;
+									if (tttt.getType().equals("Castle")) {
 										int cnt421 = 0;
-										for(Tile ttttt : players.get(currentPlayer-1).getRawAdjacentTiles()) {
-											if(ttttt.getX()==(tttt.getX()) && ttttt.getY()==(tttt.getY())) {
+										for (Tile ttttt : players.get(currentPlayer - 1).getRawAdjacentTiles()) {
+											if (ttttt.getX() == (tttt.getX()) && ttttt.getY() == (tttt.getY())) {
 												cnt421++;
 											}
 										}
-										if(cnt421 == 1) {
-											players.get(currentPlayer-1).addScore(3);
+										if (cnt421 == 1) {
+											players.get(currentPlayer - 1).addScore(3);
 										}
 
-										System.out.println(players.get(currentPlayer-1).getScore());
-									}
-									else {
+										System.out.println(players.get(currentPlayer - 1).getScore());
+									} else {
 										int cnt55 = 0;
-										for(ActionToken a : players.get(currentPlayer-1).getSpecialActions()) {
-											if(a.getID() == tttt.getAction().getID()) {
+										for (ActionToken a : players.get(currentPlayer - 1).getSpecialActions()) {
+											if (a.getID() == tttt.getAction().getID()) {
 												cnt55++;
 											}
 										}
-										if(cnt55 == 0) {
+										if (cnt55 == 0) {
 											tttt.getAction().setUsed(true);
-											players.get(currentPlayer-1).addSpecialAction(tttt.getAction());
+											if(tttt.getNumCharges() > 0) {
+												players.get(currentPlayer - 1).addSpecialAction(tttt.getAction());
+												tttt.subtractNumCharges();
+											}
 										}
 									}
 								}
-							
-							//b.DrawSettlementOn(minTile, b.getGraphics());
 
-							
-						}
-							players.get(currentPlayer-1).setNumHouses(players.get(currentPlayer-1).getNumHouses()-1);
+								//b.DrawSettlementOn(minTile, b.getGraphics());
+
+
+							}
+							players.get(currentPlayer - 1).setNumHouses(players.get(currentPlayer - 1).getNumHouses() - 1);
 							doingSpecialAction = false;
 							b.setPlacingSpecials(false);
-						
+						}
 					}
 					int cntr = 0;
 					for(Tile t : players.get(currentPlayer-1).getAllAdjacentTiles()) {
@@ -1048,6 +1089,10 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
 	            			//System.out.println("hi");
 	                        b.setPlacingSpecials2(true);
 	            			tileSelected = minTile;
+							players.get(currentPlayer-1).removeHouse(tileSelected.getSettlement());
+
+							tileSelected.removeSettlement();
+
 
 	            		}
 	            	}
@@ -1087,9 +1132,10 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
             
         }
         if(placingSettlements) {
-            if(numSettlementsPlaced >= 1) {
-            	if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.getHeight()/30 && x <= ((b.getWidth() / 3) +(b.getWidth() / 50)) + (int)((16 * ((double)b.getWidth() / 1600))) && y <= (b.getHeight() - (b.getHeight() / 13)-(b.getHeight()/3 - b.getHeight()/30)) + b.getHeight()/3 - b.getHeight()/30) {
-                    //System.out.println("hai");
+			if(players.get(currentPlayer - 1).getNumHouses() > 0) {
+				if (numSettlementsPlaced >= 1) {
+					if (x >= (int) ((16 * ((double) b.getWidth() / 1600))) && y >= b.getHeight() / 3 - b.getHeight() / 30 && x <= ((b.getWidth() / 3) + (b.getWidth() / 50)) + (int) ((16 * ((double) b.getWidth() / 1600))) && y <= (b.getHeight() - (b.getHeight() / 13) - (b.getHeight() / 3 - b.getHeight() / 30)) + b.getHeight() / 3 - b.getHeight() / 30) {
+						//System.out.println("hai");
         		/*
         		double Ydiff = (b.getHeight() - (b.getHeight() / 13)-(b.getHeight()/3 - b.getHeight()/30)) / 20;
         		int row = (int) ((y - b.getHeight()/3 - b.getHeight()/30) / (Ydiff / 2));
@@ -1104,137 +1150,149 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
         		System.out.println(b.getBoard().getCombinedBoard()[row][column].getX());
         		System.out.println(b.getBoard().getCombinedBoard()[row][column].getY());
         		*/
-                    double min = Integer.MAX_VALUE;
-                    Tile minTile = b.getBoard().getCombinedBoard()[0][0];
-                    for(Tile[] i : b.getBoard().getCombinedBoard()) {
-                        for(Tile j : i) {
-                            if(Math.sqrt(Math.pow(x - j.getX(), 2) + Math.pow(y - j.getY(), 2)) < min) {
-                                min = Math.sqrt(Math.pow(x - j.getX(), 2) + Math.pow(y - j.getY(), 2));
-                                minTile = j;
-                            }
-                        }
-                    }
-                    //System.out.println(players.get(currentPlayer-1).getTerrainCard().getCardType());
-                    //System.out.println(minTile.getType());
-                    if(players.get(currentPlayer-1).getTerrainCard() != null) {
-                    if(minTile.getType().equals(players.get(currentPlayer-1).getTerrainCard().getCardType()) && minTile.getSettlement() == null) {
-                    	
-                    	ArrayList<Tile> temp16 = new ArrayList<>();
-                    	for(Tile t : players.get(currentPlayer-1).getAllAdjacentTiles()) {
-                    		if(t.getType().equals(players.get(currentPlayer-1).getTerrainCard().getCardType())) {
-                    			temp16.add(t);
-                    			//b.HighlightTile(t, b.getGraphics());
-                    		}
-                    	}
-                    	if(temp16.size() != 0) {
-                    		int cnt = 0;
-                    		for(Tile t : players.get(currentPlayer-1).getAllAdjacentTiles()) {
-                    			
-                    			if(t == minTile) {
-                    				cnt++;
-                    			}
-                    		} 
-                    		if(cnt >= 1) {
-                    			Settlement s = new Settlement(minTile, players.get(currentPlayer-1));
-                                players.get(currentPlayer-1).addHouse(s);
-                                minTile.setSettlement(s);
-                                ArrayList<Tile> tt = minTile.getAdjacentTiles();
-                                for(Tile ttt:tt) {
-                                	if(!(ttt.getType().equals("Water")) && !(ttt.getType().equals("Grass")) && !(ttt.getType().equals("Mountain")) && !(ttt.getType().equals("Desert")) && !(ttt.getType().equals("Forest")) && !(ttt.getType().equals("Flower")) && !(ttt.getType().equals("Canyon"))) {
-                                		SpecialTile tttt= (SpecialTile) ttt;
-                                		if(tttt.getType().equals("Castle")) {
-                                			int cnt421 = 0;
-                                			for(Tile ttttt : players.get(currentPlayer-1).getRawAdjacentTiles()) {
-                                				if(ttttt.getX()==(tttt.getX()) && ttttt.getY()==(tttt.getY())) {
-                                					cnt421++;
-                                				}
-                                			}
-                                			if(cnt421 == 1) {
-                                				players.get(currentPlayer-1).addScore(3);
-                                			}
-                                			
-                                			System.out.println(players.get(currentPlayer-1).getScore());
-                                		}
-                                		else {
-                                			int cnt55 = 0;
-                                			for(ActionToken a : players.get(currentPlayer-1).getSpecialActions()) {
-                                				if(a.getID() == tttt.getAction().getID()) {
-                                					cnt55++;
-                                				}
-                                			}
-                                			if(cnt55 == 0) {
-                                				tttt.getAction().setUsed(true);
-                                				players.get(currentPlayer-1).addSpecialAction(tttt.getAction());
-                                			}
-                                		}
-                                	}
-                                }
-                                //b.DrawSettlementOn(minTile, b.getGraphics());
-                                numSettlementsPlaced --;
-                                players.get(currentPlayer-1).setNumHouses(players.get(currentPlayer-1).getNumHouses()-1);
-                    		}
-                    	}
-                    	else {
-                    		Settlement s = new Settlement(minTile, players.get(currentPlayer-1));
-                            players.get(currentPlayer-1).addHouse(s);
-                            minTile.setSettlement(s);
-                            ArrayList<Tile> tt = minTile.getAdjacentTiles();
-                            for(Tile ttt:tt) {
-                            	if(!(ttt.getType().equals("Water")) && !(ttt.getType().equals("Grass")) && !(ttt.getType().equals("Mountain")) && !(ttt.getType().equals("Desert")) && !(ttt.getType().equals("Forest")) && !(ttt.getType().equals("Flower")) && !(ttt.getType().equals("Canyon"))) {
-                            		SpecialTile tttt= (SpecialTile) ttt;
-                            		if(tttt.getType().equals("Castle")) {
-                            			if(tttt.getType().equals("Castle")) {
-                                			int cnt420 = 0;
-                                			for(Tile ttttt : players.get(currentPlayer-1).getRawAdjacentTiles()) {
-                                				if(ttttt.getX()==(tttt.getX()) && ttttt.getY()==(tttt.getY())) {
-                                			
-                                					cnt420++;
-                                				}
-                                			}
-                                			
-                                			if(cnt420 == 1) {
-                                				players.get(currentPlayer-1).addScore(3);
-                                			}
-                                			
-                                			System.out.println(players.get(currentPlayer-1).getScore());
-                                		}
-                            		}
-                            		else {
-                            			int cnt69 = 0;
-                            			for(ActionToken a : players.get(currentPlayer-1).getSpecialActions()) {
-                            				if(a.getID() == tttt.getAction().getID()) {
-                            					cnt69++;
-                            				}
-                            			}
-                            			if(cnt69 == 0) {
-                            				tttt.getAction().setUsed(true);
-                            				players.get(currentPlayer-1).addSpecialAction(tttt.getAction());
-                            			}
-                            		}
-                            	}
-                            }
-                            //b.repaint();
-                            //b.DrawSettlementOn(minTile, b.getGraphics());
-                            numSettlementsPlaced --;
-                            players.get(currentPlayer-1).setNumHouses(players.get(currentPlayer-1).getNumHouses()-1);
-                    	}
-                        
-                    }}
-                    
+						double min = Integer.MAX_VALUE;
+						Tile minTile = b.getBoard().getCombinedBoard()[0][0];
+						for (Tile[] i : b.getBoard().getCombinedBoard()) {
+							for (Tile j : i) {
+								if (Math.sqrt(Math.pow(x - j.getX(), 2) + Math.pow(y - j.getY(), 2)) < min) {
+									min = Math.sqrt(Math.pow(x - j.getX(), 2) + Math.pow(y - j.getY(), 2));
+									minTile = j;
+								}
+							}
+						}
+						//System.out.println(players.get(currentPlayer-1).getTerrainCard().getCardType());
+						//System.out.println(minTile.getType());
+						if (players.get(currentPlayer - 1).getTerrainCard() != null) {
+							if (minTile.getType().equals(players.get(currentPlayer - 1).getTerrainCard().getCardType()) && minTile.getSettlement() == null) {
 
-                }
-                b.repaint();
-            }
-            else {
-                placingSettlements = false;
-                b.setPlacingSettlements(false);
-                //numSettlementsPlaced = 3;
+								ArrayList<Tile> temp16 = new ArrayList<>();
+								for (Tile t : players.get(currentPlayer - 1).getAllAdjacentTiles()) {
+									if (t.getType().equals(players.get(currentPlayer - 1).getTerrainCard().getCardType())) {
+										temp16.add(t);
+										//b.HighlightTile(t, b.getGraphics());
+									}
+								}
+								if (temp16.size() != 0) {
+									int cnt = 0;
+									for (Tile t : players.get(currentPlayer - 1).getAllAdjacentTiles()) {
 
-                
-                
-                b.repaint();
-            }
-        }
+										if (t == minTile) {
+											cnt++;
+										}
+									}
+									if (cnt >= 1) {
+										if (players.get(currentPlayer - 1).getNumHouses() > 0) {
+											Settlement s = new Settlement(minTile, players.get(currentPlayer - 1));
+											players.get(currentPlayer - 1).addHouse(s);
+											minTile.setSettlement(s);
+											ArrayList<Tile> tt = minTile.getAdjacentTiles();
+											for (Tile ttt : tt) {
+												if (!(ttt.getType().equals("Water")) && !(ttt.getType().equals("Grass")) && !(ttt.getType().equals("Mountain")) && !(ttt.getType().equals("Desert")) && !(ttt.getType().equals("Forest")) && !(ttt.getType().equals("Flower")) && !(ttt.getType().equals("Canyon"))) {
+													SpecialTile tttt = (SpecialTile) ttt;
+													if (tttt.getType().equals("Castle")) {
+														int cnt421 = 0;
+														for (Tile ttttt : players.get(currentPlayer - 1).getRawAdjacentTiles()) {
+															if (ttttt.getX() == (tttt.getX()) && ttttt.getY() == (tttt.getY())) {
+																cnt421++;
+															}
+														}
+														if (cnt421 == 1) {
+															players.get(currentPlayer - 1).addScore(3);
+														}
+
+														System.out.println(players.get(currentPlayer - 1).getScore());
+													} else {
+														int cnt55 = 0;
+														for (ActionToken a : players.get(currentPlayer - 1).getSpecialActions()) {
+															if (a.getID() == tttt.getAction().getID()) {
+																cnt55++;
+															}
+														}
+														if (cnt55 == 0) {
+															tttt.getAction().setUsed(true);
+															if (tttt.getNumCharges() > 0) {
+																players.get(currentPlayer - 1).addSpecialAction(tttt.getAction());
+																tttt.subtractNumCharges();
+															}
+														}
+													}
+												}
+											}
+											//b.DrawSettlementOn(minTile, b.getGraphics());
+											numSettlementsPlaced--;
+											players.get(currentPlayer - 1).setNumHouses(players.get(currentPlayer - 1).getNumHouses() - 1);
+										}
+									}
+								} else {
+									if (players.get(currentPlayer - 1).getNumHouses() > 0) {
+										Settlement s = new Settlement(minTile, players.get(currentPlayer - 1));
+										players.get(currentPlayer - 1).addHouse(s);
+										minTile.setSettlement(s);
+										ArrayList<Tile> tt = minTile.getAdjacentTiles();
+										for (Tile ttt : tt) {
+											if (!(ttt.getType().equals("Water")) && !(ttt.getType().equals("Grass")) && !(ttt.getType().equals("Mountain")) && !(ttt.getType().equals("Desert")) && !(ttt.getType().equals("Forest")) && !(ttt.getType().equals("Flower")) && !(ttt.getType().equals("Canyon"))) {
+												SpecialTile tttt = (SpecialTile) ttt;
+												if (tttt.getType().equals("Castle")) {
+													if (tttt.getType().equals("Castle")) {
+														int cnt420 = 0;
+														for (Tile ttttt : players.get(currentPlayer - 1).getRawAdjacentTiles()) {
+															if (ttttt.getX() == (tttt.getX()) && ttttt.getY() == (tttt.getY())) {
+
+																cnt420++;
+															}
+														}
+
+														if (cnt420 == 1) {
+															players.get(currentPlayer - 1).addScore(3);
+														}
+
+														System.out.println(players.get(currentPlayer - 1).getScore());
+													}
+												} else {
+													int cnt69 = 0;
+													for (ActionToken a : players.get(currentPlayer - 1).getSpecialActions()) {
+														if (a.getID() == tttt.getAction().getID()) {
+															cnt69++;
+														}
+													}
+													if (cnt69 == 0) {
+														tttt.getAction().setUsed(true);
+														if (tttt.getNumCharges() > 0) {
+															players.get(currentPlayer - 1).addSpecialAction(tttt.getAction());
+															tttt.subtractNumCharges();
+														}
+													}
+												}
+											}
+										}
+										//b.repaint();
+										//b.DrawSettlementOn(minTile, b.getGraphics());
+										numSettlementsPlaced--;
+										players.get(currentPlayer - 1).setNumHouses(players.get(currentPlayer - 1).getNumHouses() - 1);
+									}
+								}
+
+							}
+						}
+
+
+					}
+					b.repaint();
+				} else {
+					placingSettlements = false;
+					b.setPlacingSettlements(false);
+					//numSettlementsPlaced = 3;
+
+
+					b.repaint();
+				}
+			}
+			else {
+				placingSettlements = false;
+				b.setPlacingSettlements(false);
+				numSettlementsPlaced = 0;
+			}
+		}
         //Player 1
         if(currentPlayer == 1) {
         if(x >= 17 && y >= 112 && x <= 66 && y <= 161 && (numSettlementsPlaced == 0 || numSettlementsPlaced == 3) && !(doingSpecialAction)&& !(placingSettlements)) {
@@ -1438,7 +1496,7 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
         	b.repaint();
         }
         //if()
-        if(x >= 604 && y >= 598 && x <= 945 && y <= 729 && numSettlementsPlaced == 0) {
+        if(x >= 604 && y >= 598 && x <= 945 && y <= 729 && (numSettlementsPlaced == 0 || players.get(currentPlayer-1).getNumHouses() <= 0)) {
             //hi
             if(players.get(currentPlayer-1).getNumHouses() <= 0) {
                 endGame = true;
@@ -1448,9 +1506,12 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
             }
         	currentPlayer++;
             currentPlayer = currentPlayer % 5;
-            
+			doingSpecialAction = false;
+			doingSpecialAction2 = false;
+			numSettlementsPlaced = 0;
             if(currentPlayer == 0 && endGame) {
                 b.setState("End");
+				state = "End";
             }
             if(currentPlayer == 0) {
             	currentPlayer++;
@@ -1535,7 +1596,7 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                 c.repaint();
                 //System.out.println("state changed");
             }
-        }
+        }}
     }
 
     @Override

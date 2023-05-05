@@ -1351,7 +1351,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             for(Tile[] i : b.getCombinedBoard()) {
             for(Tile t : i) {
                 if(paddockUsing != null) {
-                if (b.paddockCheck(t, paddockUsing,players.get(currentPlayer - 1)) && t.getHousePlaceable()) {
+                if (b.paddockCheck(t, paddockUsing,players.get(currentPlayer - 1)) && t.getHousePlaceable() && t.getSettlement() == null) {
                     if (!isPlacingSettlements) {
                         g.drawImage(highlight, t.getX() - 20, t.getY() - 20, t.getX() + 150, t.getY() + 180, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
                     }

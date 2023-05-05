@@ -8,6 +8,7 @@ public class ActionToken {
     private boolean usedAlready;
     private int id;
     private BufferedImage img;
+
     public ActionToken(String s, int i) {
         action = s;
         id = i;

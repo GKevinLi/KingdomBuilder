@@ -1,5 +1,5 @@
 public class SpecialTile extends Tile{
-    private int numCharges;
+    private int numCharges = 2;
     private ActionToken specialAction;
     public SpecialTile(String s, ActionToken a) {
         super(s);
