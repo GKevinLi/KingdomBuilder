@@ -389,6 +389,11 @@ public class GameScreenPanel extends JPanel implements MouseListener {
                 }
             }
 
+            for(int m = 0; m < ranking.size(); m++)
+            {
+                System.out.println(ranking.get(m).getName());
+            }
+
            g.setColor(new Color(181, 155, 85));
            g.fillRect(10, getHeight()/3- getHeight()/12, (getWidth()-20), (getHeight()/8) * 4);
 
@@ -1035,6 +1040,114 @@ public class GameScreenPanel extends JPanel implements MouseListener {
                 repaint();
             }
         }
+        else if(state == "End" && x >= getWidth()/5 && x <= getWidth()/5+getWidth()/6 && y >= getHeight()-getHeight()/7 && y <= getHeight()-getHeight()/7 + (9*getHeight()/76))
+        {
+            state = "Game";
+            repaint();
+        }
+//        else if(state == "End" && x >= 3*getWidth()/5 && x <= 3*getWidth()/5+getWidth()/6 && y >= getHeight()-getHeight()/7 && y <= getHeight()-getHeight()/7 + (9*getHeight()/76))
+//        {
+//            state = "Start";
+//            specialActionUsed = "";
+//            state = "Start";
+//            displayRules = 0;
+//            boards = new ArrayList<>();
+//            b = new FullBoard();
+//            d = new TerrainDeck();
+//            obj = new ObjectiveDeck();
+//            ArrayList<ObjectiveCard> temp3 = obj.get3Random();
+//            ob1 = temp3.get(0);
+//            ob2 = temp3.get(1);
+//            ob3 = temp3.get(2);
+//            //hi
+//            //currentPlayer =  (int)(Math.random()*4)+1;
+//            //or 1, doesnt give everybody final turn
+//            currentPlayer = 1;
+//            System.out.println(currentPlayer);
+//            startingPlayer = currentPlayer;
+//            players = new ArrayList<>();
+//            players.add(new Player("1"));
+//            players.add(new Player("2"));
+//            players.add(new Player("3"));
+//            players.add(new Player("4"));
+//            boards.add(new BoardSector(b1, board1));
+//            boards.add(new BoardSector(b2, board2));
+//            boards.add(new BoardSector(b3, board3));
+//            boards.add(new BoardSector(b4, board4));
+//            boards.add(new BoardSector(b5, board5));
+//            boards.add(new BoardSector(b6, board6));
+//            boards.add(new BoardSector(b7, board7));
+//            boards.add(new BoardSector(b8, board8));
+//            discardPile = new ArrayList<>();
+//            for(int i = 0; i < 4; i++) {
+//                BoardSector temp = (boards.get((int)(Math.random() * boards.size())));
+//                b.addBoard(temp);
+//                boards.remove(temp);
+//            }
+//            BufferedImage temp = joinBufferedImage(b.getBoards().get(0).getImg(), b.getBoards().get(2).getImg());
+//            BufferedImage temp2 = joinBufferedImage(b.getBoards().get(1).getImg(), b.getBoards().get(3).getImg());
+//            joinedImg = joinBufferedImage2(temp, temp2);
+//            b.makeCombinedBoard();
+////hi
+//            combinedBoard = b.getCombinedBoard();
+//            double Ydiff = (getHeight() - (getHeight() / 13)-(getHeight()/3 - getHeight()/30)) / 20;
+//            double Xdiff = (((double)getWidth() / 3) + ((double)getWidth() / 50)) / 20;
+//            for(int i = 0; i < 20; i++) {
+//                for(int j = 0; j < 20; j++) {
+//                    ArrayList<Tile> t = new ArrayList<>();
+//                    if(i % 2 == 0) {
+//
+//                        if(i - 1 >= 0) {
+//                            t.add(combinedBoard[i-1][j]);
+//                        }
+//                        if(i + 1 < 20) {
+//                            t.add(combinedBoard[i+1][j]);
+//                        }
+//                        if(j + 1 < 20) {
+//                            t.add(combinedBoard[i][j+1]);
+//                        }
+//                        if(j - 1 >= 0) {
+//                            t.add(combinedBoard[i][j-1]);
+//                        }
+//                        if(i - 1 >= 0 && j - 1 >= 0) {
+//                            t.add(combinedBoard[i-1][j-1]);
+//                        }
+//                        if(i + 1 < 20 && j - 1 >= 0) {
+//                            t.add(combinedBoard[i+1][j-1]);
+//                        }
+//                    }
+//                    else {
+//                        if(i - 1 >= 0) {
+//                            t.add(combinedBoard[i-1][j]);
+//                        }
+//                        if(i + 1 < 20) {
+//                            t.add(combinedBoard[i+1][j]);
+//                        }
+//                        if(j + 1 < 20) {
+//                            t.add(combinedBoard[i][j+1]);
+//                        }
+//                        if(j - 1 >= 0) {
+//                            t.add(combinedBoard[i][j-1]);
+//                        }
+//                        if(i - 1 >= 0 && j + 1 < 20) {
+//                            t.add(combinedBoard[i-1][j+1]);
+//                        }
+//                        if(i + 1 < 20 && j + 1 < 20) {
+//                            t.add(combinedBoard[i+1][j+1]);
+//                        }
+//                    }
+//                    combinedBoard[i][j].setAdjacentTiles(t);
+//
+//                }
+//            }
+//            for(Tile[] t : combinedBoard) {
+//                for(Tile i : t) {
+//
+//                }
+//
+//            }
+//        }
+
         System.out.println(state);
         System.out.println(displayRules);
         // g.fillRect(getWidth()/5, getHeight()-getHeight()/7,getWidth()/6, (9*getHeight()/76));
