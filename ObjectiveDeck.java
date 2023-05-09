@@ -29,8 +29,8 @@ public class ObjectiveDeck {
         cards.add(new ObjectiveCard("Knights", knights));
         cards.add(new ObjectiveCard("Hermits", hermits));
         cards.add(new ObjectiveCard("Citizens", citizens));
-        cards.add(new ObjectiveCard("Merchants", worker));
-        cards.add(new ObjectiveCard("Lords", worker));
+        //cards.add(new ObjectiveCard("Merchants", worker));
+        //cards.add(new ObjectiveCard("Lords", worker));
         cards.add(new ObjectiveCard("Farmers", farmers));
 
     }
