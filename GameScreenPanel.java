@@ -15,6 +15,7 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     private ArrayList<Player> players;
     private Tile paddockUsing;
     BufferedImage joinedImg;
+    private boolean scoredGame = false;
     private ArrayList<BoardSector> boards;
     private ArrayList<TerrainCard> discardPile;
     private TerrainDeck d;
@@ -23,10 +24,29 @@ public class GameScreenPanel extends JPanel implements MouseListener {
     private String specialActionUsed;
     private boolean usingSpecialAction;
     private boolean usingSpecialAction2;
+    private boolean gameReadyToEnd = false;
     private ObjectiveDeck obj;
     private ObjectiveCard ob1;
     private ObjectiveCard ob2;
     private ObjectiveCard ob3;
+    int p1score1 = 0;
+	int p1score2 = 0;
+	int p1score3 = 0;
+
+	int p2score1 = 0;
+	int p2score2 = 0;
+	int p2score3 = 0;
+	int castleScore1;
+	int castleScore2;
+	int castleScore3;
+	int castleScore4;
+	int p3score1 = 0;
+	int p3score2 = 0;
+	int p3score3 = 0;
+
+	int p4score1 = 0;
+	int p4score2 = 0;
+	int p4score3 = 0;
     private FullBoard b;
     private String state;
     private Tile[][] b1 = {{new Tile("Grass"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Forest"), new Tile("Water"), new Tile("Grass"), new Tile("Forest"), new Tile("Forest"), new Tile("Flower")},
@@ -338,38 +358,213 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             g.drawString("How to Play", (3*getWidth()/4), getHeight() - getHeight()/11);
         }
         else if(state.equals("End")) {
+        	if(!(scoredGame)) {
+        	castleScore1 = players.get(0).getScore();
+        	castleScore2 = players.get(1).getScore();
+        	castleScore3 = players.get(2).getScore();
+        	castleScore4 = players.get(3).getScore();
+        	
+        
             g.drawImage(background, 0, 0, getWidth(), getHeight(), null);
-            System.out.println(ob1.getObjective() + " " + players.get(0).getName() + " " + ob1.scoreCard(players.get(0), b, 0));
-            System.out.println(ob1.getObjective() + " " + players.get(1).getName() + " " + ob1.scoreCard(players.get(1), b, 0));
-            System.out.println(ob1.getObjective() + " " + players.get(2).getName() + " " + ob1.scoreCard(players.get(2), b, 0));
-            System.out.println(ob1.getObjective() + " " + players.get(3).getName() + " " + ob1.scoreCard(players.get(3), b, 0));
-            System.out.println(ob2.getObjective() + " " + players.get(0).getName() + " " + ob2.scoreCard(players.get(0), b, 0));
-            System.out.println(ob2.getObjective() + " " + players.get(1).getName() + " " + ob2.scoreCard(players.get(1), b, 0));
-            System.out.println(ob2.getObjective() + " " + players.get(2).getName() + " " + ob2.scoreCard(players.get(2), b, 0));
-            System.out.println(ob2.getObjective() + " " + players.get(3).getName() + " " + ob2.scoreCard(players.get(3), b, 0));
-            System.out.println(ob3.getObjective() + " " + players.get(0).getName() + " " + ob3.scoreCard(players.get(0), b, 0));
-            System.out.println(ob3.getObjective() + " " + players.get(1).getName() + " " + ob3.scoreCard(players.get(1), b, 0));
-            System.out.println(ob3.getObjective() + " " + players.get(2).getName() + " " + ob3.scoreCard(players.get(2), b, 0));
-            System.out.println(ob3.getObjective() + " " + players.get(3).getName() + " " + ob3.scoreCard(players.get(3), b, 0));
+            
+            if(ob1.getObjective().equals("Lords")) {
+            	ArrayList<Integer> temp1 = new ArrayList<>();
+            	
+            	for(int i = 0; i < 4; i++) {
+            		int count1 = 0;
+            		int count2 = 0;
+            		int count3 = 0;
+            		int count4 = 0;
+            		count1 += ob1.scoreCard(players.get(0), b, i);
+            		count2 += ob1.scoreCard(players.get(1), b, i);
+            		count3 += ob1.scoreCard(players.get(2), b, i);
+            		count4 += ob1.scoreCard(players.get(3), b, i);
+            		temp1.add(count1);
+                	temp1.add(count2);
+                	temp1.add(count3);
+                	temp1.add(count4);
+                	Collections.sort(temp1);
+                	if(temp1.get(temp1.size() - 1) == count1 && count1 != 0) {
+                		players.get(0).addScore(12);
+                		p1score1 += 12;
+                	}
+                	if(temp1.get(temp1.size() - 1) == count2&& count2 != 0) {
+                		players.get(1).addScore(12);
+                		p2score1 += 12;
+                	}
+                	if(temp1.get(temp1.size() - 1) == count3&& count3 != 0) {
+                		players.get(2).addScore(12);
+                		p3score1 += 12;
+                	}
+                	if(temp1.get(temp1.size() - 1) == count4&& count4 != 0) {
+                		players.get(3).addScore(12);
+                		p4score1 += 12;
+                	}
+                	if(temp1.get(temp1.size() - 2) == count1&& count1 != 0) {
+                		players.get(0).addScore(6);
+                		p1score1 += 6;
+                	}
+                	if(temp1.get(temp1.size() - 2) == count2&& count2 != 0) {
+                		players.get(1).addScore(6);
+                		p2score1 += 6;
+                	}
+                	if(temp1.get(temp1.size() - 2) == count3&& count3 != 0) {
+                		players.get(2).addScore(6);
+                		p3score1 += 6;
+                	}
+                	if(temp1.get(temp1.size() - 2) == count4&& count4 != 0) {
+                		players.get(3).addScore(6);
+                		p4score1 += 6;
+                	}
+            	}
+            	temp1 = new ArrayList<>();
+            	
+            		
 
-            players.get(0).addScore(ob1.scoreCard(players.get(0), b, 0));
-
-            players.get(1).addScore(ob1.scoreCard(players.get(1), b, 0));
-            players.get(2).addScore(ob1.scoreCard(players.get(2), b, 0));
-            players.get(3).addScore(ob1.scoreCard(players.get(3), b, 0));
-            players.get(0).addScore(ob2.scoreCard(players.get(0), b, 0));
-            players.get(1).addScore(ob2.scoreCard(players.get(1), b, 0));
-            players.get(2).addScore(ob2.scoreCard(players.get(2), b, 0));
-            players.get(3).addScore(ob2.scoreCard(players.get(3), b, 0));
-            players.get(0).addScore(ob3.scoreCard(players.get(0), b, 0));
-            players.get(1).addScore(ob3.scoreCard(players.get(1), b, 0));
-            players.get(2).addScore(ob3.scoreCard(players.get(2), b, 0));
-            players.get(3).addScore(ob3.scoreCard(players.get(3), b, 0));
+            }
+            else {
+            	players.get(0).addScore(ob1.scoreCard(players.get(0), b, 0));
+            	players.get(1).addScore(ob1.scoreCard(players.get(1), b, 0));
+            	players.get(2).addScore(ob1.scoreCard(players.get(2), b, 0));
+            	players.get(3).addScore(ob1.scoreCard(players.get(3), b, 0));
+            	p1score1 += ob1.scoreCard(players.get(0), b, 0);
+            	p2score1 += ob1.scoreCard(players.get(1), b, 0);
+            	p3score1 += ob1.scoreCard(players.get(2), b, 0);
+            	p4score1 += ob1.scoreCard(players.get(3), b, 0);
+            }
+            if(ob2.getObjective().equals("Lords")) {
+ArrayList<Integer> temp1 = new ArrayList<>();
+            	
+            	for(int i = 0; i < 4; i++) {
+            		int count1 = 0;
+            		int count2 = 0;
+            		int count3 = 0;
+            		int count4 = 0;
+            		count1 += ob2.scoreCard(players.get(0), b, i);
+            		count2 += ob2.scoreCard(players.get(1), b, i);
+            		count3 += ob2.scoreCard(players.get(2), b, i);
+            		count4 += ob2.scoreCard(players.get(3), b, i);
+            		temp1.add(count1);
+                	temp1.add(count2);
+                	temp1.add(count3);
+                	temp1.add(count4);
+                	Collections.sort(temp1);
+                	if(temp1.get(temp1.size() - 1) == count1&& count1 != 0) {
+                		players.get(0).addScore(12);
+                		p1score2 += 12;
+                	}
+                	if(temp1.get(temp1.size() - 1) == count2&& count2 != 0) {
+                		players.get(1).addScore(12);
+                		p2score2 += 12;
+                	}
+                	if(temp1.get(temp1.size() - 1) == count3&& count3 != 0) {
+                		players.get(2).addScore(12);
+                		p3score2 += 12;
+                	}
+                	if(temp1.get(temp1.size() - 1) == count4&& count4 != 0) {
+                		players.get(3).addScore(12);
+                		p4score2 += 12;
+                	}
+                	if(temp1.get(temp1.size() - 2) == count1&& count1 != 0) {
+                		players.get(0).addScore(6);
+                		p1score2 += 6;
+                	}
+                	if(temp1.get(temp1.size() - 2) == count2&& count2 != 0) {
+                		players.get(1).addScore(6);
+                		p2score2 += 6;
+                	}
+                	if(temp1.get(temp1.size() - 2) == count3&& count3 != 0) {
+                		players.get(2).addScore(6);
+                		p3score2 += 6;
+                	}
+                	if(temp1.get(temp1.size() - 2) == count4&& count4 != 0) {
+                		players.get(3).addScore(6);
+                		p4score2 += 6;
+                	}
+            	}
+            	temp1 = new ArrayList<>();
+            }
+            else {
+            	players.get(0).addScore(ob2.scoreCard(players.get(0), b, 0));
+            	players.get(1).addScore(ob2.scoreCard(players.get(1), b, 0));
+            	players.get(2).addScore(ob2.scoreCard(players.get(2), b, 0));
+            	players.get(3).addScore(ob2.scoreCard(players.get(3), b, 0));
+            	p1score2 += ob2.scoreCard(players.get(0), b, 0);
+            	p2score2 += ob2.scoreCard(players.get(1), b, 0);
+            	p3score2 += ob2.scoreCard(players.get(2), b, 0);
+            	p4score2 += ob2.scoreCard(players.get(3), b, 0);
+            }
+            if(ob3.getObjective().equals("Lords")) {
+ArrayList<Integer> temp1 = new ArrayList<>();
+            	
+            	for(int i = 0; i < 4; i++) {
+            		int count1 = 0;
+            		int count2 = 0;
+            		int count3 = 0;
+            		int count4 = 0;
+            		count1 += ob3.scoreCard(players.get(0), b, i);
+            		count2 += ob3.scoreCard(players.get(1), b, i);
+            		count3 += ob3.scoreCard(players.get(2), b, i);
+            		count4 += ob3.scoreCard(players.get(3), b, i);
+            		temp1.add(count1);
+                	temp1.add(count2);
+                	temp1.add(count3);
+                	temp1.add(count4);
+                	Collections.sort(temp1);
+                	System.out.println(temp1.get(temp1.size() - 1));
+                	System.out.println(temp1.get(temp1.size() - 2));
+                	if(temp1.get(temp1.size() - 1) == count1&& count1 != 0) {
+                		players.get(0).addScore(12);
+                		p1score3 += 12;
+                	}
+                	if(temp1.get(temp1.size() - 1) == count2&& count2 != 0) {
+                		players.get(1).addScore(12);
+                		p2score3 += 12;
+                	}
+                	if(temp1.get(temp1.size() - 1) == count3&& count3 != 0) {
+                		players.get(2).addScore(12);
+                		p3score3 += 12;
+                	}
+                	if(temp1.get(temp1.size() - 1) == count4&& count4 != 0) {
+                		players.get(3).addScore(12);
+                		p4score3 += 12;
+                	}
+                	if(temp1.get(temp1.size() - 2) == count1&& count1 != 0) {
+                		players.get(0).addScore(6);
+                		p1score3 += 6;
+                	}
+                	if(temp1.get(temp1.size() - 2) == count2&& count2 != 0) {
+                		players.get(1).addScore(6);
+                		p2score3 += 6;
+                	}
+                	if(temp1.get(temp1.size() - 2) == count3&& count3 != 0) {
+                		players.get(2).addScore(6);
+                		p3score3 += 6;
+                	}
+                	if(temp1.get(temp1.size() - 2) == count4&& count4 != 0) {
+                		players.get(3).addScore(6);
+                		p4score3 += 6;
+                	}
+            	}
+            	temp1 = new ArrayList<>();
+            }
+            else {
+            	players.get(0).addScore(ob3.scoreCard(players.get(0), b, 0));
+            	players.get(1).addScore(ob3.scoreCard(players.get(1), b, 0));
+            	players.get(2).addScore(ob3.scoreCard(players.get(2), b, 0));
+            	players.get(3).addScore(ob3.scoreCard(players.get(3), b, 0));
+            	p1score3 += ob3.scoreCard(players.get(0), b, 0);
+            	p2score3 += ob3.scoreCard(players.get(1), b, 0);
+            	p3score3 += ob3.scoreCard(players.get(2), b, 0);
+            	p4score3 += ob3.scoreCard(players.get(3), b, 0);
+            }
+            
             System.out.println(players.get(0).getName() + " " + players.get(0).getScore());
             System.out.println(players.get(1).getName() + " " + players.get(1).getScore());
             System.out.println(players.get(2).getName() + " " + players.get(2).getScore());
             System.out.println(players.get(3).getName() + " " + players.get(3).getScore());
-
+            scoredGame = true;
+        	}
             //code for end screen graphics
             ArrayList<Integer> scores = new ArrayList<Integer>();
             for(int k = 0; k < players.size(); k++)
@@ -399,22 +594,25 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 
             //rank by color
            //   WHAT ARE WE GOING TO DO WHEN THEY TIE
-            g.setColor(new Color(255, 128, 0));
+           //deal with it
+            
+            g.setColor(new Color(0, 102, 204));
             if(ranking.get(0).getName().equals("1")) { g.fillRect(10,  getHeight()/3 - getHeight()/12, getWidth()-20, getHeight()/8);}
             else if(ranking.get(1).getName().equals("1")) {g.fillRect(10,  getHeight()/3 - getHeight()/12 + getHeight()/8, getWidth()-20, getHeight()/8);}
             else if(ranking.get(2).getName().equals("1")) {g.fillRect(10,  getHeight()/3 - getHeight()/12 + (2*getHeight()/8), getWidth()-20, getHeight()/8);}
             else if(ranking.get(3).getName().equals("1")) {g.fillRect(10,  getHeight()/3 - getHeight()/12 + (3*getHeight()/8), getWidth()-20, getHeight()/8);}
-           g.setColor(Color.yellow);
+            g.setColor(Color.green);
            if(ranking.get(0).getName().equals("2")) { g.fillRect(10,  getHeight()/3 - getHeight()/12, getWidth()-20, getHeight()/8);}
            else if(ranking.get(1).getName().equals("2")) {g.fillRect(10,  getHeight()/3 - getHeight()/12 + getHeight()/8, getWidth()-20, getHeight()/8);}
            else if(ranking.get(2).getName().equals("2")) {g.fillRect(10,  getHeight()/3 - getHeight()/12 + (2*getHeight()/8), getWidth()-20, getHeight()/8);}
            else if(ranking.get(3).getName().equals("2")) {g.fillRect(10,  getHeight()/3 - getHeight()/12 + (3*getHeight()/8), getWidth()-20, getHeight()/8);}
-           g.setColor(Color.green);
+          
+           g.setColor(Color.yellow);
            if(ranking.get(0).getName().equals("3")) { g.fillRect(10,  getHeight()/3 - getHeight()/12, getWidth()-20, getHeight()/8);}
            else if(ranking.get(1).getName().equals("3")) {g.fillRect(10,  getHeight()/3 - getHeight()/12 + getHeight()/8, getWidth()-20, getHeight()/8);}
            else if(ranking.get(2).getName().equals("3")) {g.fillRect(10,  getHeight()/3 - getHeight()/12 + (2*getHeight()/8), getWidth()-20, getHeight()/8);}
            else if(ranking.get(3).getName().equals("3")) {g.fillRect(10,  getHeight()/3 - getHeight()/12 + (3*getHeight()/8), getWidth()-20, getHeight()/8);}
-           g.setColor(new Color(0, 102, 204));
+           g.setColor(new Color(255, 128, 0));
            if(ranking.get(0).getName().equals("4")) { g.fillRect(10,  getHeight()/3 - getHeight()/12, getWidth()-20, getHeight()/8);}
            else if(ranking.get(1).getName().equals("4")) {g.fillRect(10,  getHeight()/3 - getHeight()/12 + getHeight()/8, getWidth()-20, getHeight()/8);}
            else if(ranking.get(2).getName().equals("4")) {g.fillRect(10,  getHeight()/3 - getHeight()/12 + (2*getHeight()/8), getWidth()-20, getHeight()/8);}
@@ -444,31 +642,169 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             g.drawString("Castles", 80 + (4*(getWidth()-20)/6), getHeight()/3-getHeight()/12);
            g.drawString("TOTAL", 80 + (5*(getWidth()-20)/6), getHeight()/3-getHeight()/12);
            //objective 1
-           g.drawString("" + ob1.scoreCard(ranking.get(0), b, 0), 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
-           g.drawString("" + ob1.scoreCard(ranking.get(1), b, 0), 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
-           g.drawString("" + ob1.scoreCard(ranking.get(2), b, 0), 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
-           g.drawString("" + ob1.scoreCard(ranking.get(3), b, 0), 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+           if(ranking.get(3).getName().equals("1")) {
+        	   g.drawString("" + p1score1, 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
+        	   g.drawString("" + p1score2, 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + getHeight()/12);
+        	   g.drawString("" + p1score3, 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + getHeight()/12);
+        	   g.drawString("" + castleScore1, 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
+        	   
+        	   g.drawString("" + players.get(0).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
+               
+               
+           }
+           if(ranking.get(3).getName().equals("2")) {
+        	   g.drawString("" + p2score1, 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
+        	   g.drawString("" + p2score2, 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + getHeight()/12);
+        	   g.drawString("" + p2score3, 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + getHeight()/12);
+        	   g.drawString("" + castleScore2, 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
+        	   g.drawString("" + players.get(1).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
+        	   
+           }
+           if(ranking.get(3).getName().equals("3")) {
+        	   g.drawString("" + p3score1, 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
+        	   g.drawString("" + p3score2, 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + getHeight()/12);
+        	   g.drawString("" + p3score3, 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + getHeight()/12);
+        	   g.drawString("" + castleScore3, 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
+        	   g.drawString("" + players.get(2).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
+        	   //g.drawString("" + players.get(2).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+        	   
+           }
+           if(ranking.get(3).getName().equals("4")) {
+        	   g.drawString("" + p4score1, 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
+        	   g.drawString("" + p4score2, 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + getHeight()/12);
+        	   g.drawString("" + p4score3, 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + getHeight()/12);
+        	   g.drawString("" + castleScore4, 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
+        	   g.drawString("" + players.get(3).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
+        	   //g.drawString("" + players.get(3).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+        	   
+	   
+           }
+           if(ranking.get(2).getName().equals("1")) {
+        	   g.drawString("" + p1score1, 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+        	   g.drawString("" + p1score2, 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+        	   g.drawString("" + p1score3, 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+        	   g.drawString("" + castleScore1, 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+        	   g.drawString("" + players.get(0).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+        	   //g.drawString("" + players.get(0).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+           }
+           if(ranking.get(2).getName().equals("2")) {
+        	   g.drawString("" + p2score1, 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+        	   g.drawString("" + p2score2, 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+        	   g.drawString("" + p2score3, 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+        	   g.drawString("" + castleScore2, 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+        	   g.drawString("" + players.get(1).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+        	   //g.drawString("" + players.get(1).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+           }
+           if(ranking.get(2).getName().equals("3")) {
+        	   g.drawString("" + p3score1, 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+        	   g.drawString("" + p3score2, 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+        	   g.drawString("" + p3score3, 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+        	   g.drawString("" + castleScore3, 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+        	   g.drawString("" + players.get(2).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+        	   //g.drawString("" + players.get(2).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+           }
+           if(ranking.get(2).getName().equals("4")) {
+        	   g.drawString("" + p4score1, 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+        	   g.drawString("" + p4score2, 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+        	   g.drawString("" + p4score3, 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+        	   g.drawString("" + castleScore4, 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+        	   g.drawString("" + players.get(3).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+        	   //g.drawString("" + players.get(3).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+	   
+           }
+           if(ranking.get(1).getName().equals("1")) {
+        	   g.drawString("" + p1score1, 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + p1score2, 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + p1score3, 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + castleScore1, 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + players.get(0).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+        	   //g.drawString("" + players.get(0).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+           }
+           if(ranking.get(1).getName().equals("2")) {
+        	   g.drawString("" + p2score1, 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + p2score2, 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + p2score3, 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + castleScore2, 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + players.get(1).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+        	   //g.drawString("" + players.get(1).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+           }
+           if(ranking.get(1).getName().equals("3")) {
+        	   g.drawString("" + p3score1, 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + p3score2, 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + p3score3, 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + castleScore3, 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + players.get(2).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+        	   //g.drawString("" + players.get(2).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+           }
+           if(ranking.get(1).getName().equals("4")) {
+        	   g.drawString("" + p4score1, 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + p4score2, 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + p4score3, 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + castleScore4, 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + players.get(3).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+        	   //g.drawString("" + players.get(3).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+	   
+           }
+           if(ranking.get(0).getName().equals("1")) {
+        	   g.drawString("" + p1score1, 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + p1score2, 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + p1score3, 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + castleScore1, 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+        	   //g.drawString("" + players.get(0).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
+        	   g.drawString("" + players.get(0).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+           }
+           if(ranking.get(0).getName().equals("2")) {
+        	   g.drawString("" + p2score1, 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + p2score2, 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + p2score3, 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + castleScore2, 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+        	   
+        	   g.drawString("" + players.get(1).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+        	   //g.drawString("" + players.get(1).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
+           }
+           if(ranking.get(0).getName().equals("3")) {
+        	   g.drawString("" + p3score1, 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + p3score2, 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + p3score3, 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + castleScore3, 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + players.get(2).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+        	   //g.drawString("" + players.get(2).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
+           }
+           if(ranking.get(0).getName().equals("4")) {
+        	   g.drawString("" + p4score1, 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + p4score2, 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + p4score3, 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + castleScore4, 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+        	   g.drawString("" + players.get(3).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+        	   //g.drawString("" + players.get(3).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
+	   
+           }
+           /*
+           g.drawString("" + p2score1, 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
+           g.drawString("" + p3score1, 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+           g.drawString("" + p4score1, 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+           g.drawString("" + p1score1, 120+ ((getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
            //objective 2
-           g.drawString("" + ob2.scoreCard(ranking.get(0), b, 0), 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + getHeight()/12);
-           g.drawString("" + ob2.scoreCard(ranking.get(1), b, 0), 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
-           g.drawString("" + ob2.scoreCard(ranking.get(2), b, 0), 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
-           g.drawString("" + ob2.scoreCard(ranking.get(3), b, 0), 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+           g.drawString("" + p2score2, 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + getHeight()/12);
+           g.drawString("" + p3score2, 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+           g.drawString("" + p4score2, 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+           g.drawString("" + p1score2, 120+ ((getWidth()-20)/3), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
            //objective 3
-           g.drawString("" + ob3.scoreCard(ranking.get(0), b, 0), 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + getHeight()/12);
-           g.drawString("" + ob3.scoreCard(ranking.get(1), b, 0), 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
-           g.drawString("" + ob3.scoreCard(ranking.get(2), b, 0), 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
-           g.drawString("" + ob3.scoreCard(ranking.get(3), b, 0), 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+           g.drawString("" + p2score3, 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + getHeight()/12);
+           g.drawString("" + p3score3, 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+           g.drawString("" + p4score3, 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+           g.drawString("" + p1score3, 120+ ((getWidth()-20)/2), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
            //castles
-           g.drawString("" + ranking.get(0).getNumHouses(), 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
-           g.drawString("" + ranking.get(1).getNumHouses(), 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
-           g.drawString("" + ranking.get(2).getNumHouses(), 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
-           g.drawString("" + ranking.get(3).getNumHouses(), 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+           g.drawString("" + castleScore2, 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
+           g.drawString("" + castleScore3, 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+           g.drawString("" + castleScore4, 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+           g.drawString("" + castleScore1, 120+ (4*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
            //score
-           g.drawString("" + ranking.get(0).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
-           g.drawString("" + ranking.get(1).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
-           g.drawString("" + ranking.get(2).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
-           g.drawString("" + ranking.get(3).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
-
+           g.drawString("" + ranking.get(3).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/12);
+           g.drawString("" + ranking.get(2).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + getHeight()/8 + getHeight()/12);
+           g.drawString("" + ranking.get(1).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (2*getHeight()/8) + getHeight()/12);
+           g.drawString("" + ranking.get(0).getScore(), 120+ (5*(getWidth()-20)/6), getHeight()/3 - getHeight()/12 + (3*getHeight()/8) + getHeight()/12);
+*/
            g.setColor(new Color(181, 155, 85));
            g.fillRect(getWidth()/5, getHeight()-getHeight()/7,getWidth()/6, (9*getHeight()/76));
            g.fillRect(3*getWidth()/5, getHeight()-getHeight()/7,getWidth()/6, (9*getHeight()/76));
@@ -1045,6 +1381,11 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             state = "Game";
             repaint();
         }
+        else if(state == "Game" && x >= 641 && x <= 947 && y >= 635 && y <= 736 && gameReadyToEnd)
+        {
+            state = "End";
+            repaint();
+        }
 //        else if(state == "End" && x >= 3*getWidth()/5 && x <= 3*getWidth()/5+getWidth()/6 && y >= getHeight()-getHeight()/7 && y <= getHeight()-getHeight()/7 + (9*getHeight()/76))
 //        {
 //            state = "Start";
@@ -1148,8 +1489,8 @@ public class GameScreenPanel extends JPanel implements MouseListener {
 //            }
 //        }
 
-        System.out.println(state);
-        System.out.println(displayRules);
+        //System.out.println(state);
+        //System.out.println(displayRules);
         // g.fillRect(getWidth()/5, getHeight()-getHeight()/7,getWidth()/6, (9*getHeight()/76));
         //           g.fillRect(3*getWidth()/5, getHeight()-getHeight()/7,getWidth()/6, (9*getHeight()/76));
     }
@@ -1263,27 +1604,44 @@ public class GameScreenPanel extends JPanel implements MouseListener {
             		}
             		if(i.getType().equals("Paddock")) {
             			g.drawImage(paddockIcon, (int)(i.getX() - (double)(getWidth()/72)), (int)(i.getY() - (double)(getHeight()/42)), i.getX() + 210, i.getY() + 210, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+            			SpecialTile k = (SpecialTile)(i);
+            			g.drawString("" + k.getNumCharges(), (int)(i.getX() - (double)(getWidth()/72))+ 10, (int)(i.getY() - (double)(getHeight()/42)) + 25);
             		}
             		if(i.getType().equals("Farm")) {
             			g.drawImage(farmIcon, (int)(i.getX() - (double)(getWidth()/72)), (int)(i.getY() - (double)(getHeight()/42)), i.getX() + 210, i.getY() + 210, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+            			SpecialTile k = (SpecialTile)(i);
+            			g.drawString("" + k.getNumCharges(), (int)(i.getX() - (double)(getWidth()/72))+ 10, (int)(i.getY() - (double)(getHeight()/42)) + 25);
             		}
+            		
             		if(i.getType().equals("Barn")) {
             			g.drawImage(barnIcon, (int)(i.getX() - (double)(getWidth()/72)), (int)(i.getY() - (double)(getHeight()/42)), i.getX() + 210, i.getY() + 210, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+            			SpecialTile k = (SpecialTile)(i);
+            			g.drawString("" + k.getNumCharges(), (int)(i.getX() - (double)(getWidth()/72))+ 10, (int)(i.getY() - (double)(getHeight()/42)) + 25);
             		}
             		if(i.getType().equals("Harbor")) {
             			g.drawImage(harborIcon, (int)(i.getX() - (double)(getWidth()/72)), (int)(i.getY() - (double)(getHeight()/42)), i.getX() + 210, i.getY() + 210, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+            			SpecialTile k = (SpecialTile)(i);
+            			g.drawString("" + k.getNumCharges(), (int)(i.getX() - (double)(getWidth()/72) + 10), (int)(i.getY() - (double)(getHeight()/42)) + 25);
             		}
             		if(i.getType().equals("Oasis")) {
             			g.drawImage(oasisIcon, (int)(i.getX() - (double)(getWidth()/72)), (int)(i.getY() - (double)(getHeight()/42)), i.getX() + 210, i.getY() + 210, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+            			SpecialTile k = (SpecialTile)(i);
+            			g.drawString("" + k.getNumCharges(), (int)(i.getX() - (double)(getWidth()/72)) + 10, (int)(i.getY() - (double)(getHeight()/42)) + 25);
             		}
             		if(i.getType().equals("Oracle")) {
             			g.drawImage(oracleIcon, (int)(i.getX() - (double)(getWidth()/72)), (int)(i.getY() - (double)(getHeight()/42)), i.getX() + 210, i.getY() + 210, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+            			SpecialTile k = (SpecialTile)(i);
+            			g.drawString("" + k.getNumCharges(), (int)(i.getX() - (double)(getWidth()/72)) + 10, (int)(i.getY() - (double)(getHeight()/42)) + 25);
             		}
             		if(i.getType().equals("Tavern")) {
             			g.drawImage(tavernIcon, (int)(i.getX() - (double)(getWidth()/72)), (int)(i.getY() - (double)(getHeight()/42)), i.getX() + 210, i.getY() + 210, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+            			SpecialTile k = (SpecialTile)(i);
+            			g.drawString("" + k.getNumCharges(), (int)(i.getX() - (double)(getWidth()/72)) + 10, (int)(i.getY() - (double)(getHeight()/42)) + 25);
             		}
             		if(i.getType().equals("Tower")) {
             			g.drawImage(towerIcon, (int)(i.getX() - (double)(getWidth()/72)), (int)(i.getY() - (double)(getHeight()/42)), i.getX() + 210, i.getY() + 210, 0, 0, (int) ((double) 1200 / ((double) getWidth() / 1600)), (int) ((double) 1500 / ((double) getHeight() / 800)), null);
+            			SpecialTile k = (SpecialTile)(i);
+            			g.drawString("" + k.getNumCharges(), (int)(i.getX() - (double)(getWidth()/72)) + 10, (int)(i.getY() - (double)(getHeight()/42)) + 25);
             		}
             	}
             }
@@ -1598,7 +1956,7 @@ public void showRules(Graphics g)
     {
         String rules = "At the beginning of the game, a random map will be generated and 3 Objective cards will be drawn.\nThese cards will help determine scoring. Each player starts with 40 settlements that they will place throughout the game.\nA random player will be chosen to go first. A player's box will be highlighted to indicate when it is their turn.\n";
         rules += "\nNOTE TO PLAYERS: DO NOT MAXIMIZE THE GAME SCREEN.\nPLEASE PLAY AT THE GAME SCREEN SIZE THAT AUTOMATICALLY OPENS.\n";
-        rules += "\nON A PLAYER’S TURN:\n1. Click on the deck of the card at the far right of the screen. A terrain card will be drawn.\n2. Click on the terrain card. Available tiles will be highlighted.\n3. Click on the tile to place a settlement.\n    Settlements can only be placed adjacently to each other and in the terrain drawn.\n    At the beginning of each turn, 3 settlements are placed.";
+        rules += "\nON A PLAYERâ€™S TURN:\n1. Click on the deck of the card at the far right of the screen. A terrain card will be drawn.\n2. Click on the terrain card. Available tiles will be highlighted.\n3. Click on the tile to place a settlement.\n    Settlements can only be placed adjacently to each other and in the terrain drawn.\n    At the beginning of each turn, 3 settlements are placed.";
         rules += "\n4. If a player has action tokens that can be played, click on the action token and play it accordingly.\n5. To end a player's turn, click the 'End Turn' button\n6. The game progresses like this until the starting player runs out of settlements.\n    Once all players have had their final turn afterward, the game ends.\n";
         rules += "\nACTION TOKENS:\nHorse: Allows for a settlement to be moved two tiles in any direction\n           Landing spot cannot be on WATER, MOUNTAINS, or a special action tile.\nFarm: Allows for an extra settlement to be placed on a tile in the PLAINS terrain\n          The settlement has to be placed adjacent to a previously placed settlement.\n          If the player has no settlements in the terrain, the settlement can be placed on any Plains tile.";
         rules += "\nOasis: Allows for an extra settlement to be placed on a tile in the DESERT terrain\n         The settlement has to be placed adjacent to a previously placed settlement.\n          If the player has no settlements in the terrain, the settlement can be placed on any Desert tile.";
@@ -1627,8 +1985,8 @@ public void showRules(Graphics g)
             y += g.getFontMetrics().getAscent();
             g.drawString(str, 2*getWidth()/8, y);
         }
-        System.out.println(getWidth());
-        System.out.println(getHeight());
+        //System.out.println(getWidth());
+        //System.out.println(getHeight());
     }
 	
     public ArrayList<Player> getPlayers() {
@@ -1654,6 +2012,9 @@ public void showRules(Graphics g)
     }
     public void setPaddockUsing(Tile t) {
         paddockUsing = t;
+    }
+    public void setGameEnd(boolean b) {
+    	gameReadyToEnd = b;
     }
     public void AddTerrainCard(Player p) {
     	if(d.getDeckSize() == 0) {
