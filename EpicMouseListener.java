@@ -35,8 +35,8 @@ public class EpicMouseListener implements MouseListener {
 		if(!(state.equals("End"))) {
         int x = e.getX();
         int y = e.getY();
-        //System.out.println(x);
-        //System.out.println(y);
+        System.out.println(x);
+        System.out.println(y);
         if(doingSpecialAction2 && drawnTerrainCard) {
         	if(action.equals("Barn")) {
 if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.getHeight()/30 && x <= ((b.getWidth() / 3) +(b.getWidth() / 50)) + (int)((16 * ((double)b.getWidth() / 1600))) && y <= (b.getHeight() - (b.getHeight() / 13)-(b.getHeight()/3 - b.getHeight()/30)) + b.getHeight()/3 - b.getHeight()/30) {
@@ -92,7 +92,7 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                                 				players.get(currentPlayer-1).addScore(3);
                                 			}
                                 			
-                                			System.out.println(players.get(currentPlayer-1).getScore());
+                                			//System.out.println(players.get(currentPlayer-1).getScore());
                                 		}
                                 		else {
                                 			int cnt55 = 0;
@@ -145,7 +145,7 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                                 				players.get(currentPlayer-1).addScore(3);
                                 			}
                                 			
-                                			System.out.println(players.get(currentPlayer-1).getScore());
+                                			//System.out.println(players.get(currentPlayer-1).getScore());
                                 		}
                             		}
                             		else {
@@ -314,6 +314,7 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
                             b.setPlacingSpecials(false);
                             doingSpecialAction2 = false;
                             b.setPlacingSpecials2(false);
+                            
                     	}
                         
                     }
@@ -343,11 +344,13 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
 					if(b.getBoard().paddockCheck(minTile,tileSelected,players.get(currentPlayer-1)) && minTile.getSettlement() == null && minTile.getHousePlaceable()) {
 
 						Settlement s = new Settlement(minTile, players.get(currentPlayer-1));
-						players.get(currentPlayer-1).addHouse(s);
-						minTile.setSettlement(s);
+						
 
 						players.get(currentPlayer-1).removeHouse(tileSelected.getSettlement());
 						tileSelected.removeSettlement();
+						minTile.setSettlement(s);
+						players.get(currentPlayer-1).addHouse(s);
+						
 
 						ArrayList<Tile> tt = minTile.getAdjacentTiles();
 						for(Tile ttt:tt) {
@@ -392,6 +395,8 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
 						b.setPlacingSpecials(false);
 						doingSpecialAction2 = false;
 						b.setPlacingSpecials2(false);
+						b.setPaddockUsing(null);
+						action = "";
 
 					}
 
@@ -1501,8 +1506,10 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
             if(players.get(currentPlayer-1).getNumHouses() <= 0) {
                 endGame = true;
             }
-            for(ActionToken t : players.get(currentPlayer-1).getSpecialActions()) {
+            for(Player p : players) {
+            for(ActionToken t : p.getSpecialActions()) {
             	t.setUsed(false);
+            }
             }
         	currentPlayer++;
             currentPlayer = currentPlayer % 5;
@@ -1512,6 +1519,7 @@ if(x >= (int)((16 * ((double)b.getWidth() / 1600))) && y >= b.getHeight()/3 - b.
             if(currentPlayer == 0 && endGame) {
                 b.setState("End");
 				state = "End";
+				b.setGameEnd(true);
             }
             if(currentPlayer == 0) {
             	currentPlayer++;
