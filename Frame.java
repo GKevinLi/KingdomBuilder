@@ -26,7 +26,7 @@ public class Frame extends JFrame {
         //setMinimumSize(new Dimension(1000,600));
         GameScreenPanel g = new GameScreenPanel();
         EpicMouseListener e = new EpicMouseListener(g,s);
-
+        setResizable(false);
  //       EpicMouseListener e = new EpicMouseListener(g,s);
         g.addMouseListener(e);
        s.addMouseListener(e);
