@@ -30,6 +30,24 @@ public class Player {
     }
     public void addHouse(Settlement s) {
         houses.add(s);
+        ArrayList<ActionToken> temp = new ArrayList<ActionToken>();
+        for(ActionToken a : specialActions) {
+        	int cnt = 0;
+        	for(Tile t : getRawAdjacentTiles()) {
+        		if(!(t.getType().equals("Water")) && !(t.getType().equals("Grass")) && !(t.getType().equals("Mountain")) && !(t.getType().equals("Desert")) && !(t.getType().equals("Forest")) && !(t.getType().equals("Flower")) && !(t.getType().equals("Canyon")) && !(t.getType().equals("Castle"))) {
+        			SpecialTile j = (SpecialTile)t;
+        			if(j.getAction().equals(a)) {
+        				cnt++;
+        			}
+        		}
+        	}
+        	if(cnt == 0) {
+        		temp.add(a);
+        	}
+        }
+        for(ActionToken a : temp) {
+        	removeSpecialAction(a);
+        }
     }
     public void removeHouse(Settlement s) {
     	houses.remove(s);
@@ -46,6 +64,9 @@ public class Player {
     }
     public void addSpecialAction(ActionToken t) {
         specialActions.add(t);
+    }
+    public void removeSpecialAction(ActionToken t) {
+        specialActions.remove(t);
     }
     public ArrayList<Tile> getAllAdjacentTiles() {
         ArrayList<Tile> t = new ArrayList<>();
